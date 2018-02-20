@@ -1,0 +1,18 @@
+@import '../../vars.css';
+
+@media all {
+  .Wall {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 0 100%;
+    border: 1px solid var(--gray1);
+    width: 100%;
+    max-width: 32rem;
+    max-height: 32rem;
+  }
+  .Wall.hard-mode,
+  .Wall.hard-mode .Block {
+    border: 0;
+    color: transparent;
+  }
+}

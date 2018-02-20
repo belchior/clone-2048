@@ -1,0 +1,40 @@
+@import '../../vars.css';
+
+@media all {
+  .btn-toggle-label {
+    display: inline-flex;
+    align-items: center;
+  }
+  .btn-toggle-label .btn-toggle {
+    margin-right: 0.5rem;
+  }
+  .btn-toggle {
+    border-radius: 1rem 1rem 1rem 1rem;
+    border: 1px solid var(--blue2);
+    background-color: var(--blue1);
+    width: 4rem;
+    height: 2rem;
+    transition: all 0.3s;
+  }
+  .btn-toggle:focus {
+    outline: none;
+  }
+  .btn-toggle::before {
+    content: '';
+    border-radius: 50%;
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--blue2);
+    transform: translate3d(-1rem, -1px, 0);
+    transition: all 0.3s;
+  }
+  .btn-toggle[data-active="false"] {
+    border-color: var(--gray3);
+    background-color: var(--gray2);
+  }
+  .btn-toggle[data-active="false"]::before {
+    background-color: var(--gray3);
+    transform: translate3d(1rem, -1px, 0);
+  }
+}

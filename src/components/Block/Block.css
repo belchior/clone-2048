@@ -1,0 +1,26 @@
+@import '../../vars.css';
+
+@media all {
+  .Block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 25%;
+    border: 1px solid var(--gray1);
+    color: #ffffff;
+  }
+
+  .block-0 { background-color: var(--block-0); color: var(--block-0); }
+  .block-2 { background-color: var(--block-2); }
+  .block-4 { background-color: var(--block-4); }
+  .block-8 { background-color: var(--block-8); }
+  .block-16 { background-color: var(--block-16); }
+  .block-32 { background-color: var(--block-32); }
+  .block-64 { background-color: var(--block-64); }
+  .block-128 { background-color: var(--block-128); }
+  .block-256 { background-color: var(--block-256); }
+  .block-512 { background-color: var(--block-512); }
+  .block-1024 { background-color: var(--block-1024); }
+  .block-2048 { background-color: var(--block-2048); }
+  .block-4096 { background-color: var(--block-4096); }
+}

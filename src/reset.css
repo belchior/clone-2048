@@ -1,0 +1,20 @@
+a {
+  text-decoration: none;
+}
+a:focus,
+button:focus {
+  outline-color: rgba(0,0,0,0.7);
+}
+a:active,
+a:visited {
+  color: inherit;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  border: 1px solid #eeeeee;
+  padding: 0;
+  background-color: transparent;
+}

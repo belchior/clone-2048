@@ -1,0 +1,24 @@
+:root {
+  --blue1: #8ec9f4;
+  --blue2: #7291c2;
+  --gray1: #f0f0f0;
+  --gray2: #dddddd;
+  --gray3: #aaaaaa;
+  --gray4: #918e8e;
+  --green: #a6cd90;
+  --yellow: #e5c100;
+
+  --block-0: #eeeeee;
+  --block-2: #a6cd90;
+  --block-4: #6db560;
+  --block-8: #00a140;
+  --block-16: #008234;
+  --block-32: #75abd4;
+  --block-64: #0f86be;
+  --block-128: #006cae;
+  --block-256: #01588d;
+  --block-512: #bd94bd;
+  --block-1024: #9f619d;
+  --block-2048: #802c83;
+  --block-4096: #6a186e;
+}

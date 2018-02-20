@@ -1,0 +1,39 @@
+@import '../../vars.css';
+
+@media all {
+  .Score {
+    display: flex;
+    justify-content: space-between;
+  }
+  .Score .current_score,
+  .Score .best_score {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem 1rem 0.5rem 1rem;
+    color: #ffffff;
+    flex: 1;
+
+  }
+  .Score .current_score::before,
+  .Score .best_score::before {
+    position: absolute;
+    top: 1rem;
+    left: 0.5rem;
+    font-size: 0.7rem;
+    transform: translate3d(0, -0.8rem, 0);
+  }
+  .Score .current_score {
+    background-color: var(--green);
+  }
+  .Score .current_score::before {
+    content: 'score';
+  }
+  .Score .best_score {
+    background-color: var(--yellow);
+  }
+  .Score .best_score::before {
+    content: 'best score';
+  }
+}
