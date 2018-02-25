@@ -1,26 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import './ButtonToggle.css';
 
-export class ButtonToggle extends Component {
-  constructor() {
-    super();
-    this.state = {
-      active: true
-    }
-  }
+export const ButtonToggle = ({onClick, active = false, label = '', title = label}) => {
+  return (
+    <label htmlFor="toggleButton" className="btn-toggle-label">
+      <button id="toggleButton" className="btn-toggle"
+        onClick={onClick} data-active={active} title={title}
+      ></button>
+      {label}
+    </label>
+  );
+};
 
-  render() {
-    return (
-      <label htmlFor="toggleButton" className="btn-toggle-label">
-        <button onClick={this.toggle} id="toggleButton" className="btn-toggle" data-active={this.state.active} title={this.props.title}></button>{this.props.label}
-      </label>
-    );
-  }
-
-  toggle = () => {
-    this.setState((prevState, props) => ({
-      active: !prevState.active
-    }));
-  }
-}
+ButtonToggle.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  active: PropTypes.bool,
+  label: PropTypes.string,
+  title: PropTypes.string,
+};

@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonToggle should assume data-active as false if active prop is false 1`] = `
+<label
+  className="btn-toggle-label"
+  htmlFor="toggleButton"
+>
+  <button
+    className="btn-toggle"
+    data-active={false}
+    id="toggleButton"
+    onClick={[Function]}
+    title=""
+  />
+  
+</label>
+`;
+
+exports[`ButtonToggle should assume data-active as false if active prop not passed 1`] = `
+<label
+  className="btn-toggle-label"
+  htmlFor="toggleButton"
+>
+  <button
+    className="btn-toggle"
+    data-active={false}
+    id="toggleButton"
+    onClick={[Function]}
+    title=""
+  />
+  
+</label>
+`;
+
+exports[`ButtonToggle should assume data-active as true if active prop is true 1`] = `
+<label
+  className="btn-toggle-label"
+  htmlFor="toggleButton"
+>
+  <button
+    className="btn-toggle"
+    data-active={true}
+    id="toggleButton"
+    onClick={[Function]}
+    title=""
+  />
+  
+</label>
+`;
+
+exports[`ButtonToggle should assume title value as the same as label if title are not passed 1`] = `
+<label
+  className="btn-toggle-label"
+  htmlFor="toggleButton"
+>
+  <button
+    className="btn-toggle"
+    data-active={false}
+    id="toggleButton"
+    onClick={[Function]}
+    title="my label"
+  />
+  my label
+</label>
+`;
+
+exports[`ButtonToggle should render without crashing 1`] = `
+<label
+  className="btn-toggle-label"
+  htmlFor="toggleButton"
+>
+  <button
+    className="btn-toggle"
+    data-active={true}
+    id="toggleButton"
+    onClick={[Function]}
+    title="my toggle button"
+  />
+  toggle button
+</label>
+`;
