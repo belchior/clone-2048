@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import './Block.css';
 
-export class Block extends Component {
-  render() {
-    return (
-      <div className={'Block block-' + this.props.value}>{this.props.value}</div>
-    );
-  }
-}
+export const Block = (props) => (
+  <div className={'Block block-' + props.value}>{props.value}</div>
+);
+
+Block.propTypes = {
+  value: PropTypes.number.isRequired,
+};
