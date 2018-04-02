@@ -1,51 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import './Controllers.css';
 import { ButtonToggle } from '../ButtonToggle';
 
-export class Controllers extends Component {
-  render() {
-    const {
-      rollBackAction,
-      saveAction,
-      loadAction,
-      restartAction,
-      hardModeAction,
-      rollBack,
-      hardMode,
-    } = this.props;
+export const Controllers = (props) => {
+  const {
+    rollBackAction,
+    saveAction,
+    loadAction,
+    restartAction,
+    hardModeAction,
+    rollBack,
+    hardMode,
+  } = props;
 
-    return (
-      <div className="Controllers">
-        <h2 className="subtitle">Controls</h2>
-        <button className="btn controls-btn_back" title="Step back"
-          onClick={rollBackAction} disabled={rollBack === 0}
-        >
-          back ({rollBack})
-        </button>
-        <button className="btn controls-btn_save" title="Save my progress"
-          onClick={saveAction}
-        >
-          save
-        </button>
-        <button className="btn controls-btn_load" title="Load my game saved"
-          onClick={loadAction}
-        >
-          load
-        </button>
-        <button className="btn controls-btn_restart" title="Restart the game"
-          onClick={restartAction}
-        >
-          restart
-        </button>
-        <ButtonToggle title="Hard mode" label="Hard mode"
-          onClick={hardModeAction} active={hardMode}
-        ></ButtonToggle>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="Controllers">
+      <h2 className="subtitle">Controls</h2>
+      <button onClick={rollBackAction} disabled={rollBack === 0} className="btn controls-btn_back" title="Step back">
+        back ({rollBack})
+      </button>
+      <button onClick={saveAction} className="btn controls-btn_save" title="Save my progress">
+        save
+      </button>
+      <button onClick={loadAction} className="btn controls-btn_load" title="Load my game saved">
+        load
+      </button>
+      <button onClick={restartAction} className="btn controls-btn_restart" title="Restart the game">
+        restart
+      </button>
+      <ButtonToggle onClick={hardModeAction} active={hardMode} title="Hard mode" label="Hard mode"></ButtonToggle>
+    </div>
+  );
+};
 
 Controllers.propTypes = {
   rollBackAction: PropTypes.func.isRequired,

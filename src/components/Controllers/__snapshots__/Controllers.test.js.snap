@@ -1,5 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should add disabled attribute when rollBack is 0 1`] = `
+<div
+  className="Controllers"
+>
+  <h2
+    className="subtitle"
+  >
+    Controls
+  </h2>
+  <button
+    className="btn controls-btn_back"
+    disabled={true}
+    onClick={[Function]}
+    title="Step back"
+  >
+    back (
+    0
+    )
+  </button>
+  <button
+    className="btn controls-btn_save"
+    onClick={[Function]}
+    title="Save my progress"
+  >
+    save
+  </button>
+  <button
+    className="btn controls-btn_load"
+    onClick={[Function]}
+    title="Load my game saved"
+  >
+    load
+  </button>
+  <button
+    className="btn controls-btn_restart"
+    onClick={[Function]}
+    title="Restart the game"
+  >
+    restart
+  </button>
+  <label
+    className="btn-toggle-label"
+    htmlFor="toggleButton"
+  >
+    <button
+      className="btn-toggle"
+      data-active={false}
+      id="toggleButton"
+      onClick={[Function]}
+      title="Hard mode"
+    />
+    Hard mode
+  </label>
+</div>
+`;
+
 exports[`should render Controllers without crashing 1`] = `
 <div
   className="Controllers"
