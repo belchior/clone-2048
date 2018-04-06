@@ -1,4 +1,4 @@
-import {mapStateToProps, mapDispatchToProps} from './index';
+import { mapStateToProps, mapDispatchToProps } from './index';
 
 describe('mapStateToProps', () => {
   it('should be a function', () => {

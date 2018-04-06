@@ -1,5 +1,5 @@
 import React from 'react';
-import { Score } from './Score';
+import { Score } from './index';
 import renderer from 'react-test-renderer';
 
 it('Score should render without crashing', () => {

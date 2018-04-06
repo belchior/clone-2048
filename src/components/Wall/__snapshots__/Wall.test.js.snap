@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Wall without crashing 1`] = `
+<div
+  className="Wall "
+>
+  <div
+    className="Block block-2"
+  >
+    2
+  </div>
+  <div
+    className="Block block-4"
+  >
+    4
+  </div>
+  <div
+    className="Block block-8"
+  >
+    8
+  </div>
+  <div
+    className="Block block-16"
+  >
+    16
+  </div>
+  <div
+    className="Block block-4096"
+  >
+    4096
+  </div>
+  <div
+    className="Block block-0"
+  >
+    0
+  </div>
+  <div
+    className="Block block-0"
+  >
+    0
+  </div>
+  <div
+    className="Block block-32"
+  >
+    32
+  </div>
+  <div
+    className="Block block-2048"
+  >
+    2048
+  </div>
+  <div
+    className="Block block-0"
+  >
+    0
+  </div>
+  <div
+    className="Block block-0"
+  >
+    0
+  </div>
+  <div
+    className="Block block-64"
+  >
+    64
+  </div>
+  <div
+    className="Block block-1024"
+  >
+    1024
+  </div>
+  <div
+    className="Block block-512"
+  >
+    512
+  </div>
+  <div
+    className="Block block-256"
+  >
+    256
+  </div>
+  <div
+    className="Block block-128"
+  >
+    128
+  </div>
+</div>
+`;
+
+exports[`should render Wall without crashing with parameters 1`] = `
+<div
+  className="Wall hard-mode"
+>
+  <div
+    className="Block block-2"
+  >
+    2
+  </div>
+  <div
+    className="Block block-4"
+  >
+    4
+  </div>
+  <div
+    className="Block block-8"
+  >
+    8
+  </div>
+  <div
+    className="Block block-16"
+  >
+    16
+  </div>
+  <div
+    className="Block block-4096"
+  >
+    4096
+  </div>
+  <div
+    className="Block block-0"
+  >
+    0
+  </div>
+  <div
+    className="Block block-0"
+  >
+    0
+  </div>
+  <div
+    className="Block block-32"
+  >
+    32
+  </div>
+  <div
+    className="Block block-2048"
+  >
+    2048
+  </div>
+  <div
+    className="Block block-0"
+  >
+    0
+  </div>
+  <div
+    className="Block block-0"
+  >
+    0
+  </div>
+  <div
+    className="Block block-64"
+  >
+    64
+  </div>
+  <div
+    className="Block block-1024"
+  >
+    1024
+  </div>
+  <div
+    className="Block block-512"
+  >
+    512
+  </div>
+  <div
+    className="Block block-256"
+  >
+    256
+  </div>
+  <div
+    className="Block block-128"
+  >
+    128
+  </div>
+</div>
+`;

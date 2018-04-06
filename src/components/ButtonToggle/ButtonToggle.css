@@ -26,7 +26,7 @@
     width: 2rem;
     height: 2rem;
     background-color: var(--blue2);
-    transform: translate3d(-1rem, -1px, 0);
+    transform: translate3d(1rem, -1px, 0);
     transition: all 0.3s;
   }
   .btn-toggle[data-active="false"] {
@@ -35,6 +35,6 @@
   }
   .btn-toggle[data-active="false"]::before {
     background-color: var(--gray3);
-    transform: translate3d(1rem, -1px, 0);
+    transform: translate3d(-1rem, -1px, 0);
   }
 }

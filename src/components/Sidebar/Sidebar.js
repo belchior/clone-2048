@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import './Sidebar.css';
+import PropTypes from 'prop-types';
 
+import './Sidebar.css';
 import { Score } from '../Score';
-import { Controllers } from '../Controllers';
+import Controllers from '../Controllers';
 import hamburgerMenu from '../../images/icon-hamburger-menu.svg';
 import logo from '../../images/clone-2048.svg';
 import iconGithub from '../../images/icon-github.svg';
@@ -13,6 +14,9 @@ export class Sidebar extends Component {
     this.state = {
       menuFullVisibility: false
     };
+
+    this.toggleMenuFullVisibility = this.toggleMenuFullVisibility.bind(this);
+    this.stopPropagation = this.stopPropagation.bind(this);
   }
 
   render() {
@@ -20,7 +24,7 @@ export class Sidebar extends Component {
       <aside className="Sidebar">
         <div className="menu_compact">
           <button className="btn-menu" onClick={this.toggleMenuFullVisibility}><img src={hamburgerMenu} alt="ícone do menu principal" /></button>
-          <Score current="2345" best="2342523"></Score>
+          <Score current={this.props.score} best={this.props.bestScore}></Score>
         </div>
 
         <div className={'menu_full ' + (this.state.menuFullVisibility ? 'visible' : '')} onClick={this.toggleMenuFullVisibility}>
@@ -29,7 +33,7 @@ export class Sidebar extends Component {
               <img className="logo" src={logo} alt="Logo clone 2048"/>
               <span>Clone 2048</span>
             </h1>
-            <Score current="2345" best="2342523"></Score>
+            <Score current={this.props.score} best={this.props.bestScore}></Score>
             <Controllers></Controllers>
             <nav className="list external-links">
               <a className="list-item link-github" href="https://github.com/belchior/clone-2048">
@@ -48,13 +52,18 @@ export class Sidebar extends Component {
     );
   }
 
-  toggleMenuFullVisibility = () => {
+  toggleMenuFullVisibility() {
     this.setState((prevState) => ({
       menuFullVisibility: !prevState.menuFullVisibility
     }));
   }
 
-  stopPropagation = (e) => {
-    e.stopPropagation();
+  stopPropagation(event) {
+    event.stopPropagation();
   }
 }
+
+Sidebar.propTypes = {
+  score: PropTypes.number,
+  bestScore: PropTypes.number,
+};

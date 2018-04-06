@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import { Sidebar } from './components/Sidebar';
-import { Wall } from './components/Wall';
+import Sidebar from '../Sidebar';
+import Wall from '../Wall';
 
-class App extends Component {
+export class App extends Component {
   render() {
     return (
       <div className="App">
@@ -16,5 +16,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;

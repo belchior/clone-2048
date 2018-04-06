@@ -1,12 +1,12 @@
-@import '../node_modules/modern-normalize/modern-normalize.css';
-@import './reset.css';
-@import './vars.css';
+@import '~modern-normalize/modern-normalize.css';
+@import '../../reset.css';
+@import '../../vars.css';
 
 @font-face {
   font-family: 'Montserrat Alternates';
   font-style: normal;
   font-weight: 400;
-  src: local('./fonts/MontserratAlternates-Regular'), url('./fonts/MontserratAlternates-Regular.ttf') format('opentype');
+  src: local('../../fonts/MontserratAlternates-Regular'), url('../../fonts/MontserratAlternates-Regular.ttf') format('opentype');
 }
 
 @media all {
@@ -51,6 +51,11 @@
   }
   .btn:hover {
     background-color: var(--blue2);
+  }
+  .btn[disabled] {
+    border-color: var(--gray3);
+    background-color: var(--gray2);
+    color: var(--gray3);
   }
 }
 
