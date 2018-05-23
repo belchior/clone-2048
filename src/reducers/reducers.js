@@ -1,17 +1,16 @@
 import { saveState, loadState } from '../localStorage';
+import { last } from '../helpers/list';
 import {
   ADD_SCORE,
   LOAD,
   BEST_SCORE,
-  MOVE_DOWN,
-  MOVE_LEFT,
-  MOVE_RIGHT,
-  MOVE_UP,
+  MOVE_ERROR,
   RESTART,
   ROLLBACK,
   SAVE,
+  SET_WALL,
   TOGGLE_HARDMODE,
-} from '../actionTypes';
+} from '../actions/types';
 
 
 const initialState = {
@@ -19,7 +18,14 @@ const initialState = {
   bestScore: 0,
   rollBack: 2,
   hardMode: false,
-  wall: Array(16).fill(0),
+  moveError: false,
+  wall: [
+    2, 2, 2, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+  ],
+  history: [],
   initialWall: [2, 4, 8, 16, 4096, 0, 0, 32, 2048, 0, 0, 64, 1024, 512, 256, 128],
 };
 
@@ -34,9 +40,9 @@ export const load = (state) => ({
   ...loadState()
 });
 
-export const setBestScore = (state, payload) => ({
+export const moveError = (state, error) => ({
   ...state,
-  bestScore: payload > state.bestScore ? payload : state.bestScore
+  moveError: error
 });
 
 export const restart = () => ({
@@ -48,41 +54,40 @@ export const rollBack = (state) => ({
   rollBack: Math.max(--state.rollBack, 0)
 });
 
-export const toggleHardMode = (state) => ({
-  ...state,
-  hardMode: !state.hardMode
-});
-
-export const moveUp = (state) => ({
-  ...state
-});
-
-export const moveDown = (state) => ({
-  ...state
-});
-
-export const moveLeft = (state) => ({
-  ...state
-});
-
-export const moveRight = (state) => ({
-  ...state
-});
-
 export const save = (state) => {
   saveState(state);
   return state;
 };
+
+export const saveHistory = (state, wall) => {
+  return {
+    ...state,
+    history: [ last(state.history), wall ]
+  };
+};
+
+export const setBestScore = (state, payload) => ({
+  ...state,
+  bestScore: payload > state.bestScore ? payload : state.bestScore
+});
+
+export const setWall = (state, wall) => ({
+  ...state,
+  wall: wall
+});
+
+export const toggleHardMode = (state) => ({
+  ...state,
+  hardMode: !state.hardMode
+});
 
 export const reducers = (state = initialState, action) => {
   switch (action.type) {
     case ADD_SCORE: return addScore(state, action.payload);
     case BEST_SCORE: return setBestScore(state, action.payload);
     case LOAD: return load(state);
-    case MOVE_DOWN: return moveDown(state, action.payload);
-    case MOVE_LEFT: return moveLeft(state, action.payload);
-    case MOVE_RIGHT: return moveRight(state, action.payload);
-    case MOVE_UP: return moveUp(state, action.payload);
+    case MOVE_ERROR: return moveError(state, action.payload);
+    case SET_WALL: return setWall(state, action.payload);
     case RESTART: return restart();
     case ROLLBACK: return rollBack(state);
     case SAVE: return save(state);
