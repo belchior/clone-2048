@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import './Block.css';
 
-export const Block = (props) => (
-  <div className={'Block block-' + props.value}>{props.value}</div>
+export const Block = ({ value }) => (
+  <div className={'Block block-' + value}>{value}</div>
 );
 
 Block.propTypes = {
