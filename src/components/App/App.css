@@ -1,12 +1,14 @@
 @import '~modern-normalize/modern-normalize.css';
-@import '../../reset.css';
-@import '../../vars.css';
+@import '../../static/reset.css';
+@import '../../static/vars.css';
+@import '../../static/animations.css';
 
 @font-face {
   font-family: 'Montserrat Alternates';
   font-style: normal;
   font-weight: 400;
-  src: local('../../fonts/MontserratAlternates-Regular'), url('../../fonts/MontserratAlternates-Regular.ttf') format('opentype');
+  src: local('../../static/fonts/MontserratAlternates-Regular'),
+       url('../../static/fonts/MontserratAlternates-Regular.ttf') format('opentype');
 }
 
 @media all {

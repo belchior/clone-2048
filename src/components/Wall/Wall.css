@@ -1,4 +1,4 @@
-@import '../../vars.css';
+@import '../../static/vars.css';
 
 @media all {
   .Wall {
@@ -10,8 +10,8 @@
     max-width: 32rem;
     max-height: 32rem;
   }
-  .Wall.hard-mode,
-  .Wall.hard-mode .Block {
+  .Wall.hardMode,
+  .Wall.hardMode .Block {
     border: 0;
     color: transparent;
   }
