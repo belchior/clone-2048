@@ -82,7 +82,7 @@ export const padStart = length => value => list => {
   pairs :: ([a,a] b) => [a] -> [b]
 */
 export function pairs(list) {
-  if (!Array.isArray(list) || list.length < 2) return [];
+  if (list.length < 2) return [];
   const first = head(list);
   const second = head(tail(list));
   if (first === second) return [[first, second], ...pairs(tail(tail(list)))];
@@ -111,6 +111,7 @@ export const raffle = list => {
 
 /**
   random :: (Number a) => a -> a
+  min 0, max a-1
 */
 export const random = maxValue => Math.floor(Math.random() * maxValue);
 
@@ -127,24 +128,23 @@ export const removeFalsy = list => list.filter(Boolean);
 export const reverse = list => list.reverse();
 
 
-// TODO: add param to determine the direction to follow or
-// split this function into sumEqualsLeft and sumEqualsRight
-// today only supports right to left.
+/**
+  sumEquals :: (Number a) => [a] -> [a]
+*/
+export function sumEquals(list) {
+  if (list.length < 2) return list;
+  const first = head(list);
+  const second = head(tail(list));
+  return first === second
+    ? [ first + second, ...sumEquals(tail(tail(list))) ]
+    : [ first, ...sumEquals(tail(list)) ];
+}
+
 
 /**
   sumEquals :: (Number a) => [a] -> [a]
 */
-export const sumEquals = list => {
-  const newList = [];
-  for (let index = list.length - 1; index >= 0; index -= 1) {
-    if (list[index] === list[index - 1]) {
-      newList.push(list[index] * 2);
-      index -= 1;
-    } else newList.push(list[index]);
-
-  }
-  return newList.reverse();
-};
+export const sumEqualsRight = list => pipe(reverse, sumEquals, reverse)(list);
 
 
 /**

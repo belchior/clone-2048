@@ -18,6 +18,7 @@ import {
   raffle,
   removeFalsy,
   sumEquals,
+  sumEqualsRight,
   toSquareMatrix,
   transpose,
 } from '../helpers/list';
@@ -45,10 +46,9 @@ export const move = direction => () => {
   const state = store.getState();
   const score = calculateScore(direction)(state.wall);
   const movedWall = moveTo(direction)(state.wall);
-
   if (equals(state.wall)(movedWall)) return moveError();
-
   const wall = raffle(movedWall);
+
   dispatch({type: ADD_SCORE, payload: score});
   dispatch({type: BEST_SCORE});
   dispatch({type: SET_WALL, payload: wall});
@@ -88,7 +88,7 @@ const moveToBottom = wall => {
     toSquareMatrix,
     transpose,
     matrix => matrix.map(removeFalsy),
-    matrix => matrix.map(sumEquals),
+    matrix => matrix.map(sumEqualsRight),
     matrix => matrix.map(zerosToLeft),
     transpose,
     flatten,
@@ -117,7 +117,7 @@ const moveToRight = wall => {
   return pipe(
     toSquareMatrix,
     matrix => matrix.map(removeFalsy),
-    matrix => matrix.map(sumEquals),
+    matrix => matrix.map(sumEqualsRight),
     matrix => matrix.map(zerosToLeft),
     flatten,
   )(wall);
@@ -136,6 +136,5 @@ const moveToTop = wall => {
     matrix => matrix.map(zerosToRight),
     transpose,
     flatten,
-    raffle,
   )(wall);
 };
