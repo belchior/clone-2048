@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './Wall.css';
 import { Block } from '../Block';
 
-export const Wall = ({ hardMode, wall, moveError }) => (
+export const Wall = ({ wall, hardMode, moveError }) => (
   <div className={
     'Wall ' + (hardMode ? 'hardMode ' : '') + (moveError ? 'moveError ' : '')
   }>
@@ -15,5 +15,5 @@ export const Wall = ({ hardMode, wall, moveError }) => (
 Wall.propTypes = {
   hardMode: PropTypes.bool,
   moveError: PropTypes.bool,
-  wall: PropTypes.array,
+  wall: PropTypes.array.isRequired,
 };
