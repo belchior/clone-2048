@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { moveToBottom, moveToLeft, moveToRight, moveToTop } from '../../actions/move';
+import { move } from '../../actions/move';
 import { Keyboard } from '../keyboard/Keyboard';
 import Sidebar from '../Sidebar';
 import Wall from '../Wall';
@@ -12,10 +12,10 @@ export class App extends Component {
 
     return (
       <Keyboard shortcuts={[
-        {shortcut: 'arrow-down', action: moveToBottom},
-        {shortcut: 'arrow-left', action: moveToLeft},
-        {shortcut: 'arrow-right', action: moveToRight},
-        {shortcut: 'arrow-up', action: moveToTop},
+        {shortcut: 'arrow-down', action: move('bottom')},
+        {shortcut: 'arrow-left', action: move('left')},
+        {shortcut: 'arrow-right', action: move('right')},
+        {shortcut: 'arrow-up', action: move('top')},
       ]}>
         <div className="App">
           <Sidebar></Sidebar>

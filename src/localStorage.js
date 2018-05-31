@@ -1,10 +1,7 @@
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state');
-    if (serializedState === null) {
-      return undefined;
-    }
-    return JSON.parse(serializedState);
+    return serializedState === null ? undefined : JSON.parse(serializedState);
 
   } catch (err) {
     return;
@@ -19,4 +16,16 @@ export const saveState = (state) => {
   } catch (err) {
     return;
   }
+};
+
+export const saveMoviment = (state) => {
+  const storageState = loadState();
+  const newState = {
+    ...storageState,
+    score: state.score,
+    bestScore: state.bestScore,
+    wall: state.wall,
+    history: state.history,
+  };
+  saveState(newState);
 };

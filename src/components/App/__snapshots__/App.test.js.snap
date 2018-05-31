@@ -1,14 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders without crashing 1`] = `
-<div
-  className="App"
+<Unknown
+  shortcuts={
+    Array [
+      Object {
+        "action": [Function],
+        "shortcut": "arrow-down",
+      },
+      Object {
+        "action": [Function],
+        "shortcut": "arrow-left",
+      },
+      Object {
+        "action": [Function],
+        "shortcut": "arrow-right",
+      },
+      Object {
+        "action": [Function],
+        "shortcut": "arrow-up",
+      },
+    ]
+  }
 >
-  <Connect(Sidebar) />
-  <main
-    className="main"
+  <div
+    className="App"
   >
-    <Connect(Component) />
-  </main>
-</div>
+    <Connect(Sidebar) />
+    <main
+      className="main"
+    >
+      <Connect(Component) />
+    </main>
+  </div>
+</Unknown>
 `;
