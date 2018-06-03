@@ -6,6 +6,9 @@ import {
   LOAD,
   BEST_SCORE,
   MOVE_ERROR,
+  PLAYER_LOSE,
+  PLAYER_WON,
+  PLAYING,
   RESTART,
   ROLLBACK,
   SAVE,
@@ -20,17 +23,19 @@ const initialState = {
   bestScore: 0,
   rollBack: 2,
   hardMode: false,
+  maxBlock: 2048,
   moveError: false,
   history: [],
+  status: PLAYING,
   wall: [
     2, 2, 0, 0,
     0, 0, 0, 0,
     0, 0, 0, 0,
     0, 0, 0, 0,
   ],
+  initialWall: [2, 4, 8, 16, 4096, 0, 0, 32, 2048, 0, 0, 64, 1024, 512, 256, 128],
 };
 
-// initialWall: [2, 4, 8, 16, 4096, 0, 0, 32, 2048, 0, 0, 64, 1024, 512, 256, 128],
 
 export const addHistory = (state, wall) => ({
   ...state,
@@ -52,19 +57,29 @@ export const moveError = (state, error) => ({
   moveError: error
 });
 
+
+export const playerLose = (state) => ({
+  ...state,
+  status: PLAYER_LOSE,
+});
+
+
+export const playerWon = (state) => ({
+  ...state,
+  status: PLAYER_WON,
+});
+
 export const restart = (state) => ({
   ...initialState,
   bestScore: state.bestScore
 });
 
-export const rollBack = (state) => {
-  return {
-    ...state,
-    rollBack: Math.max(state.rollBack - 1, 0),
-    wall: last(state.history),
-    history: tail(reverse(state.history)),
-  };
-};
+export const rollBack = (state) => ({
+  ...state,
+  rollBack: Math.max(state.rollBack - 1, 0),
+  wall: last(state.history),
+  history: tail(reverse(state.history)),
+});
 
 export const save = (state) => {
   saveState(state);
@@ -98,6 +113,8 @@ export const reducers = (state = initialState, action) => {
     case BEST_SCORE: return setBestScore(state, action.payload);
     case LOAD: return load(state);
     case MOVE_ERROR: return moveError(state, action.payload);
+    case PLAYER_LOSE: return playerLose(state);
+    case PLAYER_WON: return playerWon(state);
     case SET_WALL: return setWall(state, action.payload);
     case RESTART: return restart(state);
     case ROLLBACK: return rollBack(state);

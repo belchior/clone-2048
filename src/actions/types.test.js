@@ -1,7 +1,7 @@
 import * as actionType from './types';
 
-it('The types file should have 13 actions', () => {
-  expect(Object.keys(actionType)).toHaveLength(13);
+it('The types file should have 14 actions', () => {
+  expect(Object.keys(actionType)).toHaveLength(14);
 });
 
 describe('The Action types' , () => {
@@ -25,6 +25,9 @@ describe('The Action types' , () => {
   });
   it('PLAYER_WON should be defined', () => {
     expect(actionType.PLAYER_WON).toBe('PLAYER_WON');
+  });
+  it('PLAYING should be defined', () => {
+    expect(actionType.PLAYING).toBe('PLAYING');
   });
   it('RESTART should be defined', () => {
     expect(actionType.RESTART).toBe('RESTART');

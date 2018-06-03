@@ -4,6 +4,9 @@ import {
   ADD_HISTORY,
   BEST_SCORE,
   MOVE_ERROR,
+  PLAYER_LOSE,
+  PLAYER_WON,
+  PLAYING,
   SAVE_MOVIMENT,
   SET_WALL,
 } from './types';
@@ -11,6 +14,7 @@ import {
   contains,
   equals,
   flatten,
+  isEmpty,
   padEnd,
   padStart,
   pairs,
@@ -29,14 +33,49 @@ const zerosToRight = padEnd(4)(0);
 
 
 /**
+  pairsFromDirection :: (String a, Number b, Array c) => a -> [b] -> [c]
+*/
+const pairsFromDirection = direction => list => {
+  const matrix = contains(direction)(['top', 'bottom'])
+    ? pipe(toSquareMatrix, transpose)(list)
+    : toSquareMatrix(list);
+
+  return pipe(
+    mtx => mtx.map(removeFalsy),
+    mtx => mtx.map(pairs),
+    flatten
+  )(matrix);
+};
+
+
+/**
   calculateScore :: (String a, Number b) => a -> [b] -> b
 */
 const calculateScore = direction => list => {
-  const arr = contains(direction)(['top', 'bottom']) ? pipe(toSquareMatrix, transpose, flatten)(list) : list;
-  return pairs(arr).reduce((acc, pair) => {
-    return acc + pair[0] + pair[1];
-  }, 0);
+  const pairsList = pairsFromDirection(direction)(list);
+  return pairsList.reduce((score, pair) => score + pair[0] + pair[1], 0);
 };
+
+
+/**
+  playerLose :: (String a, Object b) => a -> b -> Boolean
+*/
+const playerLose = state => {
+  const pairsVertical = pairsFromDirection('top')(state.wall);
+  const pairsHorizontal = pairsFromDirection('right')(state.wall);
+  return (
+    state.rollBack <= 0 &&
+    isEmpty(pairsVertical) &&
+    isEmpty(pairsHorizontal) &&
+    !contains(0)(state.wall)
+  );
+};
+
+
+/**
+  playerWon :: (Number a) => a -> [a] -> Boolean
+*/
+const playerWon = maxBlock => wall => contains(maxBlock)(wall);
 
 
 /**
@@ -44,9 +83,15 @@ const calculateScore = direction => list => {
 */
 export const move = direction => () => {
   const state = store.getState();
-  const score = calculateScore(direction)(state.wall);
+
+  if (state.status !== PLAYING) return;
+
+  if (playerLose(state)) return dispatch({type: PLAYER_LOSE});
+
   const movedWall = moveTo(direction)(state.wall);
   if (equals(state.wall)(movedWall)) return moveError();
+
+  const score = calculateScore(direction)(state.wall);
   const wall = raffle(movedWall);
 
   dispatch({type: ADD_SCORE, payload: score});
@@ -54,6 +99,8 @@ export const move = direction => () => {
   dispatch({type: SET_WALL, payload: wall});
   dispatch({type: ADD_HISTORY, payload: wall});
   dispatch({type: SAVE_MOVIMENT});
+
+  if (playerWon(state.maxBlock)(wall)) dispatch({type: PLAYER_WON});
 };
 
 
@@ -62,7 +109,7 @@ export const move = direction => () => {
 */
 export const moveError = () => {
   dispatch({ type: MOVE_ERROR, payload: true });
-  setTimeout(() => dispatch({ type: MOVE_ERROR, payload: false }), 500);
+  setTimeout(() => dispatch({ type: MOVE_ERROR, payload: false }), 300);
 };
 
 
