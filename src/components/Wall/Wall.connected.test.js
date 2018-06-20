@@ -14,7 +14,20 @@ describe('mapStateToProps', () => {
   it('should return an object that contains the hardMode key', () => {
     const state = { hardMode: false };
     const props = mapStateToProps(state);
-    expect(typeof props.hardMode === 'boolean').toBe(true);
+    expect(props).toHaveProperty('hardMode', false);
+  });
+
+  it('should return an object that contains the moveError key', () => {
+    const state = { moveError: false };
+    const props = mapStateToProps(state);
+    expect(props).toHaveProperty('moveError', false);
+  });
+
+  it('should return an object that contains the wall key', () => {
+    const state = { wall: [] };
+    const props = mapStateToProps(state);
+    expect(props).toHaveProperty('wall');
+    expect(Array.isArray(props.wall)).toBe(true);
   });
 });
 

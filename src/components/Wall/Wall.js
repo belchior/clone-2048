@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './Wall.css';
 import { Block } from '../Block';
 
-export const Wall = ({ wall, hardMode, moveError }) => (
+export const Wall = ({ hardMode, moveError, wall }) => (
   <div className={
     'Wall ' + (hardMode ? 'hardMode ' : '') + (moveError ? 'moveError ' : '')
   }>

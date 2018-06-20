@@ -4,8 +4,8 @@ import { Wall } from './Wall';
 export const mapStateToProps = (state) => {
   return {
     hardMode: state.hardMode,
-    wall: state.wall,
     moveError: state.moveError,
+    wall: state.wall,
   };
 };
 
