@@ -1,4 +1,7 @@
+import React from 'react';
 import { parseShortcut } from './parseShortcut';
+
+let userShortcuts;
 
 const matchWith = keyboardEvent => userKey => (
   userKey.altKey === keyboardEvent.altKey &&
@@ -9,15 +12,20 @@ const matchWith = keyboardEvent => userKey => (
   userKey.keys.indexOf(keyboardEvent.location) >= 0
 );
 
+const keyupHandler = keyboardEvent => {
+  userShortcuts
+    .filter(matchWith(keyboardEvent))
+    .map(shortcut => shortcut.action());
+};
+
 export const Keyboard = ({shortcuts, children}) => {
-  const userShortcuts = shortcuts.reduce((list, item) => {
+  userShortcuts = shortcuts.reduce((list, item) => {
     const parsedShortcut = parseShortcut(item.shortcut);
     return parsedShortcut.keys.length > 0 ? list.concat({ ...item, ...parsedShortcut }) : list;
   }, []);
 
-  document.body.addEventListener('keyup', (keyboardEvent) => {
-    userShortcuts.filter(matchWith(keyboardEvent)).map(shortcut => shortcut.action());
-  });
+  document.body.removeEventListener('keyup', keyupHandler);
+  document.body.addEventListener('keyup', keyupHandler);
 
   return children;
 };
