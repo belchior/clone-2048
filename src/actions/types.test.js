@@ -1,21 +1,15 @@
 import * as actionType from './types';
 
 it('The types file should have 14 actions', () => {
-  expect(Object.keys(actionType)).toHaveLength(14);
+  expect(Object.keys(actionType)).toHaveLength(11);
 });
 
 describe('The Action types' , () => {
-  it('ADD_SCORE should be defined', () => {
-    expect(actionType.ADD_SCORE).toBe('ADD_SCORE');
-  });
-  it('ADD_HISTORY should be defined', () => {
-    expect(actionType.ADD_HISTORY).toBe('ADD_HISTORY');
-  });
-  it('BEST_SCORE should be defined', () => {
-    expect(actionType.BEST_SCORE).toBe('BEST_SCORE');
-  });
   it('LOAD should be defined', () => {
     expect(actionType.LOAD).toBe('LOAD');
+  });
+  it('MOVIMENT should be defined', () => {
+    expect(actionType.MOVIMENT).toBe('MOVIMENT');
   });
   it('MOVE_ERROR should be defined', () => {
     expect(actionType.MOVE_ERROR).toBe('MOVE_ERROR');
@@ -37,12 +31,6 @@ describe('The Action types' , () => {
   });
   it('SAVE should be defined', () => {
     expect(actionType.SAVE).toBe('SAVE');
-  });
-  it('SAVE_MOVIMENT should be defined', () => {
-    expect(actionType.SAVE_MOVIMENT).toBe('SAVE_MOVIMENT');
-  });
-  it('SET_WALL should be defined', () => {
-    expect(actionType.SET_WALL).toBe('SET_WALL');
   });
   it('TOGGLE_HARDMODE should be defined', () => {
     expect(actionType.TOGGLE_HARDMODE).toBe('TOGGLE_HARDMODE');

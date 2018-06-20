@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import { move } from '../../actions/move';
+import './App.css';
 import { Keyboard } from '../keyboard/Keyboard';
 import Sidebar from '../Sidebar';
 import Wall from '../Wall';
-import './App.css';
-
+import { moveTo } from './move';
 
 export class App extends Component {
   render() {
-
+    const dispatch = this.props.dispatch;
+    const state = this.props.state;
+    const moveToDirection = moveTo(dispatch)(state);
     return (
       <Keyboard shortcuts={[
-        {shortcut: 'arrow-down', action: move('bottom')},
-        {shortcut: 'arrow-left', action: move('left')},
-        {shortcut: 'arrow-right', action: move('right')},
-        {shortcut: 'arrow-up', action: move('top')},
+        {shortcut: 'arrow-down', action: moveToDirection('bottom')},
+        {shortcut: 'arrow-left', action: moveToDirection('left')},
+        {shortcut: 'arrow-right', action: moveToDirection('right')},
+        {shortcut: 'arrow-up', action: moveToDirection('top')},
       ]}>
         <div className="App">
           <Sidebar></Sidebar>
@@ -27,3 +29,13 @@ export class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  dispatch: PropTypes.any.isRequired,
+  state: PropTypes.shape({
+    maxBlock: PropTypes.number,
+    rollBack: PropTypes.number,
+    status: PropTypes.string,
+    wall: PropTypes.array,
+  }).isRequired,
+};
