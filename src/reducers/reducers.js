@@ -32,6 +32,21 @@ export const initialState = {
   initialWall: [2, 4, 8, 16, 4096, 0, 0, 32, 2048, 0, 0, 64, 1024, 512, 256, 128],
 };
 
+export const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case LOAD: return load(state);
+    case MOVIMENT: return moviment(state, action.payload);
+    case MOVE_ERROR: return moveError(state, action.payload);
+    case PLAYER_LOSE: return playerLose(state);
+    case PLAYER_WON: return playerWon(state);
+    case RESTART: return restart(state);
+    case ROLLBACK: return rollBack(state);
+    case SAVE: return save(state);
+    case TOGGLE_HARDMODE: return toggleHardMode(state);
+    default: return state;
+  }
+};
+
 
 const moviment = (state, newState) => {
   return pipe(
@@ -96,18 +111,3 @@ const toggleHardMode = state => ({
   ...state,
   hardMode: !state.hardMode
 });
-
-export const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case LOAD: return load(state);
-    case MOVIMENT: return moviment(state, action.payload);
-    case MOVE_ERROR: return moveError(state, action.payload);
-    case PLAYER_LOSE: return playerLose(state);
-    case PLAYER_WON: return playerWon(state);
-    case RESTART: return restart(state);
-    case ROLLBACK: return rollBack(state);
-    case SAVE: return save(state);
-    case TOGGLE_HARDMODE: return toggleHardMode(state);
-    default: return state;
-  }
-};
