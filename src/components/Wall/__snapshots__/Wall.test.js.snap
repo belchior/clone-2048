@@ -18,6 +18,23 @@ exports[`should render Wall adding the className moveError 1`] = `
 />
 `;
 
+exports[`should render Wall with 2 Blocks 1`] = `
+<div
+  className="Wall "
+>
+  <div
+    className="Block block-2"
+  >
+    2
+  </div>
+  <div
+    className="Block block-4"
+  >
+    4
+  </div>
+</div>
+`;
+
 exports[`should render Wall without crashing 1`] = `
 <div
   className="Wall "
