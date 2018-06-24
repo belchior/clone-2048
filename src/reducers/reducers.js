@@ -47,6 +47,10 @@ export const reducer = (state = initialState, action) => {
   }
 };
 
+const load = state => ({
+  ...state,
+  ...loadState()
+});
 
 const moviment = (state, newState) => {
   return pipe(
@@ -72,11 +76,6 @@ const setBestScore = state => ({
     : state.bestScore,
 });
 
-
-const load = state => ({
-  ...state,
-  ...loadState()
-});
 
 const moveError = (state, error) => ({
   ...state,
