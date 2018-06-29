@@ -5,14 +5,14 @@ import { ROLLBACK, SAVE, LOAD, RESTART, TOGGLE_HARDMODE } from '../../actions/ty
 
 export const mapStateToProps = (state) => {
   return {
-    rollBack: state.rollBack,
+    rollback: state.rollback,
     hardMode: state.hardMode,
   };
 };
 
 export const mapDispatchToProps = (dispatch) => {
   return {
-    rollBackAction: () => dispatch({type: ROLLBACK}),
+    rollbackAction: () => dispatch({type: ROLLBACK}),
     saveAction: () => dispatch({type: SAVE}),
     loadAction: () => dispatch({type: LOAD}),
     restartAction: () => dispatch({type: RESTART}),

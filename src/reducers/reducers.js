@@ -17,7 +17,7 @@ import {
 export const initialState = {
   score: 0,
   bestScore: 0,
-  rollBack: 2,
+  rollback: 2,
   hardMode: false,
   maxBlock: 2048,
   moveError: false,
@@ -40,7 +40,7 @@ export const reducer = (state = initialState, action) => {
     case PLAYER_LOSE: return playerLose(state);
     case PLAYER_WON: return playerWon(state);
     case RESTART: return restart(state);
-    case ROLLBACK: return rollBack(state);
+    case ROLLBACK: return rollback(state);
     case SAVE: return save(state);
     case TOGGLE_HARDMODE: return toggleHardMode(state);
     default: return state;
@@ -99,9 +99,9 @@ const restart = state => ({
   bestScore: state.bestScore
 });
 
-const rollBack = state => ({
+const rollback = state => ({
   ...state,
-  rollBack: Math.max(state.rollBack - 1, 0),
+  rollback: Math.max(state.rollback - 1, 0),
   wall: last(state.history),
   history: tail(reverse(state.history)),
 });

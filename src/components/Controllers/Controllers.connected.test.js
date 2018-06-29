@@ -6,19 +6,19 @@ describe('mapStateToProps', () => {
   });
 
   it('should return un Object', () => {
-    const state = {rollBack: 2, hardMode: false};
+    const state = {rollback: 2, hardMode: false};
     const props = mapStateToProps(state);
     expect(typeof props === 'object').toBe(true);
   });
 
-  it('should return an object that contains the rollBack key', () => {
-    const state = {rollBack: 2, hardMode: false};
+  it('should return an object that contains the rollback key', () => {
+    const state = {rollback: 2, hardMode: false};
     const props = mapStateToProps(state);
-    expect(typeof props.rollBack === 'number').toBe(true);
+    expect(typeof props.rollback === 'number').toBe(true);
   });
 
   it('should return an object that contains the hardMode key', () => {
-    const state = {rollBack: 2, hardMode: false};
+    const state = {rollback: 2, hardMode: false};
     const props = mapStateToProps(state);
     expect(typeof props.hardMode === 'boolean').toBe(true);
   });
@@ -40,9 +40,9 @@ describe('mapDispatchToProps', () => {
     expect(typeof props === 'object').toBe(true);
   });
 
-  it('should return an object that contains the rollBackAction key', () => {
+  it('should return an object that contains the rollbackAction key', () => {
     const props = mapDispatchToProps(dispatch);
-    expect(props).toHaveProperty('rollBackAction');
+    expect(props).toHaveProperty('rollbackAction');
   });
 
   it('should return an object that contains the saveAction key', () => {
@@ -66,11 +66,11 @@ describe('mapDispatchToProps', () => {
   });
 
 
-  it('the property rollBackAction should be callable', () => {
-    const rollBackAction = mapDispatchToProps(dispatch).rollBackAction;
-    expect(typeof rollBackAction === 'function').toBe(true);
+  it('the property rollbackAction should be callable', () => {
+    const rollbackAction = mapDispatchToProps(dispatch).rollbackAction;
+    expect(typeof rollbackAction === 'function').toBe(true);
 
-    rollBackAction();
+    rollbackAction();
     expect(dispatch.mock.calls).toHaveLength(1);
     expect(dispatch.mock.calls[0][0]).toMatchObject({type: 'ROLLBACK'});
   });

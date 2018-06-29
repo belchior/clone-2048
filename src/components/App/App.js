@@ -34,7 +34,7 @@ App.propTypes = {
   dispatch: PropTypes.any.isRequired,
   state: PropTypes.shape({
     maxBlock: PropTypes.number,
-    rollBack: PropTypes.number,
+    rollback: PropTypes.number,
     status: PropTypes.string,
     wall: PropTypes.array,
   }).isRequired,

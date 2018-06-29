@@ -6,20 +6,20 @@ import { ButtonToggle } from '../ButtonToggle';
 
 export const Controllers = (props) => {
   const {
-    rollBackAction,
+    rollbackAction,
     saveAction,
     loadAction,
     restartAction,
     hardModeAction,
-    rollBack,
+    rollback,
     hardMode,
   } = props;
 
   return (
     <div className="Controllers">
       <h2 className="subtitle">Controls</h2>
-      <button onClick={rollBackAction} disabled={rollBack === 0} className="btn controls-btn_back" title="Step back">
-        back ({rollBack})
+      <button onClick={rollbackAction} disabled={rollback === 0} className="btn controls-btn_back" title="Step back">
+        back ({rollback})
       </button>
       <button onClick={saveAction} className="btn controls-btn_save" title="Save my progress">
         save
@@ -36,11 +36,11 @@ export const Controllers = (props) => {
 };
 
 Controllers.propTypes = {
-  rollBackAction: PropTypes.func.isRequired,
+  rollbackAction: PropTypes.func.isRequired,
   saveAction: PropTypes.func.isRequired,
   loadAction: PropTypes.func.isRequired,
   restartAction: PropTypes.func.isRequired,
   hardModeAction: PropTypes.func.isRequired,
   hardMode: PropTypes.bool,
-  rollBack: PropTypes.number,
+  rollback: PropTypes.number,
 };

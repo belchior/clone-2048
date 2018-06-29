@@ -16,10 +16,10 @@ it('mapStateToProps should return un Object that contains the maxBlock key', () 
   expect(typeof props.state.maxBlock).toBe('number');
 });
 
-it('mapStateToProps should return un Object that contains the rollBack key', () => {
+it('mapStateToProps should return un Object that contains the rollback key', () => {
   const props = mapStateToProps(initialState);
-  expect(props.state).toHaveProperty('rollBack');
-  expect(typeof props.state.rollBack).toBe('number');
+  expect(props.state).toHaveProperty('rollback');
+  expect(typeof props.state.rollback).toBe('number');
 });
 
 it('mapStateToProps should return un Object that contains the status key', () => {
