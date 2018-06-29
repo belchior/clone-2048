@@ -1,10 +1,10 @@
 import { moveTo } from './move';
-import * as actions from '../../actions/game';
+import * as actions from '../../actions/actions';
 import * as actionType from '../../actions/types';
 
 const initialState = {
   maxBlock: 2048,
-  rollBack: 2,
+  rollback: 2,
   status: actionType.PLAYING,
   wall: [
     0, 0, 0, 0,
@@ -35,13 +35,13 @@ describe('moveTo', () => {
     expect(typeof moveTo).toBe('function');
   });
 
-  it('should dispatch PLAYER_LOSE when there is no zero and pairs at wall and rollBack is zero', () => {
+  it('should dispatch PLAYER_LOSE when there is no zero and pairs at wall and rollback is zero', () => {
     moveTo(dispatch)(initialState)('left')();
     expect(dispatch.mock.calls[0][0]).not.toEqual(actions.playerLose());
 
     dispatch.mockReset();
     const state = mockState({
-      rollBack: 0,
+      rollback: 0,
       wall: [
         2, 4, 2, 4,
         4, 2, 4, 2,

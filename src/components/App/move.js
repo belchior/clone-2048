@@ -4,7 +4,7 @@ import {
   moviment as actionMoviment,
   playerLose as actionPlayerLose,
   playerWon as actionPlayerWon,
-} from '../../actions/game';
+} from '../../actions/actions';
 import {
   contains,
   equals,
@@ -162,7 +162,7 @@ const playerLose = state => {
   return (
     state.status === PLAYER_LOSE ||
     (
-      state.rollBack <= 0 &&
+      state.rollback <= 0 &&
       isEmpty(pairsVertical) &&
       isEmpty(pairsHorizontal) &&
       !contains(0)(state.wall)
