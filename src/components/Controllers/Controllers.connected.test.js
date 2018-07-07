@@ -45,16 +45,6 @@ describe('mapDispatchToProps', () => {
     expect(props).toHaveProperty('rollbackAction');
   });
 
-  it('should return an object that contains the saveAction key', () => {
-    const props = mapDispatchToProps(dispatch);
-    expect(props).toHaveProperty('saveAction');
-  });
-
-  it('should return an object that contains the loadAction key', () => {
-    const props = mapDispatchToProps(dispatch);
-    expect(props).toHaveProperty('loadAction');
-  });
-
   it('should return an object that contains the restartAction key', () => {
     const props = mapDispatchToProps(dispatch);
     expect(props).toHaveProperty('restartAction');
@@ -66,7 +56,7 @@ describe('mapDispatchToProps', () => {
   });
 
 
-  it('the property rollbackAction should be callable', () => {
+  it('property rollbackAction should be callable', () => {
     const rollbackAction = mapDispatchToProps(dispatch).rollbackAction;
     expect(typeof rollbackAction === 'function').toBe(true);
 
@@ -75,25 +65,7 @@ describe('mapDispatchToProps', () => {
     expect(dispatch.mock.calls[0][0]).toMatchObject({type: 'ROLLBACK'});
   });
 
-  it('the property saveAction should be callable', () => {
-    const saveAction = mapDispatchToProps(dispatch).saveAction;
-    expect(typeof saveAction === 'function').toBe(true);
-
-    saveAction();
-    expect(dispatch.mock.calls).toHaveLength(1);
-    expect(dispatch.mock.calls[0][0]).toMatchObject({type: 'SAVE'});
-  });
-
-  it('the property loadAction should be callable', () => {
-    const loadAction = mapDispatchToProps(dispatch).loadAction;
-    expect(typeof loadAction === 'function').toBe(true);
-
-    loadAction();
-    expect(dispatch.mock.calls).toHaveLength(1);
-    expect(dispatch.mock.calls[0][0]).toMatchObject({type: 'LOAD'});
-  });
-
-  it('the property restartAction should be callable', () => {
+  it('property restartAction should be callable', () => {
     const restartAction = mapDispatchToProps(dispatch).restartAction;
     expect(typeof restartAction === 'function').toBe(true);
 
@@ -102,7 +74,7 @@ describe('mapDispatchToProps', () => {
     expect(dispatch.mock.calls[0][0]).toMatchObject({type: 'RESTART'});
   });
 
-  it('the property hardModeAction should be callable', () => {
+  it('property hardModeAction should be callable', () => {
     const hardModeAction = mapDispatchToProps(dispatch).hardModeAction;
     expect(typeof hardModeAction === 'function').toBe(true);
 

@@ -20,20 +20,6 @@ exports[`should add disabled attribute when rollback is 0 1`] = `
     )
   </button>
   <button
-    className="btn controls-btn_save"
-    onClick={[Function]}
-    title="Save my progress"
-  >
-    save
-  </button>
-  <button
-    className="btn controls-btn_load"
-    onClick={[Function]}
-    title="Load my game saved"
-  >
-    load
-  </button>
-  <button
     className="btn controls-btn_restart"
     onClick={[Function]}
     title="Restart the game"
@@ -74,20 +60,6 @@ exports[`should render Controllers without crashing 1`] = `
     back (
     2
     )
-  </button>
-  <button
-    className="btn controls-btn_save"
-    onClick={[Function]}
-    title="Save my progress"
-  >
-    save
-  </button>
-  <button
-    className="btn controls-btn_load"
-    onClick={[Function]}
-    title="Load my game saved"
-  >
-    load
   </button>
   <button
     className="btn controls-btn_restart"
