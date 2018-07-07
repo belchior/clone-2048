@@ -24,7 +24,7 @@ export const equals = listA => listB => {
 
 
 /**
-  flatten :: [a] -> [a]
+  flatten :: [a] -> [b]
 */
 export const flatten = list => list.reduce((newList, item) => [].concat(newList, item), []);
 
