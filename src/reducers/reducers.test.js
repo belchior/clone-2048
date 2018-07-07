@@ -48,7 +48,6 @@ describe('initialState', () => {
   });
 });
 
-// it('called with LOAD action should merge the sent state with loaded state', () => {
 it('The load reducer should merge the sent state with loaded state', () => {
   localStorage.setItem.mockReset();
   const state = { ...initialState, maxBlock: 1024, };

@@ -48,8 +48,8 @@ export const reducer = (state = initialState, action) => {
 };
 
 const load = state => ({
+  ...loadState(),
   ...state,
-  ...loadState()
 });
 
 const moviment = (state, newState) => {
