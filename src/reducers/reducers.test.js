@@ -48,7 +48,7 @@ describe('initialState', () => {
   });
 });
 
-it('The load reducer should merge the sent state with loaded state', () => {
+it('load reducer should merge the sent state with loaded state', () => {
   localStorage.setItem.mockReset();
   const state = { ...initialState, maxBlock: 1024, };
   const newState = reducer(state, actions.load());
@@ -57,7 +57,7 @@ it('The load reducer should merge the sent state with loaded state', () => {
   expect(newState).toEqual(state);
 });
 
-it('The moviment reducer should update the bestScore and add the current wall at the end of history', () => {
+it('moviment reducer should update the bestScore and add the current wall at the end of history', () => {
   const state = { ...initialState, score: 256, bestScore: 0, history: [], };
   const newState = reducer(state, actions.moviment(state));
 
@@ -65,14 +65,14 @@ it('The moviment reducer should update the bestScore and add the current wall at
   expect(newState.history[1]).toEqual(state.wall);
 });
 
-it('The moviment reducer should not update the bestScore when score is less than bestScore', () => {
+it('moviment reducer should not update the bestScore when score is less than bestScore', () => {
   const state = { ...initialState, score: 256, bestScore: 512 };
   const newState = reducer(state, actions.moviment(state));
 
   expect(newState.bestScore).toBeGreaterThan(newState.score);
 });
 
-it('The moveError reducer should update the moveError attribute with the sent value', () => {
+it('moveError reducer should update the moveError attribute with the sent value', () => {
   const newStateWithMoveErrorTrue = reducer(initialState, actions.moveError(true));
   const newStateWithMoveErrorFalse = reducer(initialState, actions.moveError(false));
 
@@ -80,19 +80,19 @@ it('The moveError reducer should update the moveError attribute with the sent va
   expect(newStateWithMoveErrorFalse).toHaveProperty('moveError', false);
 });
 
-it('The playerLose reducer should indicate that player lose with status equal to PLAYER_LOSE', () => {
+it('playerLose reducer should indicate that player lose with status equal to PLAYER_LOSE', () => {
   const newState = reducer(initialState, actions.playerLose());
 
   expect(newState).toHaveProperty('status', actionTypes.PLAYER_LOSE);
 });
 
-it('The playerWon reducer should indicate that player won with status equal to PLAYER_WON', () => {
+it('playerWon reducer should indicate that player won with status equal to PLAYER_WON', () => {
   const newState = reducer(initialState, actions.playerWon());
 
   expect(newState).toHaveProperty('status', actionTypes.PLAYER_WON);
 });
 
-it('The restart reducer should set the state to be equal to the initialState with exception of the bestScore, this must be the same', () => {
+it('restart reducer should set the state to be equal to the initialState with exception of the bestScore, this must be the same', () => {
   const state = { ...initialState, score: 2064, bestScore: 2064, };
   const stateReseted = { ...initialState, bestScore: 2064, };
   const newState = reducer(state, actions.restart());
@@ -100,7 +100,7 @@ it('The restart reducer should set the state to be equal to the initialState wit
   expect(newState).toEqual(stateReseted);
 });
 
-it('The rollback reducer should decrement the rollback attribute 1 by 1, the minimum value should be 0 ', () => {
+it('rollback reducer should decrement the rollback attribute 1 by 1, the minimum value should be 0 ', () => {
   let state = {
     ...initialState,
     rollback: 2,
@@ -123,7 +123,7 @@ it('The rollback reducer should decrement the rollback attribute 1 by 1, the min
   expect(state.history).toHaveLength(0);
 });
 
-it('The save reducer should save the state at localStorage', () => {
+it('save reducer should save the state at localStorage', () => {
   localStorage.setItem.mockReset();
 
   const state = { ...initialState };
@@ -131,7 +131,7 @@ it('The save reducer should save the state at localStorage', () => {
   expect(localStorage.setItem.mock.calls).toHaveLength(1);
 });
 
-it('The reducer toggleHardMode should alternate the hardMode attribute between true and false', () => {
+it('reducer toggleHardMode should alternate the hardMode attribute between true and false', () => {
   let state = { ...initialState, hardMode: false };
   let newState = reducer(state, actions.toggleHardmode());
   expect(newState.hardMode).not.toBe(state.hardMode);
@@ -141,19 +141,17 @@ it('The reducer toggleHardMode should alternate the hardMode attribute between t
   expect(newState.hardMode).not.toBe(state.hardMode);
 });
 
-it('The reducer should return the same state when the action passed to match with the registered actions', () => {
+it('reducer should return the same state when the action passed to match with the registered actions', () => {
   const state = { ...initialState, moveError: true, maxBlock: 1024 };
   const newState = reducer(state, {type: 'WRONG'});
 
   expect(newState).toEqual(state);
 });
 
-it('The reducer should set the state to initialState when state is not passed as a first parameter', () => {
+it('reducer should initialize new state when state is not passed as a first parameter', () => {
   const newState = reducer(undefined, actions.rollback);
+  const newStateKeys = Object.keys(newState);
+  const initialStateKeys = Object.keys(initialState);
 
-  expect(newState).toEqual(initialState);
+  expect(newStateKeys).toEqual(initialStateKeys);
 });
-
-// it('', () => {
-//
-// });

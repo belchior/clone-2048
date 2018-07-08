@@ -1,5 +1,5 @@
 import { loadState, saveState, } from '../localState';
-import { last, pipe, reverse, tail, } from '../helpers/list';
+import { last, pipe, reverse, tail, raffle, } from '../helpers/list';
 import {
   LOAD,
   MOVE_ERROR,
@@ -15,24 +15,26 @@ import {
 
 
 export const initialState = {
-  score: 0,
   bestScore: 0,
-  rollback: 2,
   hardMode: false,
+  history: [],
+  initialWall: [],
   maxBlock: 2048,
   moveError: false,
-  history: [],
+  rollback: 2,
+  score: 0,
   status: PLAYING,
-  wall: [
-    2, 2, 0, 0,
-    0, 0, 0, 0,
-    0, 0, 0, 0,
-    0, 0, 0, 0,
-  ],
-  initialWall: [2, 4, 8, 16, 4096, 0, 0, 32, 2048, 0, 0, 64, 1024, 512, 256, 128],
+  wall: [],
 };
 
-export const reducer = (state = initialState, action) => {
+const initialize = () => ({
+  ...initialState,
+  history: [[]],
+  wall: raffle(raffle(Array(16).fill(0))),
+  initialWall: [2, 4, 8, 16, 4096, 0, 0, 32, 2048, 0, 0, 64, 1024, 512, 256, 128, ]
+});
+
+export const reducer = (state = initialize(), action) => {
   switch (action.type) {
     case LOAD: return load(state);
     case MOVIMENT: return moviment(state, action.payload);
@@ -47,6 +49,7 @@ export const reducer = (state = initialState, action) => {
   }
 };
 
+
 const load = state => ({
   ...loadState(),
   ...state,
@@ -55,13 +58,13 @@ const load = state => ({
 const moviment = (state, newState) => {
   return pipe(
     setBestScore,
-    addHistory,
+    addHistory(state),
   )(newState);
 };
 
-const addHistory = state => ({
-  ...state,
-  history: [ last(state.history) || [], state.wall ],
+const addHistory = state => newState => ({
+  ...newState,
+  history: [ last(state.history), state.wall ],
 });
 
 const save = state => {
