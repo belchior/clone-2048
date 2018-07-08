@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { Controllers } from './Controllers';
-import { ROLLBACK, RESTART, TOGGLE_HARDMODE } from '../../actions/types';
+import { ROLLBACK, RESTART, TOGGLE_HARDMODE } from '../../reducers/actions/types';
 
 export const mapStateToProps = (state) => {
   return {

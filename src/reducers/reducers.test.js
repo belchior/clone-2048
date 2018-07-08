@@ -1,6 +1,6 @@
 import { initialState, reducer } from './index';
-import * as actions from '../actions/actions';
-import * as actionTypes from '../actions/types';
+import * as actions from '../reducers/actions/actions';
+import * as actionTypes from '../reducers/actions/types';
 
 const localStorageMock = {
   getItem: jest.fn(() => JSON.stringify(initialState)),

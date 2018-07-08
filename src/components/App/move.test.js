@@ -1,6 +1,6 @@
 import { moveTo } from './move';
-import * as actions from '../../actions/actions';
-import * as actionType from '../../actions/types';
+import * as actions from '../../reducers/actions/actions';
+import * as actionType from '../../reducers/actions/types';
 
 const initialState = {
   maxBlock: 2048,

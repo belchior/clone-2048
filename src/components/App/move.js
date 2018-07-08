@@ -1,10 +1,10 @@
-import { PLAYER_LOSE, PLAYING, } from '../../actions/types';
+import { PLAYER_LOSE, PLAYING, } from '../../reducers/actions/types';
 import {
   moveError as actionMoveError,
   moviment as actionMoviment,
   playerLose as actionPlayerLose,
   playerWon as actionPlayerWon,
-} from '../../actions/actions';
+} from '../../reducers/actions/actions';
 import {
   contains,
   equals,

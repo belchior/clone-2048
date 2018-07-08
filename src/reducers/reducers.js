@@ -11,7 +11,7 @@ import {
   ROLLBACK,
   SAVE,
   TOGGLE_HARDMODE,
-} from '../actions/types';
+} from './actions/types';
 
 
 export const initialState = {

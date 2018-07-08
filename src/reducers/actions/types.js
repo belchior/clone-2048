@@ -8,4 +8,5 @@ export const PLAYING = 'PLAYING';
 export const RESTART = 'RESTART';
 export const ROLLBACK = 'ROLLBACK';
 export const SAVE = 'SAVE';
+export const START = 'START';
 export const TOGGLE_HARDMODE = 'TOGGLE_HARDMODE';
