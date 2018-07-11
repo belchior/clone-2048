@@ -25,7 +25,7 @@ describe('initialState', () => {
     expect(initialState).toHaveProperty('bestScore');
     expect(initialState).toHaveProperty('hardMode');
     expect(initialState).toHaveProperty('history');
-    expect(initialState).toHaveProperty('initialWall');
+    expect(initialState).toHaveProperty('welcomeWall');
     expect(initialState).toHaveProperty('maxBlock');
     expect(initialState).toHaveProperty('moveError');
     expect(initialState).toHaveProperty('rollback');
@@ -38,7 +38,7 @@ describe('initialState', () => {
     expect(typeof initialState.bestScore).toBe('number');
     expect(typeof initialState.hardMode).toBe('boolean');
     expect(Array.isArray(initialState.history)).toBe(true);
-    expect(Array.isArray(initialState.initialWall)).toBe(true);
+    expect(Array.isArray(initialState.welcomeWall)).toBe(true);
     expect(typeof initialState.maxBlock).toBe('number');
     expect(typeof initialState.moveError).toBe('boolean');
     expect(typeof initialState.rollback).toBe('number');

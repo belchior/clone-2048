@@ -10,6 +10,7 @@ import {
   RESTART,
   ROLLBACK,
   SAVE,
+  START,
   TOGGLE_HARDMODE,
 } from './actions/types';
 
@@ -18,7 +19,8 @@ export const initialState = {
   bestScore: 0,
   hardMode: false,
   history: [],
-  initialWall: [],
+  welcome: true,
+  welcomeWall: [],
   maxBlock: 2048,
   moveError: false,
   rollback: 2,
@@ -29,9 +31,8 @@ export const initialState = {
 
 const initialize = () => ({
   ...initialState,
-  history: [[]],
-  wall: raffle(raffle(Array(16).fill(0))),
-  initialWall: [2, 4, 8, 16, 4096, 0, 0, 32, 2048, 0, 0, 64, 1024, 512, 256, 128, ]
+  welcome: true,
+  welcomeWall: [2, 4, 8, 16, 4096, 0, 0, 32, 2048, 0, 0, 64, 1024, 512, 256, 128, ]
 });
 
 export const reducer = (state = initialize(), action) => {
@@ -44,6 +45,7 @@ export const reducer = (state = initialize(), action) => {
     case RESTART: return restart(state);
     case ROLLBACK: return rollback(state);
     case SAVE: return save(state);
+    case START: return start(state);
     case TOGGLE_HARDMODE: return toggleHardMode(state);
     default: return state;
   }
@@ -72,6 +74,13 @@ const save = state => {
   return state;
 };
 
+const start = state => ({
+  ...state,
+  history: [[]],
+  wall: raffle(raffle(Array(16).fill(0))),
+  welcome: false,
+});
+
 const setBestScore = state => ({
   ...state,
   bestScore: state.score > state.bestScore
@@ -99,7 +108,10 @@ const playerWon = state => ({
 
 const restart = state => ({
   ...initialState,
-  bestScore: state.bestScore
+  bestScore: state.bestScore,
+  history: [[]],
+  wall: raffle(raffle(Array(16).fill(0))),
+  welcome: false,
 });
 
 const rollback = state => ({

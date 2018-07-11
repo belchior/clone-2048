@@ -1,0 +1,36 @@
+
+.Welcome {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1 0 100%;
+  width: 100%;
+  max-width: 32rem;
+  max-height: 32rem;
+}
+
+.Welcome .Block:nth-child(6),
+.Welcome .Block:nth-child(7),
+.Welcome .Block:nth-child(10),
+.Welcome .Block:nth-child(11) {
+  border-color: var(--block-0);
+}
+
+.Welcome .WelcomeAction {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid #000000;
+  height: 2.2rem;
+  min-width: 7rem;
+  font-family: arial;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 1.4rem;
+  vertical-align: middle;
+  line-height: 2.2rem;
+  cursor: pointer;
+  color: #000000;
+}

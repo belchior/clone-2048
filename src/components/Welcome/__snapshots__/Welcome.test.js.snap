@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Welcome should render with a list without crashing 1`] = `
+<div
+  className="Welcome"
+>
+  <div
+    className="Wall "
+  >
+    <div
+      className="Block block-2"
+    >
+      2
+    </div>
+    <div
+      className="Block block-2"
+    >
+      2
+    </div>
+    <div
+      className="Block block-0"
+    >
+      0
+    </div>
+    <div
+      className="Block block-0"
+    >
+      0
+    </div>
+    <div
+      className="Block block-0"
+    >
+      0
+    </div>
+    <div
+      className="Block block-0"
+    >
+      0
+    </div>
+    <div
+      className="Block block-0"
+    >
+      0
+    </div>
+    <div
+      className="Block block-0"
+    >
+      0
+    </div>
+    <div
+      className="Block block-0"
+    >
+      0
+    </div>
+    <div
+      className="Block block-0"
+    >
+      0
+    </div>
+    <div
+      className="Block block-0"
+    >
+      0
+    </div>
+    <div
+      className="Block block-0"
+    >
+      0
+    </div>
+    <div
+      className="Block block-0"
+    >
+      0
+    </div>
+    <div
+      className="Block block-0"
+    >
+      0
+    </div>
+    <div
+      className="Block block-0"
+    >
+      0
+    </div>
+    <div
+      className="Block block-0"
+    >
+      0
+    </div>
+    <div
+      className="Block block-0"
+    >
+      0
+    </div>
+  </div>
+  <button
+    className="WelcomeAction"
+    onClick={[Function]}
+    type="button"
+  >
+    Action
+  </button>
+</div>
+`;
+
+exports[`Welcome should render with an empty list without crashing 1`] = `
+<div
+  className="Welcome"
+>
+  <div
+    className="Wall "
+  />
+  <button
+    className="WelcomeAction"
+    onClick={[Function]}
+    type="button"
+  >
+    
+  </button>
+</div>
+`;

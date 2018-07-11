@@ -7,6 +7,7 @@ export const mapStateToProps = (state) => {
   return {
     rollback: state.rollback,
     hardMode: state.hardMode,
+    welcome: state.welcome,
   };
 };
 
