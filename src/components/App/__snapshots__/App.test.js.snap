@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders without crashing 1`] = `
-<Unknown
+exports[`renders Wall without crashing 1`] = `
+<Keyboard
   shortcuts={
     Array [
       Object {
@@ -24,14 +24,27 @@ exports[`renders without crashing 1`] = `
   }
 >
   <div
-    className="App"
+    className="App no-select"
   >
     <Connect(Sidebar) />
     <main
       className="main"
     >
-      <Connect(Component) />
+      <Connect(Wall) />
     </main>
   </div>
-</Unknown>
+</Keyboard>
+`;
+
+exports[`renders Welcome without crashing 1`] = `
+<div
+  className="App no-select"
+>
+  <Connect(Sidebar) />
+  <main
+    className="main"
+  >
+    <Connect(Welcome) />
+  </main>
+</div>
 `;
