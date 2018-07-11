@@ -12,6 +12,7 @@ export const Wall = ({ hardMode, moveError, wall }) => (
   </div>
 );
 
+Wall.displayName = 'Wall';
 Wall.propTypes = {
   hardMode: PropTypes.bool,
   moveError: PropTypes.bool,

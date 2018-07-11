@@ -1,5 +1,8 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
+import PropTypes from 'prop-types';
+
 import { parseShortcut } from './parseShortcut';
+
 
 let userShortcuts;
 
@@ -28,4 +31,10 @@ export const Keyboard = ({shortcuts, children}) => {
   document.body.addEventListener('keyup', keyupHandler);
 
   return children;
+};
+
+Keyboard.displayName = 'Keyboard';
+Keyboard.propTypes = {
+  shortcuts: PropTypes.array.isRequired,
+  children: PropTypes.any,
 };
