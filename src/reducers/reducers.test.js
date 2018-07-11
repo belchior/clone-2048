@@ -92,13 +92,31 @@ it('playerWon reducer should indicate that player won with status equal to PLAYE
   expect(newState).toHaveProperty('status', actionTypes.PLAYER_WON);
 });
 
-it('restart reducer should set the state to be equal to the initialState with exception of the bestScore, this must be the same', () => {
-  const state = { ...initialState, score: 2064, bestScore: 2064, };
-  const stateReseted = { ...initialState, bestScore: 2064, };
+
+it('restart reducer should keep the value of bestScore unchanged', () => {
+  const state = { ...initialState, bestScore: 128, };
+  const value = 128;
   const newState = reducer(state, actions.restart());
 
-  expect(newState).toEqual(stateReseted);
+  expect(newState).toHaveProperty('bestScore', value);
 });
+
+it('restart reducer should set the value of history to an list with an empty list inside', () => {
+  const state = { ...initialState, history: [[2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,]], };
+  const value = [[]];
+  const newState = reducer(state, actions.restart());
+
+  expect(newState).toHaveProperty('history', value);
+});
+
+it('restart reducer should set the value of welcome to false', () => {
+  const state = { ...initialState, welcome: true, };
+  const value = false;
+  const newState = reducer(state, actions.restart());
+
+  expect(newState).toHaveProperty('welcome', value);
+});
+
 
 it('rollback reducer should decrement the rollback attribute 1 by 1, the minimum value should be 0 ', () => {
   let state = {
@@ -131,7 +149,23 @@ it('save reducer should save the state at localStorage', () => {
   expect(localStorage.setItem.mock.calls).toHaveLength(1);
 });
 
-it('reducer toggleHardMode should alternate the hardMode attribute between true and false', () => {
+it('start reducer should set the value of history to an list with an empty list inside', () => {
+  const state = { ...initialState, history: [[4,4,2,2,0,0,0,0,0,0,0,0,0,0,0,0,]], };
+  const value = [[]];
+  const newState = reducer(state, actions.start());
+
+  expect(newState).toHaveProperty('history', value);
+});
+
+it('start reducer should set the value of welcome to false', () => {
+  const state = { ...initialState, welcome: true, };
+  const value = false;
+  const newState = reducer(state, actions.start());
+
+  expect(newState).toHaveProperty('welcome', value);
+});
+
+it('toggleHardMode reducer should alternate the hardMode attribute between true and false', () => {
   let state = { ...initialState, hardMode: false };
   let newState = reducer(state, actions.toggleHardmode());
   expect(newState.hardMode).not.toBe(state.hardMode);
