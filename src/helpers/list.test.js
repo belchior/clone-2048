@@ -48,6 +48,13 @@ it('Equals should return Boolean false when the lists don\'t has the same items'
   expect(L.equals(listA)(listB)).toBe(false);
 });
 
+it('Equals should return Boolean false when the lists have diferent length', () => {
+  const listA = [1, 2];
+  const listB = [4, 5, 6, 7];
+
+  expect(L.equals(listA)(listB)).toBe(false);
+});
+
 
 it('Flatten function should be exported by list file', () => {
   expect(typeof L.flatten).toBe('function');
@@ -134,9 +141,21 @@ it('Pipe function should be exported by list file', () => {
   expect(typeof L.pipe).toBe('function');
 });
 
+
 it('Raffle function should be exported by list file', () => {
   expect(typeof L.raffle).toBe('function');
 });
+
+it('Raffle function should return an empty list when there is no item in the passed list', () => {
+  expect(L.raffle([])).toEqual([]);
+});
+
+it('Raffle function should return a list with one number raffled', () => {
+  const list = [0,0,0,0];
+  const raffled = L.raffle(list).filter(num => num > 0);
+  expect(raffled).toHaveLength(1);
+});
+
 
 it('Random function should be exported by list file', () => {
   expect(typeof L.random).toBe('function');
@@ -150,13 +169,40 @@ it('Reverse function should be exported by list file', () => {
   expect(typeof L.reverse).toBe('function');
 });
 
+
 it('SumEquals function should be exported by list file', () => {
   expect(typeof L.sumEquals).toBe('function');
 });
 
+it('SumEquals function should return the same list when there is no equal sibilings', () => {
+  expect(L.sumEquals([1])).toEqual([1]);
+  expect(L.sumEquals([1,2,3,4])).toEqual([1,2,3,4]);
+});
+
+it('SumEquals function should sum the sibilings that are equals fron left to right', () => {
+  expect(L.sumEquals([1,1,1,1])).toEqual([2,2]);
+  expect(L.sumEquals([1,1,1,2])).toEqual([2,1,2]);
+  expect(L.sumEquals([1,1,2,2])).toEqual([2,4]);
+  expect(L.sumEquals([1,2,2,2])).toEqual([1,4,2]);
+});
+
+
 it('SumEqualsRight function should be exported by list file', () => {
   expect(typeof L.sumEqualsRight).toBe('function');
 });
+
+it('SumEqualsRight function should return the same list when there is no equal sibilings', () => {
+  expect(L.sumEquals([1])).toEqual([1]);
+  expect(L.sumEquals([1,2,3,4])).toEqual([1,2,3,4]);
+});
+
+it('SumEqualsRight function should sum the sibilings that are equals fron right to left', () => {
+  expect(L.sumEqualsRight([1,1,1,1])).toEqual([2,2]);
+  expect(L.sumEqualsRight([1,1,1,2])).toEqual([1,2,2]);
+  expect(L.sumEqualsRight([1,1,2,2])).toEqual([2,4]);
+  expect(L.sumEqualsRight([1,2,2,2])).toEqual([1,2,4]);
+});
+
 
 it('Tail function should be exported by list file', () => {
   expect(typeof L.tail).toBe('function');
