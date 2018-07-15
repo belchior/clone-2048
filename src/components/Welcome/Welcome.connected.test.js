@@ -5,7 +5,7 @@ it('mapStateToProps should be a function', () => {
 });
 
 it('mapStateToProps should return an Object', () => {
-  const state = { hardMode: false, wall: [] };
+  const state = { hardMode: false, welcomeWall: [] };
   const props = mapStateToProps(state);
 
   expect(typeof props === 'object').toBe(true);

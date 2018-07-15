@@ -5,7 +5,7 @@ import { start as startAction } from '../../reducers/actions/actions';
 
 export const mapStateToProps = (state) => ({
   hardMode: state.hardMode,
-  wall: state.wall,
+  wall: state.welcomeWall,
 });
 
 export const mapDispatchToProps = (dispatch) => ({
