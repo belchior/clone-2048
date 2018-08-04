@@ -1,13 +1,15 @@
 import React from 'react';
 import { Score } from './index';
-import renderer from 'react-test-renderer';
+import ShallowRenderer from 'react-test-renderer/shallow';
+
+const render = new ShallowRenderer();
 
 it('Score should render without crashing', () => {
-  let tree = renderer.create(<Score current={1000} best={1234}/>).toJSON();
+  const tree = render.render(<Score current={1000} best={1234}/>);
   expect(tree).toMatchSnapshot();
 });
 
 it('Score should assume 0 as default value to current and best', () => {
-  let tree = renderer.create(<Score/>).toJSON();
+  const tree = render.render(<Score />);
   expect(tree).toMatchSnapshot();
 });

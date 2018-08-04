@@ -1,53 +1,51 @@
 import React from 'react';
 import { Controllers } from './Controllers';
-import renderer from 'react-test-renderer';
+import ShallowRenderer from 'react-test-renderer/shallow';
 import { mount } from 'enzyme';
 
+const renderer = new ShallowRenderer();
 const rollbackAction = jest.fn();
 const restartAction = jest.fn();
 const hardModeAction = jest.fn();
 
 it('should render Controllers with buttons enabled without crashing', () => {
-  let tree = renderer.create(
-    <Controllers
-      rollbackAction={rollbackAction}
-      restartAction={restartAction}
-      hardModeAction={hardModeAction}
-      hardMode={false}
-      rollback={2}
-      welcome={false}
-    />
-  ).toJSON();
+  const props = {
+    rollbackAction: rollbackAction,
+    restartAction: restartAction,
+    hardModeAction: hardModeAction,
+    hardMode: false,
+    rollback: 2,
+    welcome: false,
+  };
+  const tree = renderer.render(<Controllers {...props} />);
 
   expect(tree).toMatchSnapshot();
 });
 
 it('should render Controllers with buttons disabled without crashing', () => {
-  let tree = renderer.create(
-    <Controllers
-      rollbackAction={rollbackAction}
-      restartAction={restartAction}
-      hardModeAction={hardModeAction}
-      hardMode={false}
-      rollback={2}
-      welcome={true}
-    />
-  ).toJSON();
+  const props = {
+    rollbackAction: rollbackAction,
+    restartAction: restartAction,
+    hardModeAction: hardModeAction,
+    hardMode: false,
+    rollback: 2,
+    welcome: true,
+  };
+  const tree = renderer.render(<Controllers {...props} />);
 
   expect(tree).toMatchSnapshot();
 });
 
 it('should render Controllers with rollback button disabled when rollback is 0', () => {
-  let tree = renderer.create(
-    <Controllers
-      rollbackAction={rollbackAction}
-      restartAction={restartAction}
-      hardModeAction={hardModeAction}
-      hardMode={false}
-      rollback={0}
-      welcome={false}
-    />
-  ).toJSON();
+  const props = {
+    rollbackAction: rollbackAction,
+    restartAction: restartAction,
+    hardModeAction: hardModeAction,
+    hardMode: false,
+    rollback: 0,
+    welcome: false,
+  };
+  const tree = renderer.render(<Controllers {...props} />);
 
   expect(tree).toMatchSnapshot();
 });

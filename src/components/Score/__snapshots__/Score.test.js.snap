@@ -7,15 +7,11 @@ exports[`Score should assume 0 as default value to current and best 1`] = `
   <span
     className="current_score"
     title="The current score"
-  >
-    0
-  </span>
+  />
   <span
     className="best_score"
     title="The best score"
-  >
-    0
-  </span>
+  />
 </div>
 `;
 

@@ -63,6 +63,7 @@ export class Sidebar extends Component {
   }
 }
 
+Sidebar.displayName = 'Sidebar';
 Sidebar.propTypes = {
   score: PropTypes.number,
   bestScore: PropTypes.number,

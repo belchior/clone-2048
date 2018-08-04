@@ -16,7 +16,7 @@ exports[`should render Sidebar without crashing 1`] = `
         src="icon-hamburger-menu.svg"
       />
     </button>
-    <Unknown
+    <Score
       best={0}
       current={0}
     />
@@ -41,11 +41,11 @@ exports[`should render Sidebar without crashing 1`] = `
           Clone 2048
         </span>
       </h1>
-      <Unknown
+      <Score
         best={0}
         current={0}
       />
-      <Connect(Component) />
+      <Connect(Controllers) />
       <nav
         className="list external-links"
       >

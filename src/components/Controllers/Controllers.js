@@ -39,6 +39,7 @@ export const Controllers = props => {
   );
 };
 
+Controllers.displayName = 'Controllers';
 Controllers.propTypes = {
   hardMode: PropTypes.bool,
   hardModeAction: PropTypes.func.isRequired,

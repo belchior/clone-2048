@@ -1,34 +1,40 @@
 import React from 'react';
 import { Wall } from './Wall';
-import renderer from 'react-test-renderer';
+import ShallowRenderer from 'react-test-renderer/shallow';
+
+const renderer = new ShallowRenderer();
 
 it('should render Wall without crashing', () => {
-  const tree = renderer.create(<Wall wall={[]} status="PLAYING" />).toJSON();
+  const props = { wall: [], status: 'PLAYING' };
+  const tree = renderer.render(<Wall {...props} />);
 
   expect(tree).toMatchSnapshot();
 });
 
 it('should render Wall with 2 Blocks', () => {
-  const wall = [2,4]
-  const tree = renderer.create(<Wall wall={wall} status="PLAYING" />).toJSON();
+  const props = { wall: [2,4], status: 'PLAYING' };
+  const tree = renderer.render(<Wall {...props} />);
 
   expect(tree).toMatchSnapshot();
 });
 
 it('should render Wall adding the className hardMode', () => {
-  const tree = renderer.create(<Wall wall={[]} status="PLAYING" hardMode={true}/>).toJSON();
+  const props = { wall: [2,4], status: 'PLAYING', hardMode: true };
+  const tree = renderer.render(<Wall {...props} />);
 
   expect(tree).toMatchSnapshot();
 });
 
 it('should render Wall adding the className moveError', () => {
-  const tree = renderer.create(<Wall wall={[]} status="PLAYING" moveError={true}/>).toJSON();
+  const props = { wall: [2,4], status: 'PLAYING', moveError: true };
+  const tree = renderer.render(<Wall {...props} />);
 
   expect(tree).toMatchSnapshot();
 });
 
 it('should render Wall adding the className hardMode moveError separeted by space', () => {
-  const tree = renderer.create(<Wall wall={[]} status="PLAYING" hardMode={true} moveError={true}/>).toJSON();
+  const props = { wall: [2,4], status: 'PLAYING', hardMode: true, moveError: true };
+  const tree = renderer.render(<Wall {...props} />);
 
   expect(tree).toMatchSnapshot();
 });

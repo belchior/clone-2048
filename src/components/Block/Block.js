@@ -7,6 +7,7 @@ export const Block = ({ value }) => (
   <div className={'Block block-' + value}>{value}</div>
 );
 
+Block.displayName = 'Block';
 Block.propTypes = {
   value: PropTypes.number.isRequired,
 };

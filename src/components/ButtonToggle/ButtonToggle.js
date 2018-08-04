@@ -14,6 +14,7 @@ export const ButtonToggle = ({onClick, active = false, label = '', title = label
   );
 };
 
+ButtonToggle.displayName = 'ButtonToggle';
 ButtonToggle.propTypes = {
   onClick: PropTypes.func.isRequired,
   active: PropTypes.bool,

@@ -10,6 +10,7 @@ export const Score = ({current = 0, best = 0}) => (
   </div>
 );
 
+Score.displayName = 'Score';
 Score.propTypes = {
   current: PropTypes.number,
   best: PropTypes.number,

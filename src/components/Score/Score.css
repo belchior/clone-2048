@@ -4,6 +4,7 @@
   .Score {
     display: flex;
     justify-content: space-between;
+    font-family: 'Montserrat Alternates';
   }
   .Score .current_score,
   .Score .best_score {

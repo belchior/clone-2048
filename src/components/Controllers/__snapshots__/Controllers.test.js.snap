@@ -27,19 +27,12 @@ exports[`should render Controllers with buttons disabled without crashing 1`] = 
   >
     restart
   </button>
-  <label
-    className="btn-toggle-label"
-    htmlFor="toggleButton"
-  >
-    <button
-      className="btn-toggle"
-      data-active={false}
-      id="toggleButton"
-      onClick={[Function]}
-      title="Hard mode"
-    />
-    Hard mode
-  </label>
+  <ButtonToggle
+    active={false}
+    label="Hard mode"
+    onClick={[Function]}
+    title="Hard mode"
+  />
 </div>
 `;
 
@@ -70,19 +63,12 @@ exports[`should render Controllers with buttons enabled without crashing 1`] = `
   >
     restart
   </button>
-  <label
-    className="btn-toggle-label"
-    htmlFor="toggleButton"
-  >
-    <button
-      className="btn-toggle"
-      data-active={false}
-      id="toggleButton"
-      onClick={[Function]}
-      title="Hard mode"
-    />
-    Hard mode
-  </label>
+  <ButtonToggle
+    active={false}
+    label="Hard mode"
+    onClick={[Function]}
+    title="Hard mode"
+  />
 </div>
 `;
 
@@ -113,18 +99,11 @@ exports[`should render Controllers with rollback button disabled when rollback i
   >
     restart
   </button>
-  <label
-    className="btn-toggle-label"
-    htmlFor="toggleButton"
-  >
-    <button
-      className="btn-toggle"
-      data-active={false}
-      id="toggleButton"
-      onClick={[Function]}
-      title="Hard mode"
-    />
-    Hard mode
-  </label>
+  <ButtonToggle
+    active={false}
+    label="Hard mode"
+    onClick={[Function]}
+    title="Hard mode"
+  />
 </div>
 `;

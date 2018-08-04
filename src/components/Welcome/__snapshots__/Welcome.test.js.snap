@@ -4,95 +4,30 @@ exports[`Welcome should render with a list without crashing 1`] = `
 <div
   className="Welcome"
 >
-  <div
-    className="Wall "
-  >
-    <div
-      className="Block block-2"
-    >
-      2
-    </div>
-    <div
-      className="Block block-2"
-    >
-      2
-    </div>
-    <div
-      className="Block block-0"
-    >
-      0
-    </div>
-    <div
-      className="Block block-0"
-    >
-      0
-    </div>
-    <div
-      className="Block block-0"
-    >
-      0
-    </div>
-    <div
-      className="Block block-0"
-    >
-      0
-    </div>
-    <div
-      className="Block block-0"
-    >
-      0
-    </div>
-    <div
-      className="Block block-0"
-    >
-      0
-    </div>
-    <div
-      className="Block block-0"
-    >
-      0
-    </div>
-    <div
-      className="Block block-0"
-    >
-      0
-    </div>
-    <div
-      className="Block block-0"
-    >
-      0
-    </div>
-    <div
-      className="Block block-0"
-    >
-      0
-    </div>
-    <div
-      className="Block block-0"
-    >
-      0
-    </div>
-    <div
-      className="Block block-0"
-    >
-      0
-    </div>
-    <div
-      className="Block block-0"
-    >
-      0
-    </div>
-    <div
-      className="Block block-0"
-    >
-      0
-    </div>
-    <div
-      className="Block block-0"
-    >
-      0
-    </div>
-  </div>
+  <Wall
+    hardMode={undefined}
+    wall={
+      Array [
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+      ]
+    }
+  />
   <button
     className="WelcomeAction"
     onClick={[Function]}
@@ -107,15 +42,14 @@ exports[`Welcome should render with an empty list without crashing 1`] = `
 <div
   className="Welcome"
 >
-  <div
-    className="Wall "
+  <Wall
+    hardMode={undefined}
+    wall={Array []}
   />
   <button
     className="WelcomeAction"
     onClick={[Function]}
     type="button"
-  >
-    
-  </button>
+  />
 </div>
 `;
