@@ -1,6 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Wall without crashing 1`] = `
+exports[`App should render PlayerLose without crashing 1`] = `
+<div
+  className="App no-select"
+>
+  <Connect(Sidebar) />
+  <main
+    className="main"
+  >
+    <Connect(PlayerLose) />
+  </main>
+</div>
+`;
+
+exports[`App should render Wall without crashing 1`] = `
 <Keyboard
   shortcuts={
     Array [
@@ -36,7 +49,43 @@ exports[`renders Wall without crashing 1`] = `
 </Keyboard>
 `;
 
-exports[`renders Welcome without crashing 1`] = `
+exports[`App should render Wall without crashing when status id not defined 1`] = `
+<Keyboard
+  shortcuts={
+    Array [
+      Object {
+        "action": [Function],
+        "shortcut": "arrow-down",
+      },
+      Object {
+        "action": [Function],
+        "shortcut": "arrow-left",
+      },
+      Object {
+        "action": [Function],
+        "shortcut": "arrow-right",
+      },
+      Object {
+        "action": [Function],
+        "shortcut": "arrow-up",
+      },
+    ]
+  }
+>
+  <div
+    className="App no-select"
+  >
+    <Connect(Sidebar) />
+    <main
+      className="main"
+    >
+      <Connect(Wall) />
+    </main>
+  </div>
+</Keyboard>
+`;
+
+exports[`App should render Welcome without crashing 1`] = `
 <div
   className="App no-select"
 >

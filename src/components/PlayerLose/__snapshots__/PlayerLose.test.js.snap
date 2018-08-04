@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayerLose should render without crashing 1`] = `
+<section
+  className="PlayerLose"
+>
+  <Wall
+    hardMode={false}
+    wall={Array []}
+  />
+  <div
+    className="PlayerLose-content"
+  >
+    <h1
+      className="PlayerLose-title"
+    >
+      You Lose
+    </h1>
+    <Score
+      best={0}
+      current={0}
+    />
+    <button
+      className="PlayerLoseAction"
+      onClick={[Function]}
+      type="button"
+    />
+  </div>
+</section>
+`;

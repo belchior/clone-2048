@@ -6,12 +6,19 @@ import { Keyboard } from '../keyboard/Keyboard';
 import Sidebar from '../Sidebar';
 import Wall from '../Wall';
 import Welcome from '../Welcome';
+import PlayerLose from '../PlayerLose';
 import { moveTo } from './move';
+import { PLAYER_LOSE, PLAYING, WELCOME } from '../../reducers/actions/types';
 
 export class App extends Component {
   render() {
     const state = this.props.state;
-    return state.welcome ? this.renderWelcome() : this.renderWall();
+    switch (state.status) {
+      case WELCOME: return this.renderWelcome();
+      case PLAYING: return this.renderWall();
+      case PLAYER_LOSE: return this.renderPlayerLose();
+      default: return this.renderWall();
+    }
   }
 
   renderWelcome() {
@@ -49,12 +56,22 @@ export class App extends Component {
     );
   }
 
+  renderPlayerLose() {
+    return (
+      <div className="App no-select">
+        <Sidebar />
+        <main className="main">
+          <PlayerLose />
+        </main>
+      </div>
+    );
+  }
+
 }
 
 App.propTypes = {
   dispatch: PropTypes.any.isRequired,
   state: PropTypes.shape({
-    welcome: PropTypes.bool.isRequired,
     maxBlock: PropTypes.number,
     rollback: PropTypes.number,
     status: PropTypes.string,

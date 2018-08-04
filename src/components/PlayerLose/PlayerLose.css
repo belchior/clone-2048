@@ -1,0 +1,51 @@
+
+.PlayerLose {
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  flex: 1 0 100%;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 32rem;
+  max-height: 32rem;
+  background-color: rgba(var(--gray1), 0.5);
+}
+
+.PlayerLose-content {
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(240, 240, 240, 0.9);
+}
+
+.PlayerLose-title {
+  margin: 0;
+  font-size: 3rem;
+  font-style: italic;
+}
+
+.PlayerLose .Score {
+  flex: 0 0 auto;
+  margin: 3rem 0;
+  width: 100%;
+}
+
+.PlayerLose .PlayerLoseAction {
+  border: 2px solid #000000;
+  padding: 0 1rem;
+  height: 2.2rem;
+  font-family: arial;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 1.4rem;
+  vertical-align: middle;
+  line-height: 2.2rem;
+  cursor: pointer;
+  color: #000000;
+}

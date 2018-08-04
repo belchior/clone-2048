@@ -1,37 +1,50 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import { App } from './index';
+import { initialState } from '../../reducers/reducers';
+const renderer = new ShallowRenderer();
 
-it('renders Welcome without crashing', () => {
+
+it('App should render Welcome without crashing', () => {
   const dispatch = jest.fn(action => action);
   const state = {
-    maxBlock: 0,
-    rollback: 0,
-    status: '',
-    wall: [],
-    welcome: true,
+    ...initialState,
+    status: 'WELCOME',
   };
-  const renderer = new ShallowRenderer();
-  const tree = renderer.render(
-    <App state={state} dispatch={dispatch} />
-  );
+  const tree = renderer.render(<App state={state} dispatch={dispatch} />);
 
   expect(tree).toMatchSnapshot();
 });
 
-it('renders Wall without crashing', () => {
+it('App should render Wall without crashing', () => {
   const dispatch = jest.fn(action => action);
   const state = {
-    maxBlock: 0,
-    rollback: 0,
-    status: '',
-    wall: [],
-    welcome: false,
+    ...initialState,
+    status: 'PLAYING',
   };
-  const renderer = new ShallowRenderer();
-  const tree = renderer.render(
-    <App state={state} dispatch={dispatch} />
-  );
+  const tree = renderer.render(<App state={state} dispatch={dispatch} />);
+
+  expect(tree).toMatchSnapshot();
+});
+
+it('App should render Wall without crashing when status id not defined', () => {
+  const dispatch = jest.fn(action => action);
+  const state = {
+    ...initialState,
+    status: undefined,
+  };
+  const tree = renderer.render(<App state={state} dispatch={dispatch} />);
+
+  expect(tree).toMatchSnapshot();
+});
+
+it('App should render PlayerLose without crashing', () => {
+  const dispatch = jest.fn(action => action);
+  const state = {
+    ...initialState,
+    status: 'PLAYER_LOSE',
+  };
+  const tree = renderer.render(<App state={state} dispatch={dispatch} />);
 
   expect(tree).toMatchSnapshot();
 });
