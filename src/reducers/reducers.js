@@ -12,6 +12,7 @@ import {
   SAVE,
   START,
   TOGGLE_HARDMODE,
+  WELCOME,
 } from './actions/types';
 
 
@@ -19,8 +20,7 @@ export const initialState = {
   bestScore: 0,
   hardMode: false,
   history: [],
-  welcome: true,
-  welcomeWall: [],
+  welcomeWall: [2, 4, 8, 16, 4096, 0, 0, 32, 2048, 0, 0, 64, 1024, 512, 256, 128, ],
   maxBlock: 2048,
   moveError: false,
   rollback: 2,
@@ -31,8 +31,7 @@ export const initialState = {
 
 const initialize = () => ({
   ...initialState,
-  welcome: true,
-  welcomeWall: [2, 4, 8, 16, 4096, 0, 0, 32, 2048, 0, 0, 64, 1024, 512, 256, 128, ]
+  status: WELCOME,
 });
 
 export const reducer = (state = initialize(), action) => {
@@ -78,7 +77,7 @@ const start = state => ({
   ...state,
   history: [[]],
   wall: raffle(raffle(Array(16).fill(0))),
-  welcome: false,
+  status: PLAYING,
 });
 
 const setBestScore = state => ({
@@ -111,7 +110,7 @@ const restart = state => ({
   bestScore: state.bestScore,
   history: [[]],
   wall: raffle(raffle(Array(16).fill(0))),
-  welcome: false,
+  status: PLAYING,
 });
 
 const rollback = state => ({

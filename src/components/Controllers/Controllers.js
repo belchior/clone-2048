@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import './Controllers.css';
 import { ButtonToggle } from '../ButtonToggle';
+import { WELCOME } from '../../reducers/actions/types';
 
 export const Controllers = props => {
   const {
@@ -11,7 +12,7 @@ export const Controllers = props => {
     hardModeAction,
     rollback,
     hardMode,
-    welcome,
+    status,
   } = props;
 
   return (
@@ -20,13 +21,13 @@ export const Controllers = props => {
       <button
         title="Step back"
         onClick={rollbackAction}
-        disabled={welcome === true || rollback === 0}
+        disabled={status === WELCOME || rollback === 0}
         className="btn controls-btn_back"
       >back ({rollback})</button>
       <button
         title="Restart the game"
         onClick={restartAction}
-        disabled={welcome === true}
+        disabled={status === WELCOME}
         className="btn controls-btn_restart"
       >restart</button>
       <ButtonToggle
@@ -46,5 +47,5 @@ Controllers.propTypes = {
   restartAction: PropTypes.func.isRequired,
   rollback: PropTypes.number,
   rollbackAction: PropTypes.func.isRequired,
-  welcome: PropTypes.bool.isRequired,
+  status: PropTypes.string.isRequired,
 };

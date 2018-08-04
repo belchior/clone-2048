@@ -10,3 +10,4 @@ export const ROLLBACK = 'ROLLBACK';
 export const SAVE = 'SAVE';
 export const START = 'START';
 export const TOGGLE_HARDMODE = 'TOGGLE_HARDMODE';
+export const WELCOME = 'WELCOME';

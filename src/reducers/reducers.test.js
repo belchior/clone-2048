@@ -109,12 +109,12 @@ it('restart reducer should set the value of history to an list with an empty lis
   expect(newState).toHaveProperty('history', value);
 });
 
-it('restart reducer should set the value of welcome to false', () => {
-  const state = { ...initialState, welcome: true, };
-  const value = false;
+it('restart reducer should set the value of status to PLAYING', () => {
+  const state = { ...initialState, status: 'PLAYING', };
+  const value = 'PLAYING';
   const newState = reducer(state, actions.restart());
 
-  expect(newState).toHaveProperty('welcome', value);
+  expect(newState).toHaveProperty('status', value);
 });
 
 
@@ -157,12 +157,12 @@ it('start reducer should set the value of history to an list with an empty list 
   expect(newState).toHaveProperty('history', value);
 });
 
-it('start reducer should set the value of welcome to false', () => {
-  const state = { ...initialState, welcome: true, };
-  const value = false;
+it('start reducer should set the value of status to PLAYING', () => {
+  const state = { ...initialState, status: 'PLAYING', };
+  const value = 'PLAYING';
   const newState = reducer(state, actions.start());
 
-  expect(newState).toHaveProperty('welcome', value);
+  expect(newState).toHaveProperty('status', value);
 });
 
 it('toggleHardMode reducer should alternate the hardMode attribute between true and false', () => {

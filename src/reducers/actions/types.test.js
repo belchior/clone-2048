@@ -1,7 +1,7 @@
 import * as actionType from './types';
 
-it('The types file should have 12 actions', () => {
-  expect(Object.keys(actionType)).toHaveLength(12);
+it('The types file should have 13 actions', () => {
+  expect(Object.keys(actionType)).toHaveLength(13);
 });
 
 
@@ -48,6 +48,10 @@ describe('The Action types' , () => {
 
   it('TOGGLE_HARDMODE should be defined', () => {
     expect(actionType.TOGGLE_HARDMODE).toBe('TOGGLE_HARDMODE');
+  });
+
+  it('WELCOME should be defined', () => {
+    expect(actionType.WELCOME).toBe('WELCOME');
   });
 
 });

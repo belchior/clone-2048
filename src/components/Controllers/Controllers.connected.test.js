@@ -6,21 +6,12 @@ describe('mapStateToProps', () => {
   });
 
   it('should return an Object', () => {
-    const state = {rollback: 2, hardMode: false};
+    const state = {rollback: 2, hardMode: false, status: false};
     const props = mapStateToProps(state);
     expect(typeof props === 'object').toBe(true);
-  });
-
-  it('should return an object that contains the rollback key', () => {
-    const state = {rollback: 2, hardMode: false};
-    const props = mapStateToProps(state);
-    expect(typeof props.rollback === 'number').toBe(true);
-  });
-
-  it('should return an object that contains the hardMode key', () => {
-    const state = {rollback: 2, hardMode: false};
-    const props = mapStateToProps(state);
-    expect(typeof props.hardMode === 'boolean').toBe(true);
+    expect(props).toHaveProperty('rollback', 2);
+    expect(props).toHaveProperty('hardMode', false);
+    expect(props).toHaveProperty('status', false);
   });
 });
 
@@ -37,24 +28,11 @@ describe('mapDispatchToProps', () => {
 
   it('should return an object', () => {
     const props = mapDispatchToProps(dispatch);
-    expect(typeof props === 'object').toBe(true);
-  });
-
-  it('should return an object that contains the rollbackAction key', () => {
-    const props = mapDispatchToProps(dispatch);
+    expect(typeof props).toBe('object');
     expect(props).toHaveProperty('rollbackAction');
-  });
-
-  it('should return an object that contains the restartAction key', () => {
-    const props = mapDispatchToProps(dispatch);
     expect(props).toHaveProperty('restartAction');
-  });
-
-  it('should return an object that contains the hardModeAction key', () => {
-    const props = mapDispatchToProps(dispatch);
     expect(props).toHaveProperty('hardModeAction');
   });
-
 
   it('property rollbackAction should be callable', () => {
     const rollbackAction = mapDispatchToProps(dispatch).rollbackAction;

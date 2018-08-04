@@ -15,7 +15,7 @@ it('should render Controllers with buttons enabled without crashing', () => {
     hardModeAction: hardModeAction,
     hardMode: false,
     rollback: 2,
-    welcome: false,
+    status: 'PLAYING',
   };
   const tree = renderer.render(<Controllers {...props} />);
 
@@ -29,7 +29,7 @@ it('should render Controllers with buttons disabled without crashing', () => {
     hardModeAction: hardModeAction,
     hardMode: false,
     rollback: 2,
-    welcome: true,
+    status: 'WELCOME',
   };
   const tree = renderer.render(<Controllers {...props} />);
 
@@ -43,7 +43,7 @@ it('should render Controllers with rollback button disabled when rollback is 0',
     hardModeAction: hardModeAction,
     hardMode: false,
     rollback: 0,
-    welcome: false,
+    status: 'PLAYING',
   };
   const tree = renderer.render(<Controllers {...props} />);
 
@@ -61,7 +61,7 @@ describe('when clicked on', () => {
         hardModeAction={hardModeAction}
         hardMode={false}
         rollback={2}
-        welcome={false}
+        status="PLAYING"
       />
     );
 
@@ -91,7 +91,7 @@ describe('when Controllers button are disabled and clicked on', () => {
         hardModeAction={hardModeAction}
         hardMode={false}
         rollback={2}
-        welcome={true} // disabling Controllers button
+        status="WELCOME" // disabling Controllers button
       />
     );
   });
