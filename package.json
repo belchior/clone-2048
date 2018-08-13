@@ -3,14 +3,14 @@
   "version": "2.0.0",
   "private": true,
   "dependencies": {
-    "modern-normalize": "^0.4.0",
-    "prop-types": "^15.6.1",
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0",
+    "modern-normalize": "^0.5.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
-    "react-scripts": "1.1.1",
-    "react-test-renderer": "^16.3.0",
-    "redux": "^3.7.2"
+    "react-scripts": "^1.1.4",
+    "react-test-renderer": "^16.4.2",
+    "redux": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -19,11 +19,11 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^4.19.1",
-    "eslint-plugin-jest": "^21.15.0",
-    "eslint-plugin-react": "^7.7.0"
+    "enzyme": "^3.4.1",
+    "enzyme-adapter-react-16": "^1.2.0",
+    "eslint": "^5.3.0",
+    "eslint-plugin-jest": "^21.21.0",
+    "eslint-plugin-react": "^7.11.0"
   },
   "jest": {
     "collectCoverageFrom": [
