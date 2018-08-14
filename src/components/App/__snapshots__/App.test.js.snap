@@ -1,18 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App should render PlayerLose without crashing 1`] = `
-<div
-  className="App no-select"
->
-  <Connect(Sidebar) />
-  <main
-    className="main"
-  >
-    <Connect(PlayerLose) />
-  </main>
-</div>
-`;
-
 exports[`App should render Wall without crashing 1`] = `
 <Keyboard
   shortcuts={
@@ -49,7 +36,7 @@ exports[`App should render Wall without crashing 1`] = `
 </Keyboard>
 `;
 
-exports[`App should render Wall without crashing when status id not defined 1`] = `
+exports[`App should render Wall without crashing when status attribute is not defined 1`] = `
 <Keyboard
   shortcuts={
     Array [
@@ -94,6 +81,94 @@ exports[`App should render Welcome without crashing 1`] = `
     className="main"
   >
     <Connect(Welcome) />
+  </main>
+</div>
+`;
+
+exports[`App should render renderModalLose without crashing 1`] = `
+<div
+  className="App no-select"
+>
+  <Connect(Sidebar) />
+  <main
+    className="main"
+  >
+    <Modal
+      bestScore={0}
+      button={
+        Object {
+          "action": [Function],
+          "text": "Try Again",
+        }
+      }
+      hardMode={false}
+      score={0}
+      title="You Lose"
+      wall={
+        Array [
+          2,
+          4,
+          8,
+          16,
+          4096,
+          0,
+          0,
+          32,
+          2048,
+          0,
+          0,
+          64,
+          1024,
+          512,
+          256,
+          128,
+        ]
+      }
+    />
+  </main>
+</div>
+`;
+
+exports[`App should render renderModalWon without crashing 1`] = `
+<div
+  className="App no-select"
+>
+  <Connect(Sidebar) />
+  <main
+    className="main"
+  >
+    <Modal
+      bestScore={0}
+      button={
+        Object {
+          "action": [Function],
+          "text": "Try Again",
+        }
+      }
+      hardMode={false}
+      score={0}
+      title="You Won"
+      wall={
+        Array [
+          2,
+          4,
+          8,
+          16,
+          4096,
+          0,
+          0,
+          32,
+          2048,
+          0,
+          0,
+          64,
+          1024,
+          512,
+          256,
+          128,
+        ]
+      }
+    />
   </main>
 </div>
 `;

@@ -6,9 +6,10 @@ import { Keyboard } from '../keyboard/Keyboard';
 import Sidebar from '../Sidebar';
 import Wall from '../Wall';
 import Welcome from '../Welcome';
-import PlayerLose from '../PlayerLose';
+import { Modal } from '../Modal';
 import { moveTo } from './move';
-import { PLAYER_LOSE, PLAYING, WELCOME } from '../../reducers/actions/types';
+import { restart as restartAction } from '../../reducers/actions/actions';
+import { PLAYER_LOSE, PLAYER_WON, PLAYING, WELCOME } from '../../reducers/actions/types';
 
 export class App extends Component {
   render() {
@@ -16,7 +17,8 @@ export class App extends Component {
     switch (state.status) {
       case WELCOME: return this.renderWelcome();
       case PLAYING: return this.renderWall();
-      case PLAYER_LOSE: return this.renderPlayerLose();
+      case PLAYER_LOSE: return this.renderModalLose();
+      case PLAYER_WON: return this.renderModalWon();
       default: return this.renderWall();
     }
   }
@@ -56,12 +58,37 @@ export class App extends Component {
     );
   }
 
-  renderPlayerLose() {
+  renderModalLose() {
+    const button = {
+      text: 'Try Again',
+      action: () => this.dispatch(restartAction())
+    };
+    return this.renderModal('You Lose', button);
+  }
+
+  renderModalWon() {
+    const button = {
+      text: 'Try Again',
+      action: () => this.dispatch(restartAction())
+    };
+    return this.renderModal('You Won', button);
+  }
+
+  renderModal(title, button) {
+    const modalProps = {
+      bestScore: this.props.state.bestScore,
+      button: button,
+      hardMode: this.props.state.hardMode,
+      score: this.props.state.score,
+      title: title,
+      wall: this.props.state.welcomeWall,
+    };
+
     return (
       <div className="App no-select">
         <Sidebar />
         <main className="main">
-          <PlayerLose />
+          <Modal {...modalProps} />
         </main>
       </div>
     );
@@ -72,9 +99,13 @@ export class App extends Component {
 App.propTypes = {
   dispatch: PropTypes.any.isRequired,
   state: PropTypes.shape({
+    bestScore: PropTypes.number,
+    hardMode: PropTypes.bool,
     maxBlock: PropTypes.number,
     rollback: PropTypes.number,
+    score: PropTypes.number,
     status: PropTypes.string,
     wall: PropTypes.array,
+    welcomeWall: PropTypes.array,
   }).isRequired,
 };
