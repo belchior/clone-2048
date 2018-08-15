@@ -36,13 +36,30 @@ it('App should render renderModalLose without crashing', () => {
   expect(tree).toMatchSnapshot();
 });
 
+it('Action button on renderModalLose should return an restart action', () => {
+  const dispatch = jest.fn(action => action);
+  const state = { ...initialState, status: 'PLAYER_LOSE', };
+  const tree = renderer.render(<App state={state} dispatch={dispatch} />);
+  const buttonAction = tree.props.children[1].props.children.props.button.action;
+
+  expect(buttonAction()).toEqual(restartAction());
+  expect(dispatch.mock.calls).toHaveLength(1);
+});
+
 it('App should render renderModalWon without crashing', () => {
   const dispatch = jest.fn(action => action);
-  const state = {
-    ...initialState,
-    status: 'PLAYER_WON',
-  };
+  const state = { ...initialState, status: 'PLAYER_WON', };
   const tree = renderer.render(<App state={state} dispatch={dispatch} />);
 
   expect(tree).toMatchSnapshot();
+});
+
+it('Action button on renderModalWon should return an restart action', () => {
+  const dispatch = jest.fn(action => action);
+  const state = { ...initialState, status: 'PLAYER_WON', };
+  const tree = renderer.render(<App state={state} dispatch={dispatch} />);
+  const buttonAction = tree.props.children[1].props.children.props.button.action;
+
+  expect(buttonAction()).toEqual(restartAction());
+  expect(dispatch.mock.calls).toHaveLength(1);
 });

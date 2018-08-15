@@ -61,7 +61,7 @@ export class App extends Component {
   renderModalLose() {
     const button = {
       text: 'Try Again',
-      action: () => this.dispatch(restartAction())
+      action: () => this.props.dispatch(restartAction())
     };
     return this.renderModal('You Lose', button);
   }
@@ -69,7 +69,7 @@ export class App extends Component {
   renderModalWon() {
     const button = {
       text: 'Try Again',
-      action: () => this.dispatch(restartAction())
+      action: () => this.props.dispatch(restartAction())
     };
     return this.renderModal('You Won', button);
   }
