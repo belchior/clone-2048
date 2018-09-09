@@ -22,6 +22,7 @@ exports[`App should render Wall without crashing 1`] = `
       },
     ]
   }
+  targetSelector="body"
 >
   <div
     className="App no-select"
@@ -58,6 +59,7 @@ exports[`App should render Wall without crashing when status attribute is not de
       },
     ]
   }
+  targetSelector="body"
 >
   <div
     className="App no-select"

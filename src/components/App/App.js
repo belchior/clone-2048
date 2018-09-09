@@ -35,19 +35,17 @@ export class App extends Component {
   }
 
   renderWall() {
-    const {
-      dispatch,
-      state,
-    } = this.props;
+    const { dispatch, state, } = this.props;
     const moveToDirection = moveTo(dispatch)(state);
+    const shortcuts = [
+      {shortcut: 'arrow-down', action: moveToDirection('bottom')},
+      {shortcut: 'arrow-left', action: moveToDirection('left')},
+      {shortcut: 'arrow-right', action: moveToDirection('right')},
+      {shortcut: 'arrow-up', action: moveToDirection('top')},
+    ];
 
     return (
-      <Keyboard shortcuts={[
-        {shortcut: 'arrow-down', action: moveToDirection('bottom')},
-        {shortcut: 'arrow-left', action: moveToDirection('left')},
-        {shortcut: 'arrow-right', action: moveToDirection('right')},
-        {shortcut: 'arrow-up', action: moveToDirection('top')},
-      ]}>
+      <Keyboard shortcuts={shortcuts} targetSelector="body">
         <div className="App no-select">
           <Sidebar />
           <main className="main">
