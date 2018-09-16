@@ -7,6 +7,12 @@ install:
   npm install
 script:
   - npm test -- --coverage # Include coverage when running tests
-  - npm run deploy
 after_script: # Upload coverage reports
   - COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: gh-pages
