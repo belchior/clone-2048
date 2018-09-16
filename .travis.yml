@@ -11,6 +11,7 @@ after_script: # Upload coverage reports
 deploy:
   script: npm run build
   on:
+    tags: true
     branch: react
     condition: tag IS present
   target-branch: gh-pages
@@ -18,4 +19,3 @@ deploy:
   provider: pages
   github-token: $GITHUB_TOKEN
   skip-cleanup: true
-  keep-history: false
