@@ -9,9 +9,9 @@ script:
 after_script: # Upload coverage reports
   - COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls
 deploy:
+  if: tag IS present
   script: npm run build
   on:
-    if: tag IS present
     branch: react
   target-branch: gh-pages
   local-dir: build
