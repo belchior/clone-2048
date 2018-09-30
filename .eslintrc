@@ -1,4 +1,9 @@
 {
+  "settings": {
+    "react": {
+      "version": "16.4.2"
+    }
+  },
   "env": {
     "jest/globals": true,
   },
@@ -15,8 +20,7 @@
     "sourceType": "module",
     "ecmaVersion": 2017,
     "ecmaFeatures": {
-      "jsx": true,
-      "experimentalObjectRestSpread": true
+      "jsx": true
     }
   },
   "rules": {

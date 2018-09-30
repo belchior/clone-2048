@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Keyboard should render without crashing 1`] = `
+Array [
+  <div
+    className="test"
+    onKeyUp={[Function]}
+    tabIndex={-1}
+>
+    test
+</div>,
+]
+`;

@@ -10,7 +10,7 @@ export function parseShortcut(shortcut) {
     ctrlKey: hasControl(normalizedShortcut),
     metaKey: hasMeta(normalizedShortcut),
     shiftKey: hasShift(normalizedShortcut),
-    keys: keys(normalizedShortcut),
+    keys: keys(normalizedShortcut, keyMap),
   };
 }
 
@@ -30,7 +30,7 @@ function hasShift(shortcut) {
   return shortcut.search(/shift(?!-(left|right))/i) !== -1;
 }
 
-function keys(shortcut) {
+function keys(shortcut, keyMap) {
   const name = shortcut.split('+').pop();
   return keyMap[name] ? keyMap[name] : [];
 }

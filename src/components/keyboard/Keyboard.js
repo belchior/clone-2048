@@ -73,7 +73,12 @@ export class Keyboard extends Component {
 }
 
 Keyboard.propTypes = {
-  shortcuts: PropTypes.array.isRequired,
+  shortcuts: PropTypes.arrayOf(
+    PropTypes.shape({
+      shortcut: PropTypes.string,
+      action: PropTypes.func
+    })
+  ).isRequired,
   children: PropTypes.any,
   targetSelector: PropTypes.string,
 };
