@@ -38,13 +38,6 @@ export class Keyboard extends Component {
     if (targetSelector) this.setDOMEvent(keyupHandler, targetSelector);
   }
 
-  render() {
-    const { shortcuts, targetSelector, children } = this.props;
-    setUserShortcuts(shortcuts);
-    if (!targetSelector) return this.setSyntheticEvent(children, keyupHandler);
-    return children;
-  }
-
   setDOMEvent(handler, selector) {
     const target = document.querySelector(selector);
 
@@ -70,15 +63,32 @@ export class Keyboard extends Component {
       return React.cloneElement(child, props, props.children);
     });
   }
+
+
+  render() {
+    const { shortcuts, targetSelector, children } = this.props;
+    setUserShortcuts(shortcuts);
+    if (!targetSelector) return this.setSyntheticEvent(children, keyupHandler);
+    return children;
+  }
 }
 
 Keyboard.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.func,
+    PropTypes.node,
+  ]),
   shortcuts: PropTypes.arrayOf(
     PropTypes.shape({
       shortcut: PropTypes.string,
       action: PropTypes.func
     })
   ).isRequired,
-  children: PropTypes.any,
   targetSelector: PropTypes.string,
+};
+
+Keyboard.defaultProps = {
+  children: null,
+  targetSelector: '',
 };

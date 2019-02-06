@@ -28,16 +28,16 @@ it('ButtonToggle should assume data-active as false if active prop not passed', 
 });
 
 it('ButtonToggle should assume data-active as false if active prop is false', () => {
-  let tree = renderer.render(<ButtonToggle onClick={onClick} active={false} />);
+  let tree = renderer.render(<ButtonToggle active={false} onClick={onClick} />);
   expect(tree).toMatchSnapshot();
 });
 
 it('ButtonToggle should assume data-active as true if active prop is true', () => {
-  let tree = renderer.render(<ButtonToggle onClick={onClick} active={true} />);
+  let tree = renderer.render(<ButtonToggle active onClick={onClick} />);
   expect(tree).toMatchSnapshot();
 });
 
 it('ButtonToggle should assume title value as the same as label if title are not passed', () => {
-  let tree = renderer.render(<ButtonToggle onClick={onClick} label="my label" />);
+  let tree = renderer.render(<ButtonToggle label="my label" onClick={onClick} />);
   expect(tree).toMatchSnapshot();
 });

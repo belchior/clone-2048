@@ -12,7 +12,7 @@ import {
   SAVE,
   START,
   TOGGLE_HARDMODE,
-  WELCOME,
+  WELCOME
 } from './actions/types';
 
 

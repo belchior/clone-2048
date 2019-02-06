@@ -8,12 +8,18 @@ import { Wall } from '../Wall';
 
 export const Modal = ({ bestScore, button, hardMode, score, title, wall }) => (
   <section className="Modal">
-    <Wall wall={wall} hardMode={hardMode}></Wall>
+    <Wall hardMode={hardMode} wall={wall} />
     <div className="Modal-content">
-      <img className="logo" src={clone2048} alt="Logo Clone 2048" />
+      <img alt="Logo Clone 2048" className="logo" src={clone2048} />
       <h1 className="Modal-title">{title}</h1>
-      <Score current={score} best={bestScore}></Score>
-      <button type="button" className="ModalAction" onClick={button.action}>{button.text}</button>
+      <Score best={bestScore} current={score} />
+      <button
+        className="ModalAction"
+        onClick={button.handleAction}
+        type="button"
+      >
+        {button.text}
+      </button>
     </div>
   </section>
 );
@@ -28,5 +34,9 @@ Modal.propTypes = {
   hardMode: PropTypes.bool,
   score: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  wall: PropTypes.array.isRequired,
+  wall: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
+
+Modal.defaultProps = {
+  hardMode: false,
 };

@@ -56,11 +56,11 @@ describe('when clicked on', () => {
   beforeEach(() => {
     tree = mount(
       <Controllers
-        rollbackAction={rollbackAction}
-        restartAction={restartAction}
-        hardModeAction={hardModeAction}
         hardMode={false}
+        hardModeAction={hardModeAction}
+        restartAction={restartAction}
         rollback={2}
+        rollbackAction={rollbackAction}
         status="PLAYING"
       />
     );
@@ -86,11 +86,11 @@ describe('when Controllers button are disabled and clicked on', () => {
   beforeEach(() => {
     tree = mount(
       <Controllers
-        rollbackAction={rollbackAction}
-        restartAction={restartAction}
-        hardModeAction={hardModeAction}
         hardMode={false}
+        hardModeAction={hardModeAction}
+        restartAction={restartAction}
         rollback={2}
+        rollbackAction={rollbackAction}
         status="WELCOME" // disabling Controllers button
       />
     );

@@ -12,6 +12,11 @@ export const Score = ({current = 0, best = 0}) => (
 
 Score.displayName = 'Score';
 Score.propTypes = {
-  current: PropTypes.number,
   best: PropTypes.number,
+  current: PropTypes.number,
+};
+
+Score.defaultProps = {
+  best: 0,
+  current: 0,
 };

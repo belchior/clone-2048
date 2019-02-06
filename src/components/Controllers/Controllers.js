@@ -19,23 +19,29 @@ export const Controllers = props => {
     <div className="Controllers">
       <h2 className="subtitle">Controls</h2>
       <button
-        title="Step back"
-        onClick={rollbackAction}
-        disabled={status === WELCOME || rollback === 0}
         className="btn controls-btn_back"
-      >back ({rollback})</button>
+        disabled={status === WELCOME || rollback === 0}
+        onClick={rollbackAction}
+        title="Step back"
+        type="button"
+      >
+        back ({rollback})
+      </button>
       <button
-        title="Restart the game"
-        onClick={restartAction}
-        disabled={status === WELCOME}
         className="btn controls-btn_restart"
-      >restart</button>
+        disabled={status === WELCOME}
+        onClick={restartAction}
+        title="Restart the game"
+        type="button"
+      >
+        restart
+      </button>
       <ButtonToggle
-        title="Hard mode"
+        active={hardMode}
         label="Hard mode"
         onClick={hardModeAction}
-        active={hardMode}
-      ></ButtonToggle>
+        title="Hard mode"
+      />
     </div>
   );
 };
@@ -48,4 +54,9 @@ Controllers.propTypes = {
   rollback: PropTypes.number,
   rollbackAction: PropTypes.func.isRequired,
   status: PropTypes.string.isRequired,
+};
+
+Controllers.defaultProps = {
+  hardMode: false,
+  rollback: 0,
 };

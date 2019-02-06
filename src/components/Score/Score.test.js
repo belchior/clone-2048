@@ -5,7 +5,7 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 const render = new ShallowRenderer();
 
 it('Score should render without crashing', () => {
-  const tree = render.render(<Score current={1000} best={1234}/>);
+  const tree = render.render(<Score best={1234} current={1000} />);
   expect(tree).toMatchSnapshot();
 });
 

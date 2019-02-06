@@ -11,7 +11,7 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   button: {
     text: 'Start',
-    action: () => dispatch(startAction()),
+    handleAction: () => dispatch(startAction()),
   },
 });
 
