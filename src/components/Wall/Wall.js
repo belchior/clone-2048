@@ -6,12 +6,13 @@ import './Wall.css';
 
 export function Wall(props) {
   const { hardMode, moveError, wall } = props;
+  const className = 'Wall ' + (hardMode ? 'hardMode ' : '') + (moveError ? 'moveError ' : '');
   return (
-    <div className={
-      'Wall ' + (hardMode ? 'hardMode ' : '') + (moveError ? 'moveError ' : '')
-    }
-    >
-      {wall.map(value => <Block key={value} value={value} />)}
+    <div className={className}>
+      {
+        /* eslint react/no-array-index-key: off */
+        wall.map((value, index) => <Block key={`${index}-${value}`} value={value} />)
+      }
     </div>
   );
 }

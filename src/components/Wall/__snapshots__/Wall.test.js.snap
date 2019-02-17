@@ -5,11 +5,11 @@ exports[`should render Wall adding the className hardMode 1`] = `
   className="Wall hardMode "
 >
   <Block
-    key="2"
+    key="0-2"
     value={2}
   />
   <Block
-    key="4"
+    key="1-4"
     value={4}
   />
 </div>
@@ -20,11 +20,11 @@ exports[`should render Wall adding the className hardMode moveError separeted by
   className="Wall hardMode moveError "
 >
   <Block
-    key="2"
+    key="0-2"
     value={2}
   />
   <Block
-    key="4"
+    key="1-4"
     value={4}
   />
 </div>
@@ -35,11 +35,11 @@ exports[`should render Wall adding the className moveError 1`] = `
   className="Wall moveError "
 >
   <Block
-    key="2"
+    key="0-2"
     value={2}
   />
   <Block
-    key="4"
+    key="1-4"
     value={4}
   />
 </div>
@@ -50,11 +50,11 @@ exports[`should render Wall with 2 Blocks 1`] = `
   className="Wall "
 >
   <Block
-    key="2"
+    key="0-2"
     value={2}
   />
   <Block
-    key="4"
+    key="1-4"
     value={4}
   />
 </div>

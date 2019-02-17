@@ -26,7 +26,7 @@ export const initialState = {
   score: 0,
   status: PLAYING,
   wall: [],
-  welcomeWall: [2, 4, 8, 16, 4096, 0, 0, 32, 2048, 0, 0, 64, 1024, 512, 256, 128, ],
+  welcomeWall: [ 2, 4, 8, 16, 4096, 0, 0, 32, 2048, 0, 0, 64, 1024, 512, 256, 128, ],
 };
 
 const initialize = () => ({
@@ -63,10 +63,13 @@ const moviment = (state, newState) => {
   )(newState);
 };
 
-const addHistory = state => newState => ({
-  ...newState,
-  history: [ last(state.history), state.wall ],
-});
+const addHistory = state => newState => {
+  const lastWall = last(state.history);
+  return {
+    ...newState,
+    history: lastWall ? [ lastWall, state.wall ] : [ state.wall ],
+  };
+};
 
 const save = state => {
   saveState(state);
@@ -75,7 +78,7 @@ const save = state => {
 
 const start = state => ({
   ...state,
-  history: [[]],
+  history: [],
   wall: raffle(raffle(Array(16).fill(0))),
   status: PLAYING,
 });
@@ -108,17 +111,20 @@ const playerWon = state => ({
 const restart = state => ({
   ...initialState,
   bestScore: state.bestScore,
-  history: [[]],
+  history: [],
   wall: raffle(raffle(Array(16).fill(0))),
   status: PLAYING,
 });
 
-const rollback = state => ({
-  ...state,
-  rollback: Math.max(state.rollback - 1, 0),
-  wall: last(state.history),
-  history: tail(reverse(state.history)),
-});
+const rollback = state => {
+  if (state.history.length <= 0 || state.rollback <= 0 ) return state;
+  return {
+    ...state,
+    rollback: Math.max(state.rollback - 1, 0),
+    wall: last(state.history),
+    history: tail(reverse(state.history)),
+  };
+};
 
 const toggleHardMode = state => ({
   ...state,

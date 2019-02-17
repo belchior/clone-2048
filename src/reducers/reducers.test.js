@@ -55,7 +55,7 @@ it('moviment reducer should update the bestScore and add the current wall at the
   const newState = reducer(state, actions.moviment(state));
 
   expect(newState.bestScore).toBe(state.score);
-  expect(newState.history[1]).toEqual(state.wall);
+  expect(newState.history[0]).toEqual(state.wall);
 });
 
 it('moviment reducer should not update the bestScore when score is less than bestScore', () => {
@@ -92,14 +92,6 @@ it('restart reducer should keep the value of bestScore unchanged', () => {
   const newState = reducer(state, actions.restart());
 
   expect(newState).toHaveProperty('bestScore', value);
-});
-
-it('restart reducer should set the value of history to an list with an empty list inside', () => {
-  const state = { ...initialState, history: [[2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,]], };
-  const value = [[]];
-  const newState = reducer(state, actions.restart());
-
-  expect(newState).toHaveProperty('history', value);
 });
 
 it('restart reducer should set the value of status to PLAYING', () => {
@@ -140,14 +132,6 @@ it('save reducer should save the state at localStorage', () => {
   const state = { ...initialState };
   reducer(state, actions.save());
   expect(localStorage.setItem.mock.calls).toHaveLength(1);
-});
-
-it('start reducer should set the value of history to an list with an empty list inside', () => {
-  const state = { ...initialState, history: [[4,4,2,2,0,0,0,0,0,0,0,0,0,0,0,0,]], };
-  const value = [[]];
-  const newState = reducer(state, actions.start());
-
-  expect(newState).toHaveProperty('history', value);
 });
 
 it('start reducer should set the value of status to PLAYING', () => {
