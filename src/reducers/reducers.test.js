@@ -2,14 +2,7 @@ import { initialState, reducer } from './index';
 import * as actions from '../reducers/actions/actions';
 import * as actionTypes from '../reducers/actions/types';
 
-const localStorageMock = {
-  getItem: jest.fn(() => JSON.stringify(initialState)),
-  setItem: jest.fn(),
-  clear: jest.fn()
-};
-/* global global */
-global.localStorage = localStorageMock;
-
+Storage.prototype.getItem = jest.fn(() => JSON.stringify(initialState)),
 
 describe('reducers file', () => {
   it('should export an object named initialState', () => {

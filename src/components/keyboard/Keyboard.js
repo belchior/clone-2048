@@ -64,7 +64,6 @@ export class Keyboard extends Component {
     });
   }
 
-
   render() {
     const { shortcuts, targetSelector, children } = this.props;
     setUserShortcuts(shortcuts);

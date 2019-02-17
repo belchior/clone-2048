@@ -1,65 +1,74 @@
 import React from 'react';
-import ShallowRenderer from 'react-test-renderer/shallow';
-import { App } from './index';
-import { initialState } from '../../reducers/reducers';
-import { restart as restartAction } from '../../reducers/actions/actions';
-const renderer = new ShallowRenderer();
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
-it('App should render Welcome without crashing', () => {
-  const dispatch = jest.fn(action => action);
-  const state = { ...initialState, status: 'WELCOME', };
-  const tree = renderer.render(<App dispatch={dispatch} state={state} />);
+import { App } from './App';
 
-  expect(tree).toMatchSnapshot();
-});
 
-it('App should render Wall without crashing', () => {
-  const dispatch = jest.fn(action => action);
-  const state = { ...initialState, status: 'PLAYING', };
-  const tree = renderer.render(<App dispatch={dispatch} state={state} />);
+const setup = (props = {}, type = 'shallow') => {
+  const requiredProps = {
+    bestScore: 0,
+    hardMode: false,
+    maxBlock: 0,
+    moveTo: () => () => () => {},
+    restartAction: () => {},
+    rollback: 0,
+    score: 0,
+    status: '',
+    wall: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    welcomeWall: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    ...props,
+  };
 
-  expect(tree).toMatchSnapshot();
-});
+  switch (type) {
+    case 'shallow': return shallow(<App {...requiredProps} />);
+    default: return shallow(<App {...requiredProps} />);
+  }
+};
 
-it('App should render Wall without crashing when status attribute is not defined', () => {
-  const dispatch = jest.fn(action => action);
-  const state = { ...initialState, status: undefined, };
-  const tree = renderer.render(<App dispatch={dispatch} state={state} />);
+describe('App', () => {
+  it('should render Wall without crashing', () => {
+    const props = { status: 'PLAYING' };
+    const wrapper = setup(props);
+    const Wall = toJson(wrapper.find('Connect(Wall)'));
 
-  expect(tree).toMatchSnapshot();
-});
+    expect(Wall).toMatchSnapshot();
+  });
 
-it('App should render renderModalLose without crashing', () => {
-  const dispatch = jest.fn(action => action);
-  const state = { ...initialState, status: 'PLAYER_LOSE', };
-  const tree = renderer.render(<App dispatch={dispatch} state={state} />);
-  expect(tree).toMatchSnapshot();
-});
 
-it('Action button on renderModalLose should return an restart action', () => {
-  const dispatch = jest.fn(action => action);
-  const state = { ...initialState, status: 'PLAYER_LOSE', };
-  const tree = renderer.render(<App dispatch={dispatch} state={state} />);
-  const buttonAction = tree.props.children[1].props.children.props.button.action;
+  it('should render Wall without crashing when status attribute is not defined', () => {
+    const props = { status: '' };
+    const wrapper = setup(props);
+    const Wall = toJson(wrapper.find('Connect(Wall)'));
 
-  expect(buttonAction()).toEqual(restartAction());
-  expect(dispatch.mock.calls).toHaveLength(1);
-});
+    expect(Wall).toMatchSnapshot();
+  });
 
-it('App should render renderModalWon without crashing', () => {
-  const dispatch = jest.fn(action => action);
-  const state = { ...initialState, status: 'PLAYER_WON', };
-  const tree = renderer.render(<App dispatch={dispatch} state={state} />);
+  it('should render Welcome without crashing', () => {
+    const props = { status: 'WELCOME', };
+    const wrapper = setup(props, 'shallow');
+    const Welcome = toJson(wrapper.find('Connect(Welcome)'));
 
-  expect(tree).toMatchSnapshot();
-});
+    expect(Welcome).toMatchSnapshot();
+  });
 
-it('Action button on renderModalWon should return an restart action', () => {
-  const dispatch = jest.fn(action => action);
-  const state = { ...initialState, status: 'PLAYER_WON', };
-  const tree = renderer.render(<App dispatch={dispatch} state={state} />);
-  const buttonAction = tree.props.children[1].props.children.props.button.action;
+  it('should render ModalLose without crashing', () => {
+    const props = { status: 'PLAYER_LOSE', };
+    const wrapper = setup(props, 'shallow');
+    const title = wrapper.find('Modal').props().title;
+    const ModalLose = toJson(wrapper.find('Modal'));
 
-  expect(buttonAction()).toEqual(restartAction());
-  expect(dispatch.mock.calls).toHaveLength(1);
+    expect(title).toBe('You Lose');
+    expect(ModalLose).toMatchSnapshot();
+  });
+
+  it('should render ModalWon without crashing', () => {
+    const props = { status: 'PLAYER_WON', };
+    const wrapper = setup(props, 'shallow');
+    const title = wrapper.find('Modal').props().title;
+    const ModalWon = toJson(wrapper.find('Modal'));
+
+    expect(title).toBe('You Won');
+    expect(ModalWon).toMatchSnapshot();
+  });
 });

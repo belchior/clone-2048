@@ -11,40 +11,8 @@ exports[`ButtonToggle should assume data-active as false if active prop is false
     id="toggleButton"
     onClick={[Function]}
     title=""
+    type="button"
   />
-  
-</label>
-`;
-
-exports[`ButtonToggle should assume data-active as false if active prop not passed 1`] = `
-<label
-  className="btn-toggle-label"
-  htmlFor="toggleButton"
->
-  <button
-    className="btn-toggle"
-    data-active={false}
-    id="toggleButton"
-    onClick={[Function]}
-    title=""
-  />
-  
-</label>
-`;
-
-exports[`ButtonToggle should assume data-active as true if active prop is true 1`] = `
-<label
-  className="btn-toggle-label"
-  htmlFor="toggleButton"
->
-  <button
-    className="btn-toggle"
-    data-active={true}
-    id="toggleButton"
-    onClick={[Function]}
-    title=""
-  />
-  
 </label>
 `;
 
@@ -58,9 +26,26 @@ exports[`ButtonToggle should assume title value as the same as label if title ar
     data-active={false}
     id="toggleButton"
     onClick={[Function]}
-    title="my label"
+    title=""
+    type="button"
   />
   my label
+</label>
+`;
+
+exports[`ButtonToggle should data-active as true if active prop is true 1`] = `
+<label
+  className="btn-toggle-label"
+  htmlFor="toggleButton"
+>
+  <button
+    className="btn-toggle"
+    data-active={true}
+    id="toggleButton"
+    onClick={[Function]}
+    title=""
+    type="button"
+  />
 </label>
 `;
 
@@ -75,7 +60,24 @@ exports[`ButtonToggle should render without crashing 1`] = `
     id="toggleButton"
     onClick={[Function]}
     title="my toggle button"
+    type="button"
   />
   toggle button
+</label>
+`;
+
+exports[`ButtonToggle should set data-active to false as default value 1`] = `
+<label
+  className="btn-toggle-label"
+  htmlFor="toggleButton"
+>
+  <button
+    className="btn-toggle"
+    data-active={false}
+    id="toggleButton"
+    onClick={[Function]}
+    title=""
+    type="button"
+  />
 </label>
 `;

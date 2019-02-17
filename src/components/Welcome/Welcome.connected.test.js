@@ -25,8 +25,8 @@ it('mapDispatchToProps should return an Object', () => {
   expect(typeof props === 'object').toBe(true);
   expect(props).toHaveProperty('button');
   expect(props.button).toHaveProperty('text');
-  expect(props.button).toHaveProperty('action');
+  expect(props.button).toHaveProperty('handleAction');
 
-  props.button.action();
+  props.button.handleAction();
   expect(dispatch.mock.calls).toHaveLength(1);
 });

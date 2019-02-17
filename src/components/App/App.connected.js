@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
+
 import { App } from './App';
+import { moveTo } from './move';
+import { restart as restartAction } from '../../reducers/actions/actions';
 
 export const mapStateToProps = state => ({
   bestScore: state.bestScore,
@@ -12,4 +15,9 @@ export const mapStateToProps = state => ({
   welcomeWall: state.welcomeWall,
 });
 
-export default connect(mapStateToProps)(App);
+export const mapDispatchToProps = dispatch => ({
+  moveTo: moveTo(dispatch),
+  restartAction: () => dispatch(restartAction()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

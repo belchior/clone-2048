@@ -5,7 +5,8 @@ exports[`Welcome should render with a list without crashing 1`] = `
   className="Welcome"
 >
   <Wall
-    hardMode={undefined}
+    hardMode={false}
+    moveError={false}
     wall={
       Array [
         2,
@@ -35,21 +36,5 @@ exports[`Welcome should render with a list without crashing 1`] = `
   >
     Action
   </button>
-</div>
-`;
-
-exports[`Welcome should render with an empty list without crashing 1`] = `
-<div
-  className="Welcome"
->
-  <Wall
-    hardMode={undefined}
-    wall={Array []}
-  />
-  <button
-    className="WelcomeAction"
-    onClick={[Function]}
-    type="button"
-  />
 </div>
 `;

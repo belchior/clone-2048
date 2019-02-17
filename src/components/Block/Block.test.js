@@ -1,15 +1,24 @@
 import React from 'react';
-import { Block } from './Block';
-import ShallowRenderer from 'react-test-renderer/shallow';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
-const renderer = new ShallowRenderer();
+import { Block } from './Block';
+
+
+const setup = (props = {}) => {
+  const requiredProps = {
+    value: 0,
+    ...props,
+  };
+  return shallow(<Block {...requiredProps} />);
+};
 
 it('should render Block without crashing', () => {
-  let tree = renderer.render(<Block value={0} />);
-  expect(tree).toMatchSnapshot();
+  const wrapper = setup({ value: 0 });
+  expect(toJson(wrapper)).toMatchSnapshot();
 });
 
 it('should render Block with the value 64', () => {
-  let tree = renderer.render(<Block value={65} />);
-  expect(tree).toMatchSnapshot();
+  const wrapper = setup({ value: 65 });
+  expect(toJson(wrapper)).toMatchSnapshot();
 });

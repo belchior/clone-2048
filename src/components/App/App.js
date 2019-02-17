@@ -7,8 +7,6 @@ import Sidebar from '../Sidebar';
 import Wall from '../Wall';
 import Welcome from '../Welcome';
 import { Modal } from '../Modal';
-import { moveTo } from './move';
-import { restart as restartAction } from '../../reducers/actions/actions';
 import { PLAYER_LOSE, PLAYER_WON, PLAYING, WELCOME } from '../../reducers/actions/types';
 
 export class App extends Component {
@@ -24,8 +22,8 @@ export class App extends Component {
   }
 
   renderWall() {
-    const { dispatch } = this.props;
-    const moveToDirection = moveTo(dispatch)(this.props);
+    const { moveTo } = this.props;
+    const moveToDirection = moveTo(this.props);
     const shortcuts = [
       {shortcut: 'arrow-down', action: moveToDirection('bottom')},
       {shortcut: 'arrow-left', action: moveToDirection('left')},
@@ -49,19 +47,19 @@ export class App extends Component {
   }
 
   renderModalLose() {
-    const { dispatch } = this.props;
+    const { restartAction } = this.props;
     const button = {
       text: 'Try Again',
-      action: () => dispatch(restartAction())
+      handleAction: restartAction,
     };
     return this.renderModal('You Lose', button);
   }
 
   renderModalWon() {
-    const { dispatch } = this.props;
+    const { restartAction } = this.props;
     const button = {
       text: 'Try Again',
-      handleAction: () => dispatch(restartAction())
+      handleAction: restartAction,
     };
     return this.renderModal('You Won', button);
   }
@@ -101,9 +99,10 @@ export class App extends Component {
 
 App.propTypes = {
   bestScore: PropTypes.number.isRequired,
-  dispatch: PropTypes.func.isRequired,
   hardMode: PropTypes.bool.isRequired,
   maxBlock: PropTypes.number.isRequired,
+  moveTo: PropTypes.func.isRequired,
+  restartAction: PropTypes.func.isRequired,
   rollback: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,
   status: PropTypes.string.isRequired,

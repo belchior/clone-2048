@@ -5,31 +5,17 @@ it('mapStateToProps should be a function', () => {
   expect(typeof mapStateToProps === 'function').toBe(true);
 });
 
-it('mapStateToProps should return an Object', () => {
+it('mapStateToProps should return an Object that match the following structure', () => {
   const props = mapStateToProps(initialState);
-  expect(typeof props === 'object').toBe(true);
-});
 
-it('mapStateToProps should return an Object that contains the maxBlock key', () => {
-  const props = mapStateToProps(initialState);
-  expect(props.state).toHaveProperty('maxBlock');
-  expect(typeof props.state.maxBlock).toBe('number');
-});
-
-it('mapStateToProps should return an Object that contains the rollback key', () => {
-  const props = mapStateToProps(initialState);
-  expect(props.state).toHaveProperty('rollback');
-  expect(typeof props.state.rollback).toBe('number');
-});
-
-it('mapStateToProps should return an Object that contains the status key', () => {
-  const props = mapStateToProps(initialState);
-  expect(props.state).toHaveProperty('status');
-  expect(typeof props.state.status).toBe('string');
-});
-
-it('mapStateToProps should return an Object that contains the wall key', () => {
-  const props = mapStateToProps(initialState);
-  expect(props.state).toHaveProperty('wall');
-  expect(Array.isArray(props.state.wall)).toBe(true);
+  expect(props).toMatchSnapshot({
+    bestScore: expect.any(Number),
+    hardMode: expect.any(Boolean),
+    maxBlock: expect.any(Number),
+    rollback: expect.any(Number),
+    score: expect.any(Number),
+    status: expect.any(String),
+    wall: expect.any(Array),
+    welcomeWall: expect.any(Array),
+  });
 });

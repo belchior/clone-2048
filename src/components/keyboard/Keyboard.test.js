@@ -1,32 +1,38 @@
 import React, { Component } from 'react';
-import ShallowRenderer from 'react-test-renderer/shallow';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
+
 import { Keyboard } from './Keyboard';
 
-const renderer = new ShallowRenderer();
 
+const setup = (props = {}, children) => {
+  const requiredProps = {
+    shortcuts: {
+      shortcut: '',
+      action: () => {}
+    },
+    ...props,
+  };
+  return shallow(<Keyboard {...requiredProps}>{children}</Keyboard>);
+};
 
-test('Keyboard should be instantiable', () => {
+it('Keyboard should be instantiable', () => {
   const keyboard = new Keyboard();
-
   expect(keyboard instanceof Keyboard).toBe(true);
 });
 
-test('Keyboard should be extended from React Component', () => {
+it('Keyboard should be extended from React Component', () => {
   const keyboard = new Keyboard();
-
   expect(keyboard instanceof Component).toBe(true);
 });
 
-test('Keyboard should render without crashing', () => {
+it('Keyboard should render without crashing', () => {
   const props = {
     shortcuts: [
-      {shortcut: 'ctrl+d', action: () => {}}
-    ]
+      { shortcut: 'ctrl+d', action: () => {} },
+    ],
   };
-  const tree = renderer.render(
-    <Keyboard {...props}><div className="test">test</div></Keyboard>
-  );
-
-  // console.error(tree);
-  expect(tree).toMatchSnapshot();
+  const children = <div className="test">test</div>;
+  const wrapper = setup(props, children);
+  expect(toJson(wrapper)).toMatchSnapshot();
 });

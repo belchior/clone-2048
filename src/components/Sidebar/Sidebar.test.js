@@ -1,43 +1,48 @@
 import React from 'react';
-import { Sidebar } from './Sidebar';
-import ShallowRenderer from 'react-test-renderer/shallow';
 import { shallow } from 'enzyme';
 
-it('should render Sidebar without crashing', () => {
-  const renderer = new ShallowRenderer();
-  const tree = renderer.render(
-    <Sidebar bestScore={0} score={0} />
-  );
+import { Sidebar } from './Sidebar';
 
-  expect(tree).toMatchSnapshot();
+const setup = (props = {}) => {
+  const requiredProps = {
+    bestScore: 0,
+    score: 0,
+    ...props,
+  };
+  return shallow(<Sidebar {...requiredProps} />);
+};
+
+it('Sidebar should render without crashing', () => {
+  const wrappper = () => setup();
+  expect(wrappper).not.toThrow();
 });
 
 it('should make visible menu_full when clicked at hamburger menu', () => {
-  const component = shallow(<Sidebar />);
-  expect(component.find('.menu_full.visible')).toHaveLength(0);
+  const wrapper = setup();
+  expect(wrapper.find('.menu_full.visible')).toHaveLength(0);
 
-  component.find('.btn-menu').simulate('click');
-  expect(component.find('.menu_full.visible')).toHaveLength(1);
+  wrapper.find('.btn-menu').simulate('click');
+  expect(wrapper.find('.menu_full.visible')).toHaveLength(1);
 });
 
 it('should hide the menu_full when clicked at root of menu_full (the transparent space)', () => {
-  const component = shallow(<Sidebar />);
-  expect(component.find('.menu_full.visible')).toHaveLength(0);
+  const wrapper = setup();
+  expect(wrapper.find('.menu_full.visible')).toHaveLength(0);
 
-  component.find('.btn-menu').simulate('click');
-  expect(component.find('.menu_full.visible')).toHaveLength(1);
+  wrapper.find('.btn-menu').simulate('click');
+  expect(wrapper.find('.menu_full.visible')).toHaveLength(1);
 
-  component.find('.menu_full').simulate('click');
-  expect(component.find('.menu_full.visible')).toHaveLength(0);
+  wrapper.find('.menu_full').simulate('click');
+  expect(wrapper.find('.menu_full.visible')).toHaveLength(0);
 });
 
 it('should not hide the menu_full when clicked at body of menu_full', () => {
-  const component = shallow(<Sidebar />);
-  expect(component.find('.menu_full.visible')).toHaveLength(0);
+  const wrapper = setup();
+  expect(wrapper.find('.menu_full.visible')).toHaveLength(0);
 
-  component.find('.btn-menu').simulate('click');
-  expect(component.find('.menu_full.visible')).toHaveLength(1);
+  wrapper.find('.btn-menu').simulate('click');
+  expect(wrapper.find('.menu_full.visible')).toHaveLength(1);
 
-  component.find('.menu_full-container').simulate('click', { stopPropagation: () => undefined });
-  expect(component.find('.menu_full.visible')).toHaveLength(1);
+  wrapper.find('.menu_full-container').simulate('click', { stopPropagation: () => undefined });
+  expect(wrapper.find('.menu_full.visible')).toHaveLength(1);
 });

@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 
 import './Block.css';
 
-export const Block = ({ value }) => (
-  <div className={'Block block-' + value}>{value}</div>
-);
+export function Block({ value }) {
+  return <div className={'Block block-' + value}>{value}</div>;
+}
 
-Block.displayName = 'Block';
 Block.propTypes = {
   value: PropTypes.number.isRequired,
 };

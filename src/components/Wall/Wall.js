@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Wall.css';
 import { Block } from '../Block';
+import './Wall.css';
 
-export const Wall = ({ hardMode, moveError, wall }) => (
-  <div className={
-    'Wall ' + (hardMode ? 'hardMode ' : '') + (moveError ? 'moveError ' : '')
-  }
-  >
-    {wall.map(value => <Block key={value} value={value} />)}
-  </div>
-);
+export function Wall(props) {
+  const { hardMode, moveError, wall } = props;
+  return (
+    <div className={
+      'Wall ' + (hardMode ? 'hardMode ' : '') + (moveError ? 'moveError ' : '')
+    }
+    >
+      {wall.map(value => <Block key={value} value={value} />)}
+    </div>
+  );
+}
 
-Wall.displayName = 'Wall';
 Wall.propTypes = {
   hardMode: PropTypes.bool,
   moveError: PropTypes.bool,

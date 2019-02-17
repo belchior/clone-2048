@@ -1,43 +1,63 @@
 import React from 'react';
-import { ButtonToggle } from './ButtonToggle';
-import ShallowRenderer from 'react-test-renderer/shallow';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
-const renderer = new ShallowRenderer();
-const onClick = jest.fn();
+import { ButtonToggle } from './ButtonToggle';
+
+
+const setup = (props = {}) => {
+  const requiredProps = {
+    onClick: () => {},
+    ...props,
+  };
+  return shallow(<ButtonToggle {...requiredProps} />);
+};
 
 it('ButtonToggle should render without crashing', () => {
   const props = {
-    onClick: onClick,
     active: true,
     label: 'toggle button',
     title: 'my toggle button',
   };
-  let tree = renderer.render(<ButtonToggle {...props} />);
-  expect(tree).toMatchSnapshot();
+  const wrapper = setup(props);
+  expect(toJson(wrapper)).toMatchSnapshot();
 });
 
 it('ButtonToggle should call the callback when click', () => {
-  let tree = renderer.render(<ButtonToggle onClick={onClick} />);
-  tree.props.children[0].props.onClick();
-  expect(onClick.mock.calls).toHaveLength(1);
+  const props = {
+    onClick: jest.fn(),
+  };
+  const wrapper = setup(props);
+  wrapper.find('#toggleButton').simulate('click');
+  expect(props.onClick).toHaveBeenCalled();
 });
 
-it('ButtonToggle should assume data-active as false if active prop not passed', () => {
-  let tree = renderer.render(<ButtonToggle onClick={onClick} />);
-  expect(tree).toMatchSnapshot();
+it('ButtonToggle should throw error when onClick callback is not defined', () => {
+  const props = { onClick: null };
+  const renderComponent = () => setup(props);
+  expect(renderComponent).toThrow();
 });
 
 it('ButtonToggle should assume data-active as false if active prop is false', () => {
-  let tree = renderer.render(<ButtonToggle active={false} onClick={onClick} />);
-  expect(tree).toMatchSnapshot();
+  const props = { active: false };
+  const wrapper = setup(props);
+  expect(toJson(wrapper)).toMatchSnapshot();
 });
 
-it('ButtonToggle should assume data-active as true if active prop is true', () => {
-  let tree = renderer.render(<ButtonToggle active onClick={onClick} />);
-  expect(tree).toMatchSnapshot();
+it('ButtonToggle should set data-active to false as default value', () => {
+  const wrapper = setup();
+  expect(toJson(wrapper)).toMatchSnapshot();
+});
+
+
+it('ButtonToggle should data-active as true if active prop is true', () => {
+  const props = { active: true };
+  const wrapper = setup(props);
+  expect(toJson(wrapper)).toMatchSnapshot();
 });
 
 it('ButtonToggle should assume title value as the same as label if title are not passed', () => {
-  let tree = renderer.render(<ButtonToggle label="my label" onClick={onClick} />);
-  expect(tree).toMatchSnapshot();
+  const props = { label: 'my label' };
+  const wrapper = setup(props);
+  expect(toJson(wrapper)).toMatchSnapshot();
 });

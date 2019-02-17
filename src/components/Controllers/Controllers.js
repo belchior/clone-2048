@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Controllers.css';
-import { ButtonToggle } from '../ButtonToggle';
 import { WELCOME } from '../../reducers/actions/types';
+import { ButtonToggle } from '../ButtonToggle';
+import './Controllers.css';
 
-export const Controllers = props => {
+export function Controllers(props) {
   const {
-    rollbackAction,
-    restartAction,
-    hardModeAction,
-    rollback,
     hardMode,
+    hardModeAction,
+    restartAction,
+    rollback,
+    rollbackAction,
     status,
   } = props;
 
@@ -44,9 +44,8 @@ export const Controllers = props => {
       />
     </div>
   );
-};
+}
 
-Controllers.displayName = 'Controllers';
 Controllers.propTypes = {
   hardMode: PropTypes.bool,
   hardModeAction: PropTypes.func.isRequired,

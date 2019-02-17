@@ -20,13 +20,13 @@ export const initialState = {
   bestScore: 0,
   hardMode: false,
   history: [],
-  welcomeWall: [2, 4, 8, 16, 4096, 0, 0, 32, 2048, 0, 0, 64, 1024, 512, 256, 128, ],
   maxBlock: 2048,
   moveError: false,
   rollback: 2,
   score: 0,
   status: PLAYING,
   wall: [],
+  welcomeWall: [2, 4, 8, 16, 4096, 0, 0, 32, 2048, 0, 0, 64, 1024, 512, 256, 128, ],
 };
 
 const initialize = () => ({

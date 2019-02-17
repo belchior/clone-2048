@@ -1,38 +1,44 @@
 import React from 'react';
-import ShallowRenderer from 'react-test-renderer/shallow';
 import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
+
 import { Welcome } from './index';
 
-const renderer = new ShallowRenderer();
+const setup = (props = {}) => {
+  const requiredProps = {
+    button: { text: '', handleAction: () => {} },
+    hardMode: false,
+    wall: [],
+    ...props,
+  };
+  return shallow(<Welcome {...requiredProps} />);
+};
 
 it('Welcome should render with an empty list without crashing', () => {
   const props = {
     wall: [],
-    button: { text: '', action: () => {}},
+    button: { text: '', handleAction: () => {}},
   };
-  const tree = renderer.render(<Welcome {...props} />);
-
-  expect(tree).toMatchSnapshot();
+  const renderComponent = () => setup(props);
+  expect(renderComponent).not.toThrow();
 });
 
 it('Welcome should render with a list without crashing', () => {
   const props = {
     wall: [2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    button: { text: 'Action', action: () => {}},
+    button: { text: 'Action', handleAction: () => {}},
   };
-  const tree = renderer.render(<Welcome {...props} />);
-
-  expect(tree).toMatchSnapshot();
+  const wrapper = setup(props);
+  expect(toJson(wrapper)).toMatchSnapshot();
 });
 
 it('WelcomeAction button when clicked should call buttonAction callback', () => {
   const buttonAction = jest.fn();
   const props = {
     wall: [],
-    button: { text: 'Action', action: buttonAction},
+    button: { text: 'Action', handleAction: buttonAction},
   };
-  const component = shallow(<Welcome {...props} />);
-  component.find('.WelcomeAction').simulate('click');
-
+  const wrapper = setup(props);
+  wrapper.find('.WelcomeAction').simulate('click');
   expect(buttonAction.mock.calls).toHaveLength(1);
 });
