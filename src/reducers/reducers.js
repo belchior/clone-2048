@@ -12,7 +12,7 @@ import {
   SAVE,
   START,
   TOGGLE_HARDMODE,
-  WELCOME
+  WELCOME,
 } from './actions/types';
 
 
@@ -34,53 +34,9 @@ const initialize = () => ({
   status: WELCOME,
 });
 
-export const reducer = (state = initialize(), action) => {
-  switch (action.type) {
-    case LOAD: return load(state);
-    case MOVIMENT: return moviment(state, action.payload);
-    case MOVE_ERROR: return moveError(state, action.payload);
-    case PLAYER_LOSE: return playerLose(state);
-    case PLAYER_WON: return playerWon(state);
-    case RESTART: return restart(state);
-    case ROLLBACK: return rollback(state);
-    case SAVE: return save(state);
-    case START: return start(state);
-    case TOGGLE_HARDMODE: return toggleHardMode(state);
-    default: return state;
-  }
-};
-
-
 const load = state => ({
   ...loadState(),
   ...state,
-});
-
-const moviment = (state, newState) => {
-  return pipe(
-    setBestScore,
-    addHistory(state),
-  )(newState);
-};
-
-const addHistory = state => newState => {
-  const lastWall = last(state.history);
-  return {
-    ...newState,
-    history: lastWall ? [ lastWall, state.wall ] : [ state.wall ],
-  };
-};
-
-const save = state => {
-  saveState(state);
-  return state;
-};
-
-const start = state => ({
-  ...state,
-  history: [],
-  wall: raffle(raffle(Array(16).fill(0))),
-  status: PLAYING,
 });
 
 const setBestScore = state => ({
@@ -90,10 +46,35 @@ const setBestScore = state => ({
     : state.bestScore,
 });
 
+const addHistory = state => (newState) => {
+  const lastWall = last(state.history);
+  return {
+    ...newState,
+    history: lastWall ? [ lastWall, state.wall, ] : [ state.wall, ],
+  };
+};
+
+const moviment = (state, newState) => pipe(
+  setBestScore,
+  addHistory(state),
+)(newState);
+
+const save = (state) => {
+  saveState(state);
+  return state;
+};
+
+const start = state => ({
+  ...state,
+  history: [],
+  status: PLAYING,
+  wall: raffle(raffle(Array(16).fill(0))),
+});
+
 
 const moveError = (state, error) => ({
   ...state,
-  moveError: error
+  moveError: error,
 });
 
 
@@ -112,21 +93,37 @@ const restart = state => ({
   ...initialState,
   bestScore: state.bestScore,
   history: [],
-  wall: raffle(raffle(Array(16).fill(0))),
   status: PLAYING,
+  wall: raffle(raffle(Array(16).fill(0))),
 });
 
-const rollback = state => {
-  if (state.history.length <= 0 || state.rollback <= 0 ) return state;
+const rollback = (state) => {
+  if (state.history.length <= 0 || state.rollback <= 0) return state;
   return {
     ...state,
+    history: tail(reverse(state.history)),
     rollback: Math.max(state.rollback - 1, 0),
     wall: last(state.history),
-    history: tail(reverse(state.history)),
   };
 };
 
 const toggleHardMode = state => ({
   ...state,
-  hardMode: !state.hardMode
+  hardMode: !state.hardMode,
 });
+
+export const reducer = (state = initialize(), action) => {
+  switch (action.type) {
+    case LOAD: return load(state);
+    case MOVIMENT: return moviment(state, action.payload);
+    case MOVE_ERROR: return moveError(state, action.payload);
+    case PLAYER_LOSE: return playerLose(state);
+    case PLAYER_WON: return playerWon(state);
+    case RESTART: return restart(state);
+    case ROLLBACK: return rollback(state);
+    case SAVE: return save(state);
+    case START: return start(state);
+    case TOGGLE_HARDMODE: return toggleHardMode(state);
+    default: return state;
+  }
+};
