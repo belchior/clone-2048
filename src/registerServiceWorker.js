@@ -62,9 +62,8 @@ export default function register() {
 }
 
 function registerValidSW(swUrl) {
-  navigator.serviceWorker.
-    register(swUrl).
-    then((registration) => {
+  navigator.serviceWorker.register(swUrl)
+    .then((registration) => {
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
         installingWorker.onstatechange = () => {
@@ -90,10 +89,8 @@ function registerValidSW(swUrl) {
           }
         };
       };
-    }).
-    catch((error) => {
-      console.error('Error during service worker registration:', error);
-    });
+    })
+    .catch(error => console.error('Error during service worker registration:', error));
 }
 
 function checkValidServiceWorker(swUrl) {
