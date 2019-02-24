@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`store should match propertys 1`] = `
+Object {
+  "dispatch": Any<Function>,
+  "getState": Any<Function>,
+  "replaceReducer": Any<Function>,
+  "subscribe": Any<Function>,
+  Symbol(observable): [Function],
+}
+`;

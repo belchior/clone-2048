@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import './Modal.css';
 import clone2048 from '../../static/images/clone-2048.svg';
-import { Score } from '../Score';
-import { Wall } from '../Wall';
+import { Score, } from '../Score';
+import { Wall, } from '../Wall';
 
 export function Modal(props) {
-  const { bestScore, button, hardMode, score, title, wall } = props;
+  const { bestScore, button, hardMode, score, title, wall, } = props;
   return (
     <section className="Modal">
       <Wall hardMode={hardMode} wall={wall} />
@@ -30,8 +30,8 @@ export function Modal(props) {
 Modal.propTypes = {
   bestScore: PropTypes.number.isRequired,
   button: PropTypes.shape({
-    text: PropTypes.string.isRequired,
     handleAction: PropTypes.func.isRequired,
+    text: PropTypes.string.isRequired,
   }).isRequired,
   hardMode: PropTypes.bool,
   score: PropTypes.number.isRequired,

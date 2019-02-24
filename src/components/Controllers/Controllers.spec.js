@@ -1,8 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import { Controllers } from './Controllers';
+import { Controllers, } from './Controllers';
 
 
 const setup = (props = {}) => {
@@ -27,7 +27,7 @@ it('should render Controllers with buttons disabled without crashing', () => {
 });
 
 it('should render Controllers with buttons enabled without crashing', () => {
-  const props = { status: 'PLAYING' };
+  const props = { status: 'PLAYING', };
   const wrapper = setup(props);
   expect(toJson(wrapper.find('button'))).toMatchSnapshot();
 });
@@ -62,28 +62,3 @@ describe('when clicked on', () => {
     expect(props.restartAction.mock.calls).toHaveLength(1);
   });
 });
-
-// describe('when Controllers button are disabled and clicked on', () => {
-//   it('rollback button rollbackAction should not be called', () => {
-//     const props = {
-//       rollback: 2,
-//       rollbackAction: jest.fn(),
-//       status: 'WELCOME',
-//     };
-//     const wrapper = setup(props);
-//     wrapper.find('.controls-btn_back').simulate('click');
-//     expect(props.rollbackAction).not.toHaveBeenCalled();
-//   });
-//
-//   it('restart button, the restartAction should not be called', () => {
-//     const props = {
-//       restartAction: jest.fn(),
-//       rollback: 2,
-//       status: 'WELCOME',
-//     };
-//     const wrapper = setup(props);
-//     console.warn(wrapper.find('.controls-btn_restart').debug());
-//     // wrapper.find('.controls-btn_restart').simulate('click');
-//     expect(props.restartAction).not.toHaveBeenCalled();
-//   });
-// });

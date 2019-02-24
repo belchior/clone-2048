@@ -1,8 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import { Wall } from './Wall';
+import { Wall, } from './Wall';
 
 
 const setup = (props = {}) => {
@@ -21,25 +21,25 @@ it('should render Wall without crashing', () => {
 });
 
 it('should render Wall with 2 Blocks', () => {
-  const props = { wall: [2,4] };
+  const props = { wall: [ 2, 4, ], };
   const wrapper = setup(props);
   expect(toJson(wrapper)).toMatchSnapshot();
 });
 
 it('should render Wall adding the className hardMode', () => {
-  const props = { wall: [2,4], hardMode: true };
+  const props = { hardMode: true, wall: [ 2, 4, ], };
   const wrapper = setup(props);
   expect(toJson(wrapper)).toMatchSnapshot();
 });
 
 it('should render Wall adding the className moveError', () => {
-  const props = { wall: [2,4], moveError: true };
+  const props = { moveError: true, wall: [ 2, 4, ], };
   const wrapper = setup(props);
   expect(toJson(wrapper)).toMatchSnapshot();
 });
 
 it('should render Wall adding the className hardMode moveError separeted by space', () => {
-  const props = { wall: [2,4], hardMode: true, moveError: true };
+  const props = { hardMode: true, moveError: true, wall: [ 2, 4, ], };
   const wrapper = setup(props);
   expect(toJson(wrapper)).toMatchSnapshot();
 });

@@ -1,34 +1,62 @@
-import React, { Component } from 'react';
+import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 
 import './App.css';
-import { Keyboard } from '../keyboard/Keyboard';
+import { Keyboard, } from '../keyboard/Keyboard';
 import Sidebar from '../Sidebar';
 import Wall from '../Wall';
 import Welcome from '../Welcome';
-import { Modal } from '../Modal';
-import { PLAYER_LOSE, PLAYER_WON, PLAYING, WELCOME } from '../../reducers/actions/types';
+import { Modal, } from '../Modal';
+import { PLAYER_LOSE, PLAYER_WON, PLAYING, WELCOME, } from '../../reducers/actions/types';
 
 export class App extends Component {
-  renderWelcome() {
+  renderModal(title, button) {
+    const { bestScore, hardMode, score, welcomeWall, } = this.props;
+    const modalProps = {
+      bestScore,
+      button,
+      hardMode,
+      score,
+      title,
+      wall: welcomeWall,
+    };
+
     return (
       <div className="App no-select">
         <Sidebar />
         <main className="main">
-          <Welcome />
+          <Modal {...modalProps} />
         </main>
       </div>
     );
   }
 
+  renderModalLose() {
+    const { restartAction, } = this.props;
+    const button = {
+      handleAction: restartAction,
+      text: 'Try Again',
+    };
+    return this.renderModal('You Lose', button);
+  }
+
+  renderModalWon() {
+    const { restartAction, } = this.props;
+    const button = {
+      handleAction: restartAction,
+      text: 'Try Again',
+    };
+    return this.renderModal('You Won', button);
+  }
+
   renderWall() {
-    const { moveTo } = this.props;
+    const { moveTo, } = this.props;
     const moveToDirection = moveTo(this.props);
     const shortcuts = [
-      {shortcut: 'arrow-down', action: moveToDirection('bottom')},
-      {shortcut: 'arrow-left', action: moveToDirection('left')},
-      {shortcut: 'arrow-right', action: moveToDirection('right')},
-      {shortcut: 'arrow-up', action: moveToDirection('top')},
+      { action: moveToDirection('bottom'), shortcut: 'arrow-down', },
+      { action: moveToDirection('left'), shortcut: 'arrow-left', },
+      { action: moveToDirection('right'), shortcut: 'arrow-right', },
+      { action: moveToDirection('top'), shortcut: 'arrow-up', },
     ];
 
     return (
@@ -46,47 +74,20 @@ export class App extends Component {
     );
   }
 
-  renderModalLose() {
-    const { restartAction } = this.props;
-    const button = {
-      text: 'Try Again',
-      handleAction: restartAction,
-    };
-    return this.renderModal('You Lose', button);
-  }
-
-  renderModalWon() {
-    const { restartAction } = this.props;
-    const button = {
-      text: 'Try Again',
-      handleAction: restartAction,
-    };
-    return this.renderModal('You Won', button);
-  }
-
-  renderModal(title, button) {
-    const { bestScore, hardMode, score, welcomeWall } = this.props;
-    const modalProps = {
-      bestScore,
-      button: button,
-      hardMode,
-      score,
-      title: title,
-      wall: welcomeWall,
-    };
-
+  /* eslint class-methods-use-this: off */
+  renderWelcome() {
     return (
       <div className="App no-select">
         <Sidebar />
         <main className="main">
-          <Modal {...modalProps} />
+          <Welcome />
         </main>
       </div>
     );
   }
 
   render() {
-    const { status } = this.props;
+    const { status, } = this.props;
     switch (status) {
       case WELCOME: return this.renderWelcome();
       case PLAYING: return this.renderWall();

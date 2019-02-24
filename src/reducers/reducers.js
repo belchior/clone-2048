@@ -15,7 +15,6 @@ import {
   WELCOME,
 } from './actions/types';
 
-
 export const initialState = {
   bestScore: 0,
   hardMode: false,

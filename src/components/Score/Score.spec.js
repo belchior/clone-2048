@@ -1,7 +1,7 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, } from 'enzyme';
 
-import { Score } from './Score';
+import { Score, } from './Score';
 
 const setup = (props = {}) => {
   const requiredProps = {
@@ -13,7 +13,7 @@ const setup = (props = {}) => {
 };
 
 it('Score should render without crashing', () => {
-  const props = { best: 2000, current: 1024 };
+  const props = { best: 2000, current: 1024, };
   const renderComponent = () => setup(props);
   expect(renderComponent).not.toThrow();
 });

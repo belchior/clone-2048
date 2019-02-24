@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './ButtonToggle.css';
 
-export function ButtonToggle({onClick, active = false, label = '', title = label}) {
+export function ButtonToggle({ onClick, active = false, label = '', title = label, }) {
   return (
     <label className="btn-toggle-label" htmlFor="toggleButton">
       <button

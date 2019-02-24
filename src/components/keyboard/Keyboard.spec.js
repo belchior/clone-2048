@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { shallow } from 'enzyme';
+import React, { Component, } from 'react';
+import { shallow, } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import { Keyboard } from './Keyboard';
+import { Keyboard, } from './Keyboard';
 
 
 const setup = (props = {}, children) => {
   const requiredProps = {
     shortcuts: {
+      action: () => {},
       shortcut: '',
-      action: () => {}
     },
     ...props,
   };
@@ -28,9 +28,7 @@ it('Keyboard should be extended from React Component', () => {
 
 it('Keyboard should render without crashing', () => {
   const props = {
-    shortcuts: [
-      { shortcut: 'ctrl+d', action: () => {} },
-    ],
+    shortcuts: [ { action: () => {}, shortcut: 'ctrl+d', }, ],
   };
   const children = <div className="test">test</div>;
   const wrapper = setup(props, children);

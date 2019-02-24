@@ -1,21 +1,21 @@
-import { connect } from 'react-redux';
+import { connect, } from 'react-redux';
 
-import { Controllers } from './Controllers';
-import { ROLLBACK, RESTART, TOGGLE_HARDMODE } from '../../reducers/actions/types';
+import { Controllers, } from './Controllers';
+import { ROLLBACK, RESTART, TOGGLE_HARDMODE, } from '../../reducers/actions/types';
 
 export const mapStateToProps = (state) => {
   return {
-    rollback: state.rollback,
     hardMode: state.hardMode,
+    rollback: state.rollback,
     status: state.status,
   };
 };
 
 export const mapDispatchToProps = (dispatch) => {
   return {
-    rollbackAction: () => dispatch({type: ROLLBACK}),
-    restartAction: () => dispatch({type: RESTART}),
-    hardModeAction: () => dispatch({type: TOGGLE_HARDMODE}),
+    hardModeAction: () => dispatch({ type: TOGGLE_HARDMODE, }),
+    restartAction: () => dispatch({ type: RESTART, }),
+    rollbackAction: () => dispatch({ type: ROLLBACK, }),
   };
 };
 

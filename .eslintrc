@@ -25,8 +25,19 @@
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "curly": ["error", "multi-line"],
     "func-style": "off",
+    "object-property-newline": "off",
+    "no-undefined": "off",
+    "no-negated-condition": "off",
+    "arrow-body-style": "off",
     "one-var": "off",
+    "dot-location": "off",
+    "consistent-return": "off",
+    "max-statements": "off",
+    "no-empty-function": "off",
+    "max-lines-per-function": "off",
+    "no-extra-parens": "off",
     "id-length": "off",
+    "no-use-before-define": "off",
     "no-ternary": "off",
     "multiline-ternary": "off",
     "capitalized-comments": "off",
@@ -38,22 +49,14 @@
     "sort-imports": "off",
     "array-element-newline": "off",
     "padded-blocks": "off",
-    "no-use-before-define": ["error", { "functions": false }],
     "space-before-function-paren": [
       "error",
-      {
-        "anonymous": "always",
-        "named": "never",
-        "asyncArrow": "always"
-      }
+      { "anonymous": "always", "named": "never", "asyncArrow": "always" }
     ],
-    "comma-dangle": ["error", {
-      "arrays": "always",
-      "objects": "always",
-      "imports": "always",
-      "exports": "always",
-      "functions": "ignore"
-    }],
+    "comma-dangle": [
+      "error",
+      { "arrays": "always", "objects": "always", "imports": "always", "exports": "always", "functions": "ignore" }
+    ],
     "function-paren-newline": "off",
     "react/no-set-state": "off",
     "react/jsx-indent": [2, 2],

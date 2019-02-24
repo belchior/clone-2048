@@ -1,4 +1,4 @@
-import { mapStateToProps, mapDispatchToProps } from './index';
+import { mapStateToProps, mapDispatchToProps, } from './index';
 
 describe('mapStateToProps', () => {
   it('should be a function', () => {
@@ -6,33 +6,26 @@ describe('mapStateToProps', () => {
   });
 
   it('should return an Object', () => {
-    const state = { hardMode: false };
+    const state = { bestScore: 0, score: 0, };
     const props = mapStateToProps(state);
     expect(typeof props === 'object').toBe(true);
   });
 
-  it('should return an object that contains the hardMode key', () => {
-    const state = { hardMode: false };
+  it('should return an object that contains the score key', () => {
+    const state = { bestScore: 0, score: 0, };
     const props = mapStateToProps(state);
-    expect(props).toHaveProperty('hardMode', false);
+    expect(typeof props.score === 'number').toBe(true);
   });
 
-  it('should return an object that contains the moveError key', () => {
-    const state = { moveError: false };
+  it('should return an object that contains the bestScore key', () => {
+    const state = { bestScore: 0, score: 0, };
     const props = mapStateToProps(state);
-    expect(props).toHaveProperty('moveError', false);
-  });
-
-  it('should return an object that contains the wall key', () => {
-    const state = { wall: [] };
-    const props = mapStateToProps(state);
-    expect(props).toHaveProperty('wall');
-    expect(Array.isArray(props.wall)).toBe(true);
+    expect(typeof props.bestScore === 'number').toBe(true);
   });
 });
 
 describe('mapDispatchToProps', () => {
-  let dispatch;
+  let dispatch = null;
 
   beforeEach(() => {
     dispatch = jest.fn();
@@ -46,5 +39,4 @@ describe('mapDispatchToProps', () => {
     const props = mapDispatchToProps(dispatch);
     expect(typeof props === 'object').toBe(true);
   });
-
 });

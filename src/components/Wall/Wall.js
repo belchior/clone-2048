@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Block } from '../Block';
+import { Block, } from '../Block';
 import './Wall.css';
 
 export function Wall(props) {
-  const { hardMode, moveError, wall } = props;
-  const className = 'Wall ' + (hardMode ? 'hardMode ' : '') + (moveError ? 'moveError ' : '');
+  const { hardMode, moveError, wall, } = props;
+  const className = `Wall ${hardMode ? 'hardMode ' : ''}${moveError ? 'moveError ' : ''}`;
   return (
     <div className={className}>
       {

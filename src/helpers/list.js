@@ -10,7 +10,9 @@ export const contains = item => list => list.indexOf(item) >= 0;
  * countOf :: a -> [a] -> [a]
  */
 export const countOf = value => list => list.reduce(
-  (acc, num) => (num === value ? acc += 1 : acc),
+  (acc, num) => {
+    return num === value ? acc + 1 : acc;
+  },
   0,
 );
 
@@ -21,8 +23,10 @@ export const countOf = value => list => list.reduce(
 export const equals = listA => (listB) => {
   if (listA.length !== listB.length) return false;
   return listA.reduce(
-    (acc, _, index) => (acc === true && listA[index] === listB[index]),
-    true
+    (acc, _, index) => {
+      return acc === true && listA[index] === listB[index];
+    },
+    true,
   );
 };
 
@@ -36,20 +40,26 @@ export const flatten = list => list.reduce((newList, item) => [].concat(newList,
 /**
  * head :: [a] -> a
  */
-export const head = list => (!isEmpty(list) ? list[0] : undefined);
+export const head = (list) => {
+  return !isEmpty(list) ? list[0] : undefined;
+};
 
 
 /**
  * isEmpty :: [a] -> Boolean
  */
-export const isEmpty = list => Array.isArray(list) && list.length === 0;
+export function isEmpty(list) {
+  return Array.isArray(list) && list.length === 0;
+}
 
 
 /**
  * indexesOf :: a -> [a] -> [a]
  */
 export const indexesOf = value => list => list.reduce(
-  (arr, num, index) => (num === value ? arr.concat(index) : arr),
+  (arr, num, index) => {
+    return num === value ? arr.concat(index) : arr;
+  },
   [],
 );
 
@@ -169,11 +179,11 @@ export function tail(list) {
  */
 export function toSquareMatrix(list) {
   return list.reduce(
-    (newList, _, index) => (
-      index % 4 === 0
+    (newList, _, index) => {
+      return index % 4 === 0
         ? [ ...newList, list.slice(index, index + 4), ]
-        : newList
-    ),
+        : newList;
+    },
     []
   );
 }

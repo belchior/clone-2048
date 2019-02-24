@@ -1,9 +1,9 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import { loadState, saveState } from './localState';
-import { reducer } from './reducers';
+import { createStore, applyMiddleware, compose, } from 'redux';
+import { loadState, saveState, } from './localState';
+import { reducer, } from './reducers';
 
 
-const saveStateMiddleware = ({ getState }) => (next) => (action) => {
+const saveStateMiddleware = ({ getState, }) => next => (action) => {
   saveState(getState());
   return next(action);
 };

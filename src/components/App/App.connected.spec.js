@@ -1,5 +1,5 @@
-import { mapStateToProps } from './index';
-import { initialState } from '../../reducers';
+import { mapStateToProps, } from './index';
+import { initialState, } from '../../reducers';
 
 it('mapStateToProps should be a function', () => {
   expect(typeof mapStateToProps === 'function').toBe(true);

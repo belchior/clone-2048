@@ -24,14 +24,15 @@ import {
 
 
 /**
-  move :: (Function a, Object b, String c) => a -> b -> c -> undefined
-*/
+ * move :: (Function a, Object b, String c) => a -> b -> c -> undefined
+ */
 export const moveTo = dispatch => state => direction => () => {
   if (state.status !== PLAYING) return;
 
+  /* eslint consistent-return:off */
   if (playerLose(state)) return dispatch(actionPlayerLose());
 
-  const newState = { ...state };
+  const newState = { ...state, };
   newState.wall = moveToDirection(direction)(state.wall);
 
   if (equals(state.wall)(newState.wall)) return moveError(dispatch);
@@ -46,27 +47,27 @@ export const moveTo = dispatch => state => direction => () => {
 
 
 /**
-  calculateScore :: (String a, Number b) => a -> [b] -> b
-*/
-const calculateScore = direction => list => {
+ * calculateScore :: (String a, Number b) => a -> [b] -> b
+ */
+const calculateScore = direction => (list) => {
   const pairsList = pairsFromDirection(direction)(list);
   return pairsList.reduce((score, pair) => score + pair[0] + pair[1], 0);
 };
 
 
 /**
-  move :: undefined -> undefined
-*/
-const moveError = dispatch => {
+ * move :: undefined -> undefined
+ */
+const moveError = (dispatch) => {
   dispatch(actionMoveError(true));
   setTimeout(() => dispatch(actionMoveError(false)), 300);
 };
 
 
 /**
-  moveTo :: (String a, Number b) => a -> [b] -> Boolean
-*/
-const moveToDirection = direction => wall => {
+ * moveTo :: (String a, Number b) => a -> [b] -> Boolean
+ */
+const moveToDirection = direction => (wall) => {
   switch (direction) {
     case 'bottom': return moveToBottom(wall);
     case 'left': return moveToLeft(wall);
@@ -78,9 +79,9 @@ const moveToDirection = direction => wall => {
 
 
 /**
-  moveToBottom :: (Number a) => [a] -> [a]
-*/
-const moveToBottom = wall => {
+ * moveToBottom :: (Number a) => [a] -> [a]
+ */
+const moveToBottom = (wall) => {
   return pipe(
     toSquareMatrix,
     transpose,
@@ -94,9 +95,9 @@ const moveToBottom = wall => {
 
 
 /**
-  moveToLeft :: (Number a) => [a] -> [a]
-*/
-const moveToLeft = wall => {
+ * moveToLeft :: (Number a) => [a] -> [a]
+ */
+const moveToLeft = (wall) => {
   return pipe(
     toSquareMatrix,
     matrix => matrix.map(removeFalsy),
@@ -108,9 +109,9 @@ const moveToLeft = wall => {
 
 
 /**
-  moveToRight :: (Number a) => [a] -> [a]
-*/
-const moveToRight = wall => {
+ * moveToRight :: (Number a) => [a] -> [a]
+ */
+const moveToRight = (wall) => {
   return pipe(
     toSquareMatrix,
     matrix => matrix.map(removeFalsy),
@@ -122,9 +123,9 @@ const moveToRight = wall => {
 
 
 /**
-  moveToTop :: (Number a) => [a] -> [a]
-*/
-const moveToTop = wall => {
+ * moveToTop :: (Number a) => [a] -> [a]
+ */
+const moveToTop = (wall) => {
   return pipe(
     toSquareMatrix,
     transpose,
@@ -138,10 +139,10 @@ const moveToTop = wall => {
 
 
 /**
-  pairsFromDirection :: (String a, Number b, Array c) => a -> [b] -> [c]
-*/
-const pairsFromDirection = direction => list => {
-  const matrix = contains(direction)(['top', 'bottom'])
+ * pairsFromDirection :: (String a, Number b, Array c) => a -> [b] -> [c]
+ */
+const pairsFromDirection = direction => (list) => {
+  const matrix = contains(direction)([ 'top', 'bottom', ])
     ? pipe(toSquareMatrix, transpose)(list)
     : toSquareMatrix(list);
 
@@ -154,9 +155,9 @@ const pairsFromDirection = direction => list => {
 
 
 /**
-  playerLose :: (String a, Object b) => a -> b -> Boolean
-*/
-const playerLose = state => {
+ * playerLose :: (String a, Object b) => a -> b -> Boolean
+ */
+const playerLose = (state) => {
   const pairsVertical = pairsFromDirection('top')(state.wall);
   const pairsHorizontal = pairsFromDirection('right')(state.wall);
   return (
@@ -172,18 +173,18 @@ const playerLose = state => {
 
 
 /**
-  playerWon :: (Number a) => a -> [a] -> Boolean
-*/
+ * playerWon :: (Number a) => a -> [a] -> Boolean
+ */
 const playerWon = maxBlock => wall => contains(maxBlock)(wall);
 
 
 /**
-  zerosToLeft :: (Number a) => [a] -> [a]
-*/
+ * zerosToLeft :: (Number a) => [a] -> [a]
+ */
 const zerosToLeft = padStart(4)(0);
 
 
 /**
-  zerosToRight :: (Number a) => [a] -> [a]
-*/
+ * zerosToRight :: (Number a) => [a] -> [a]
+ */
 const zerosToRight = padEnd(4)(0);

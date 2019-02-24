@@ -5,7 +5,7 @@ it('The types file should have 13 actions', () => {
 });
 
 
-describe('The Action types' , () => {
+describe('The Action types', () => {
   it('LOAD should be defined', () => {
     expect(actionType.LOAD).toBe('LOAD');
   });
@@ -53,5 +53,4 @@ describe('The Action types' , () => {
   it('WELCOME should be defined', () => {
     expect(actionType.WELCOME).toBe('WELCOME');
   });
-
 });

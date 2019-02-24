@@ -1,14 +1,14 @@
-import { parseShortcut } from './parseShortcut';
+import { parseShortcut, } from './parseShortcut';
 
 test('parseShortcut should be a function', () => {
   expect(typeof parseShortcut).toBe('function');
 });
 
 test('parseShortcut should throw an Error when type of param is different from string', () => {
-  expect(() => parseShortcut(undefined)).toThrow()
-  expect(() => parseShortcut(null)).toThrow()
-  expect(() => parseShortcut(123)).toThrow()
-  expect(() => parseShortcut({})).toThrow()
+  expect(() => parseShortcut(undefined)).toThrow();
+  expect(() => parseShortcut(null)).toThrow();
+  expect(() => parseShortcut(123)).toThrow();
+  expect(() => parseShortcut({})).toThrow();
 });
 
 test('parseShortcut should match alt key', () => {

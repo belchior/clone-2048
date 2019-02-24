@@ -6,14 +6,14 @@ it('Contains function should be exported by list file', () => {
 
 it('Contains should return the boolean true when the item is found into the list', () => {
   const item = 51;
-  const list = [2, 51, 1];
+  const list = [ 2, 51, 1, ];
 
   expect(L.contains(item)(list)).toBeTruthy();
 });
 
 it('Contains should return the boolean false when the item is not found into the list', () => {
   const item = 42;
-  const list = [2, 51, 1];
+  const list = [ 2, 51, 1, ];
 
   expect(L.contains(item)(list)).toBeFalsy();
 });
@@ -24,7 +24,7 @@ it('CountOf function should be exported by list file', () => {
 });
 
 it('CountOf should return the number of value inside the list', () => {
-  const list = [10, 20, 30, 40];
+  const list = [ 10, 20, 30, 40, ];
   expect(L.countOf(30)(list)).toBe(1);
   expect(L.countOf(31)(list)).toBe(0);
 });
@@ -35,22 +35,22 @@ it('Equals function should be exported by list file', () => {
 });
 
 it('Equals should return Boolean true when the lists has the same items', () => {
-  const listA = [1, 2, 3];
-  const listB = [1, 2, 3];
+  const listA = [ 1, 2, 3, ];
+  const listB = [ 1, 2, 3, ];
 
   expect(L.equals(listA)(listB)).toBe(true);
 });
 
 it('Equals should return Boolean false when the lists don\'t has the same items', () => {
-  const listA = [1, 2, 3];
-  const listB = [4, 5, 6];
+  const listA = [ 1, 2, 3, ];
+  const listB = [ 4, 5, 6, ];
 
   expect(L.equals(listA)(listB)).toBe(false);
 });
 
 it('Equals should return Boolean false when the lists have diferent length', () => {
-  const listA = [1, 2];
-  const listB = [4, 5, 6, 7];
+  const listA = [ 1, 2, ];
+  const listB = [ 4, 5, 6, 7, ];
 
   expect(L.equals(listA)(listB)).toBe(false);
 });
@@ -61,11 +61,11 @@ it('Flatten function should be exported by list file', () => {
 });
 
 it('Flatten function should flatten one level deep the passed list', () => {
-  const oneLevelDeep = [ [1,2], [3,4] ];
-  const twoLevelDeep = [ [[1]], [[2,3]], 4 ];
+  const oneLevelDeep = [ [ 1, 2, ], [ 3, 4, ], ];
+  const twoLevelDeep = [ [ [ 1, ], ], [ [ 2, 3, ], ], 4, ];
 
-  expect(L.flatten(oneLevelDeep)).toEqual([1,2,3,4]);
-  expect(L.flatten(twoLevelDeep)).toEqual([ [1], [2,3], 4]);
+  expect(L.flatten(oneLevelDeep)).toEqual([ 1, 2, 3, 4, ]);
+  expect(L.flatten(twoLevelDeep)).toEqual([ [ 1, ], [ 2, 3, ], 4, ]);
 });
 
 
@@ -79,7 +79,7 @@ it('Head function should return undefined when passed an empty list', () => {
 });
 
 it('Head function should return the first item of a list', () => {
-  const list = [4,3,2,1];
+  const list = [ 4, 3, 2, 1, ];
   expect(L.head(list)).toBe(4);
 });
 
@@ -90,7 +90,7 @@ it('IsEmpty function should be exported by list file', () => {
 
 it('IsEmpty function should return Boolean true when passed an empty list, false otherwise', () => {
   const emptyList = [];
-  const list = [1,2,3];
+  const list = [ 1, 2, 3, ];
 
   expect(L.isEmpty(emptyList)).toBeTruthy();
   expect(L.isEmpty(list)).toBeFalsy();
@@ -111,7 +111,7 @@ it('IndexesOf function should return an empty list when passed an empty list', (
 it('IndexesOf function should return an empty list when the list does not contains the specified value', () => {
   const value = 23;
   const emptyList = [];
-  const list = [1,2,3,4];
+  const list = [ 1, 2, 3, 4, ];
 
   expect(L.indexesOf(value)(list)).toEqual(emptyList);
 });
@@ -151,7 +151,7 @@ it('Raffle function should return an empty list when there is no item in the pas
 });
 
 it('Raffle function should return a list with one number raffled', () => {
-  const list = [0,0,0,0];
+  const list = [ 0, 0, 0, 0, ];
   const raffled = L.raffle(list).filter(num => num > 0);
   expect(raffled).toHaveLength(1);
 });
@@ -175,15 +175,15 @@ it('SumEquals function should be exported by list file', () => {
 });
 
 it('SumEquals function should return the same list when there is no equal sibilings', () => {
-  expect(L.sumEquals([1])).toEqual([1]);
-  expect(L.sumEquals([1,2,3,4])).toEqual([1,2,3,4]);
+  expect(L.sumEquals([ 1, ])).toEqual([ 1, ]);
+  expect(L.sumEquals([ 1, 2, 3, 4, ])).toEqual([ 1, 2, 3, 4, ]);
 });
 
 it('SumEquals function should sum the sibilings that are equals fron left to right', () => {
-  expect(L.sumEquals([1,1,1,1])).toEqual([2,2]);
-  expect(L.sumEquals([1,1,1,2])).toEqual([2,1,2]);
-  expect(L.sumEquals([1,1,2,2])).toEqual([2,4]);
-  expect(L.sumEquals([1,2,2,2])).toEqual([1,4,2]);
+  expect(L.sumEquals([ 1, 1, 1, 1, ])).toEqual([ 2, 2, ]);
+  expect(L.sumEquals([ 1, 1, 1, 2, ])).toEqual([ 2, 1, 2, ]);
+  expect(L.sumEquals([ 1, 1, 2, 2, ])).toEqual([ 2, 4, ]);
+  expect(L.sumEquals([ 1, 2, 2, 2, ])).toEqual([ 1, 4, 2, ]);
 });
 
 
@@ -192,15 +192,15 @@ it('SumEqualsRight function should be exported by list file', () => {
 });
 
 it('SumEqualsRight function should return the same list when there is no equal sibilings', () => {
-  expect(L.sumEquals([1])).toEqual([1]);
-  expect(L.sumEquals([1,2,3,4])).toEqual([1,2,3,4]);
+  expect(L.sumEquals([ 1, ])).toEqual([ 1, ]);
+  expect(L.sumEquals([ 1, 2, 3, 4, ])).toEqual([ 1, 2, 3, 4, ]);
 });
 
 it('SumEqualsRight function should sum the sibilings that are equals fron right to left', () => {
-  expect(L.sumEqualsRight([1,1,1,1])).toEqual([2,2]);
-  expect(L.sumEqualsRight([1,1,1,2])).toEqual([1,2,2]);
-  expect(L.sumEqualsRight([1,1,2,2])).toEqual([2,4]);
-  expect(L.sumEqualsRight([1,2,2,2])).toEqual([1,2,4]);
+  expect(L.sumEqualsRight([ 1, 1, 1, 1, ])).toEqual([ 2, 2, ]);
+  expect(L.sumEqualsRight([ 1, 1, 1, 2, ])).toEqual([ 1, 2, 2, ]);
+  expect(L.sumEqualsRight([ 1, 1, 2, 2, ])).toEqual([ 2, 4, ]);
+  expect(L.sumEqualsRight([ 1, 2, 2, 2, ])).toEqual([ 1, 2, 4, ]);
 });
 
 

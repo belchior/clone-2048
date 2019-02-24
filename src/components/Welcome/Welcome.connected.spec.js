@@ -1,11 +1,11 @@
-import { mapStateToProps, mapDispatchToProps } from './index';
+import { mapStateToProps, mapDispatchToProps, } from './index';
 
 it('mapStateToProps should be a function', () => {
   expect(typeof mapStateToProps === 'function').toBe(true);
 });
 
 it('mapStateToProps should return an Object', () => {
-  const state = { hardMode: false, welcomeWall: [] };
+  const state = { hardMode: false, welcomeWall: [], };
   const props = mapStateToProps(state);
 
   expect(typeof props === 'object').toBe(true);
