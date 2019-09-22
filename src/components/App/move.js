@@ -29,7 +29,6 @@ import {
 export const moveTo = dispatch => state => direction => () => {
   if (state.status !== PLAYING) return;
 
-  /* eslint consistent-return:off */
   if (playerLose(state)) return dispatch(actionPlayerLose());
 
   const newState = { ...state, };

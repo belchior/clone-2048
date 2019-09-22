@@ -9,8 +9,14 @@
     "browser": true,
     "jest/globals": true
   },
-  "extends": ["eslint:all", "plugin:react/all", "plugin:jest/recommended"],
-  "plugins": ["react", "jest"],
+  "extends": [
+    "eslint:all",
+    "react-app",
+    "plugin:jest/recommended",
+  ],
+  "plugins": [
+    "jest"
+  ],
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 2017,
@@ -57,16 +63,7 @@
       "error",
       { "arrays": "always", "objects": "always", "imports": "always", "exports": "always", "functions": "ignore" }
     ],
-    "function-paren-newline": "off",
-    "react/no-set-state": "off",
-    "react/jsx-indent": [2, 2],
-    "react/jsx-filename-extension": "off",
-    "react/jsx-one-expression-per-line": "off",
-    "react/jsx-indent-props": [2, 2],
-    "react/jsx-max-props-per-line": "off",
-    "react/jsx-no-literals": "off",
-    "react/require-optimization": "off",
-    "react/jsx-max-depth": "off"
+    "function-paren-newline": "off"
   },
   "globals": {
     "process": true

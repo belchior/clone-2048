@@ -1,26 +1,41 @@
 
-import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const touchstart = (event) => {
-  console.log('touchstart client', event.changedTouches[0].clientX, event.changedTouches[0].clientY);
-  // console.log('touchstart screen', event.changedTouches[0].screenX, event.changedTouches[0].screenY);
+let start = null;
+let end = null;
+const tolerance = 30;
+
+const getCordinates = touchEvent => ({
+  x: touchEvent.clientX,
+  y: touchEvent.clientY,
+});
+
+const getMainDiretion = (posStart, posEnd) => {
+  const absX = Math.abs(posStart.x - posEnd.x);
+  const absY = Math.abs(posStart.y - posEnd.y);
+  if (Math.max(absX, absY) <= tolerance) return;
+  if (absX > absY) {
+    if (posStart.x < posEnd.x) return 'right';
+    return 'left';
+  }
+  if (posStart.y < posEnd.y) return 'bottom';
+  return 'top';
 };
-const touchend = (event) => {
-  console.log('touchend client', event.changedTouches[0].clientX, event.changedTouches[0].clientY);
-  // console.log('touchstart screen', event.changedTouches[0].screenX, event.changedTouches[0].screenY);
-};
+
 
 export function TouchEvent(props) {
-  document.body.removeEventListener('touchstart', touchstart);
-  document.body.removeEventListener('touchend', touchend);
-
-  document.body.addEventListener('touchstart', touchstart);
-  document.body.addEventListener('touchend', touchend);
+  const touchstart = (event) => {
+    start = getCordinates(event.changedTouches[0]);
+  };
+  const touchend = (event) => {
+    end = getCordinates(event.changedTouches[0]);
+    props.moveTo(getMainDiretion(start, end))();
+  };
+  document.body.ontouchstart = touchstart;
+  document.body.ontouchend = touchend;
   return props.children;
 }
-
-Touch.propTypes = {
-
+TouchEvent.propTypes = {
+  moveTo: PropTypes.func.isRequired,
 };
