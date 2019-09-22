@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render ModalLose without crashing 1`] = `
+<Modal
+  bestScore={0}
+  button={
+    Object {
+      "handleAction": [Function],
+      "text": "Try Again",
+    }
+  }
+  hardMode={false}
+  score={0}
+  title="You Lose"
+  wall={
+    Array [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+    ]
+  }
+/>
+`;
+
+exports[`App should render ModalWon without crashing 1`] = `
+<Modal
+  bestScore={0}
+  button={
+    Object {
+      "handleAction": [Function],
+      "text": "Try Again",
+    }
+  }
+  hardMode={false}
+  score={0}
+  title="You Won"
+  wall={
+    Array [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+    ]
+  }
+/>
+`;
+
+exports[`App should render Wall without crashing 1`] = `<Connect(Wall) />`;
+
+exports[`App should render Wall without crashing when status attribute is not defined 1`] = `<Connect(Wall) />`;
+
+exports[`App should render Welcome without crashing 1`] = `<Connect(Welcome) />`;

@@ -1,22 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Wall, } from '../Wall';
 import './Welcome.css';
-import { Wall } from '../Wall';
 
-export const Welcome = ({ button, hardMode, wall }) => (
-  <div className="Welcome">
-    <Wall wall={wall} hardMode={hardMode}></Wall>
-    <button type="button" className="WelcomeAction" onClick={button.action}>{button.text}</button>
-  </div>
-);
+export function Welcome(props) {
+  const { button, hardMode, wall, } = props;
+  return (
+    <div className="Welcome">
+      <Wall hardMode={hardMode} wall={wall} />
+      <button
+        className="WelcomeAction"
+        onClick={button.handleAction}
+        type="button"
+      >
+        {button.text}
+      </button>
+    </div>
+  );
+}
 
-Welcome.displayName = 'Welcome';
 Welcome.propTypes = {
-  hardMode: PropTypes.bool,
-  wall: PropTypes.array.isRequired,
   button: PropTypes.shape({
+    handleAction: PropTypes.func.isRequired,
     text: PropTypes.string.isRequired,
-    action: PropTypes.func.isRequired,
   }).isRequired,
+  hardMode: PropTypes.bool,
+  wall: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
+
+Welcome.defaultProps = {
+  hardMode: false,
 };

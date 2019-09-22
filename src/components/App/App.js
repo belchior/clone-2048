@@ -1,85 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 
-import './App.css';
-import { Keyboard } from '../keyboard/Keyboard';
+import { Keyboard, } from '../keyboard/Keyboard';
+import { PLAYER_LOSE, PLAYER_WON, PLAYING, WELCOME, } from '../../reducers/actions/types';
+import { TouchEvent, } from '../TouchEvent/TouchEvent';
 import Sidebar from '../Sidebar';
 import Wall from '../Wall';
 import Welcome from '../Welcome';
-import { Modal } from '../Modal';
-import { moveTo } from './move';
-import { restart as restartAction } from '../../reducers/actions/actions';
-import { PLAYER_LOSE, PLAYER_WON, PLAYING, WELCOME } from '../../reducers/actions/types';
+import { Modal, } from '../Modal';
+import './App.css';
 
 export class App extends Component {
-  render() {
-    const state = this.props.state;
-    switch (state.status) {
-      case WELCOME: return this.renderWelcome();
-      case PLAYING: return this.renderWall();
-      case PLAYER_LOSE: return this.renderModalLose();
-      case PLAYER_WON: return this.renderModalWon();
-      default: return this.renderWall();
-    }
-  }
-
-  renderWelcome() {
-    return (
-      <div className="App no-select">
-        <Sidebar />
-        <main className="main">
-          <Welcome />
-        </main>
-      </div>
-    );
-  }
-
-  renderWall() {
-    const { dispatch, state, } = this.props;
-    const moveToDirection = moveTo(dispatch)(state);
-    const shortcuts = [
-      {shortcut: 'arrow-down', action: moveToDirection('bottom')},
-      {shortcut: 'arrow-left', action: moveToDirection('left')},
-      {shortcut: 'arrow-right', action: moveToDirection('right')},
-      {shortcut: 'arrow-up', action: moveToDirection('top')},
-    ];
-
-    return (
-      <Keyboard shortcuts={shortcuts} targetSelector="body">
-        <div className="App no-select">
-          <Sidebar />
-          <main className="main">
-            <Wall />
-          </main>
-        </div>
-      </Keyboard>
-    );
-  }
-
-  renderModalLose() {
-    const button = {
-      text: 'Try Again',
-      action: () => this.props.dispatch(restartAction())
-    };
-    return this.renderModal('You Lose', button);
-  }
-
-  renderModalWon() {
-    const button = {
-      text: 'Try Again',
-      action: () => this.props.dispatch(restartAction())
-    };
-    return this.renderModal('You Won', button);
-  }
-
   renderModal(title, button) {
+    const { bestScore, hardMode, score, welcomeWall, } = this.props;
     const modalProps = {
-      bestScore: this.props.state.bestScore,
-      button: button,
-      hardMode: this.props.state.hardMode,
-      score: this.props.state.score,
-      title: title,
-      wall: this.props.state.welcomeWall,
+      bestScore,
+      button,
+      hardMode,
+      score,
+      title,
+      wall: welcomeWall,
     };
 
     return (
@@ -92,18 +32,84 @@ export class App extends Component {
     );
   }
 
+  renderModalLose() {
+    const { restartAction, } = this.props;
+    const button = {
+      handleAction: restartAction,
+      text: 'Try Again',
+    };
+    return this.renderModal('You Lose', button);
+  }
+
+  renderModalWon() {
+    const { restartAction, } = this.props;
+    const button = {
+      handleAction: restartAction,
+      text: 'Try Again',
+    };
+    return this.renderModal('You Won', button);
+  }
+
+  renderWall() {
+    const { moveTo, restartAction, ...state } = this.props;
+    const moveToDirection = moveTo(state);
+    const shortcuts = [
+      { action: moveToDirection('bottom'), shortcut: 'arrow-down', },
+      { action: moveToDirection('left'), shortcut: 'arrow-left', },
+      { action: moveToDirection('right'), shortcut: 'arrow-right', },
+      { action: moveToDirection('top'), shortcut: 'arrow-up', },
+    ];
+
+    return (
+      <TouchEvent moveTo={moveToDirection}>
+        <Keyboard
+          shortcuts={shortcuts}
+          targetSelector="body"
+        >
+          <div className="App no-select">
+            <Sidebar />
+            <main className="main">
+              <Wall />
+            </main>
+          </div>
+        </Keyboard>
+      </TouchEvent>
+    );
+  }
+
+  /* eslint class-methods-use-this: off */
+  renderWelcome() {
+    return (
+      <div className="App no-select">
+        <Sidebar />
+        <main className="main">
+          <Welcome />
+        </main>
+      </div>
+    );
+  }
+
+  render() {
+    const { status, } = this.props;
+    switch (status) {
+      case WELCOME: return this.renderWelcome();
+      case PLAYING: return this.renderWall();
+      case PLAYER_LOSE: return this.renderModalLose();
+      case PLAYER_WON: return this.renderModalWon();
+      default: return this.renderWall();
+    }
+  }
 }
 
 App.propTypes = {
-  dispatch: PropTypes.any.isRequired,
-  state: PropTypes.shape({
-    bestScore: PropTypes.number,
-    hardMode: PropTypes.bool,
-    maxBlock: PropTypes.number,
-    rollback: PropTypes.number,
-    score: PropTypes.number,
-    status: PropTypes.string,
-    wall: PropTypes.array,
-    welcomeWall: PropTypes.array,
-  }).isRequired,
+  bestScore: PropTypes.number.isRequired,
+  hardMode: PropTypes.bool.isRequired,
+  maxBlock: PropTypes.number.isRequired,
+  moveTo: PropTypes.func.isRequired,
+  restartAction: PropTypes.func.isRequired,
+  rollback: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
+  status: PropTypes.string.isRequired,
+  wall: PropTypes.arrayOf(PropTypes.number).isRequired,
+  welcomeWall: PropTypes.arrayOf(PropTypes.number).isRequired,
 };

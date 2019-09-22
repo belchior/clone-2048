@@ -1,5 +1,6 @@
-import { connect } from 'react-redux';
-import { Wall } from './Wall';
+import { connect, } from 'react-redux';
+
+import { Wall, } from './Wall';
 
 export const mapStateToProps = (state) => {
   return {

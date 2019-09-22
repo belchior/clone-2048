@@ -1,10 +1,11 @@
-import { connect } from 'react-redux';
-import { Sidebar } from './Sidebar';
+import { connect, } from 'react-redux';
+
+import { Sidebar, } from './Sidebar';
 
 export const mapStateToProps = (state) => {
   return {
-    score: state.score,
     bestScore: state.bestScore,
+    score: state.score,
   };
 };
 

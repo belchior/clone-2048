@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Welcome should render with a list without crashing 1`] = `
+<div
+  className="Welcome"
+>
+  <Wall
+    hardMode={false}
+    moveError={false}
+    wall={
+      Array [
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+      ]
+    }
+  />
+  <button
+    className="WelcomeAction"
+    onClick={[Function]}
+    type="button"
+  >
+    Action
+  </button>
+</div>
+`;

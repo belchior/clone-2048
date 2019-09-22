@@ -1,4 +1,4 @@
-import { keyMap } from './keyMap';
+import { keyMap, } from './keyMap';
 
 export function parseShortcut(shortcut) {
   if (typeof shortcut !== 'string') {
@@ -8,29 +8,29 @@ export function parseShortcut(shortcut) {
   return {
     altKey: hasAlt(normalizedShortcut),
     ctrlKey: hasControl(normalizedShortcut),
+    keys: keys(normalizedShortcut, keyMap),
     metaKey: hasMeta(normalizedShortcut),
     shiftKey: hasShift(normalizedShortcut),
-    keys: keys(normalizedShortcut, keyMap),
   };
 }
 
 function hasAlt(shortcut) {
-  return shortcut.search(/alt(?!-(left|right))/i) !== -1;
+  return shortcut.search(/alt(?!-(left|right))/ui) !== -1;
 }
 
 function hasControl(shortcut) {
-  return shortcut.search(/ctrl(?!-(left|right))/i) !== -1;
+  return shortcut.search(/ctrl(?!-(left|right))/ui) !== -1;
 }
 
 function hasMeta(shortcut) {
-  return shortcut.search(/meta(?!-(left|right))/i) !== -1;
+  return shortcut.search(/meta(?!-(left|right))/ui) !== -1;
 }
 
 function hasShift(shortcut) {
-  return shortcut.search(/shift(?!-(left|right))/i) !== -1;
+  return shortcut.search(/shift(?!-(left|right))/ui) !== -1;
 }
 
-function keys(shortcut, keyMap) {
+function keys(shortcut, keymap) {
   const name = shortcut.split('+').pop();
-  return keyMap[name] ? keyMap[name] : [];
+  return keymap[name] ? keymap[name] : [];
 }
