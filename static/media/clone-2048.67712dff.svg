@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+<rect id="_x30__2_" x="25" y="50" style="fill:#EEEEEE;" width="25" height="25"/>
+<rect id="_x30__3_" x="50" y="50" style="fill:#EEEEEE;" width="25" height="25"/>
+<rect id="_x30__1_" x="50" y="25" style="fill:#EEEEEE;" width="25" height="25"/>
+<rect id="_x30_" x="25" y="25" style="fill:#EEEEEE;" width="25" height="25"/>
+<rect id="_x34_096" y="25" style="fill:#69266E;" width="25" height="25"/>
+<rect id="_x32_048" y="50" style="fill:#802C83;" width="25" height="25"/>
+<rect id="_x31_024" y="75" style="fill:#9F619D;" width="25" height="25"/>
+<rect id="_x35_12" x="25" y="75" style="fill:#BD94BC;" width="25" height="25"/>
+<rect id="_x32_56" x="50" y="75" style="fill:#00588D;" width="25" height="25"/>
+<rect id="_x31_28" x="75" y="75" style="fill:#016DAE;" width="25" height="25"/>
+<rect id="_x36_4" x="75" y="50" style="fill:#1386BE;" width="25" height="25"/>
+<rect id="_x33_2" x="75" y="25" style="fill:#75AAD3;" width="25" height="25"/>
+<rect id="_x31_6" x="75" style="fill:#078341;" width="25" height="25"/>
+<rect id="_x38_" x="50" style="fill:#06A14A;" width="25" height="25"/>
+<rect id="_x34_" x="25" style="fill:#6CB55F;" width="25" height="25"/>
+<rect id="_x32_" style="fill:#A6CD90;" width="25" height="25"/>
+<text transform="matrix(1.0209 0 0 1 25.9995 58.4492)" style="font-family:'Arial'; font-size:21.1349;">2048</text>
+</svg>
