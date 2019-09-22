@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Modal.css';
 import clone2048 from '../../static/images/clone-2048.svg';
 import { Score, } from '../Score';
 import { Wall, } from '../Wall';
+import './Modal.css';
 
 export function Modal(props) {
   const { bestScore, button, hardMode, score, title, wall, } = props;

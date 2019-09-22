@@ -1,13 +1,14 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 
-import './App.css';
 import { Keyboard, } from '../keyboard/Keyboard';
+import { PLAYER_LOSE, PLAYER_WON, PLAYING, WELCOME, } from '../../reducers/actions/types';
+import { TouchEvent, } from '../TouchEvent/TouchEvent';
 import Sidebar from '../Sidebar';
 import Wall from '../Wall';
 import Welcome from '../Welcome';
 import { Modal, } from '../Modal';
-import { PLAYER_LOSE, PLAYER_WON, PLAYING, WELCOME, } from '../../reducers/actions/types';
+import './App.css';
 
 export class App extends Component {
   renderModal(title, button) {
@@ -50,8 +51,8 @@ export class App extends Component {
   }
 
   renderWall() {
-    const { moveTo, } = this.props;
-    const moveToDirection = moveTo(this.props);
+    const { moveTo, restartAction, ...state } = this.props;
+    const moveToDirection = moveTo(state);
     const shortcuts = [
       { action: moveToDirection('bottom'), shortcut: 'arrow-down', },
       { action: moveToDirection('left'), shortcut: 'arrow-left', },
@@ -60,17 +61,19 @@ export class App extends Component {
     ];
 
     return (
-      <Keyboard
-        shortcuts={shortcuts}
-        targetSelector="body"
-      >
-        <div className="App no-select">
-          <Sidebar />
-          <main className="main">
-            <Wall />
-          </main>
-        </div>
-      </Keyboard>
+      <TouchEvent moveTo={moveToDirection}>
+        <Keyboard
+          shortcuts={shortcuts}
+          targetSelector="body"
+        >
+          <div className="App no-select">
+            <Sidebar />
+            <main className="main">
+              <Wall />
+            </main>
+          </div>
+        </Keyboard>
+      </TouchEvent>
     );
   }
 
