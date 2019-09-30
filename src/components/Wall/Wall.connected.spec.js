@@ -1,5 +1,6 @@
 import { mapStateToProps, mapDispatchToProps, } from './index';
 
+
 describe('mapStateToProps', () => {
   it('should be a function', () => {
     expect(typeof mapStateToProps === 'function').toBe(true);
@@ -32,17 +33,12 @@ describe('mapStateToProps', () => {
 });
 
 describe('mapDispatchToProps', () => {
-  let dispatch = null;
-
-  beforeEach(() => {
-    dispatch = jest.fn();
-  });
-
   it('should be a function', () => {
     expect(typeof mapDispatchToProps === 'function').toBe(true);
   });
 
   it('should return an object', () => {
+    const dispatch = jest.fn();
     const props = mapDispatchToProps(dispatch);
     expect(typeof props === 'object').toBe(true);
   });

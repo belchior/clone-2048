@@ -1,56 +1,59 @@
 import { parseShortcut, } from './parseShortcut';
 
-test('parseShortcut should be a function', () => {
-  expect(typeof parseShortcut).toBe('function');
-});
 
-test('parseShortcut should throw an Error when type of param is different from string', () => {
-  expect(() => parseShortcut(undefined)).toThrow();
-  expect(() => parseShortcut(null)).toThrow();
-  expect(() => parseShortcut(123)).toThrow();
-  expect(() => parseShortcut({})).toThrow();
-});
+describe('parseShortcut', () => {
+  it('parseShortcut should be a function', () => {
+    expect(typeof parseShortcut).toBe('function');
+  });
 
-test('parseShortcut should match alt key', () => {
-  const withAlt = parseShortcut('alt+c');
-  const withoutAlt = parseShortcut('ctrl+c');
+  it('parseShortcut should throw an Error when type of param is different from string', () => {
+    expect(() => parseShortcut(undefined)).toThrow();
+    expect(() => parseShortcut(null)).toThrow();
+    expect(() => parseShortcut(123)).toThrow();
+    expect(() => parseShortcut({})).toThrow();
+  });
 
-  expect(withAlt).toHaveProperty('altKey', true);
-  expect(withoutAlt).toHaveProperty('altKey', false);
-});
+  it('parseShortcut should match alt key', () => {
+    const withAlt = parseShortcut('alt+c');
+    const withoutAlt = parseShortcut('ctrl+c');
 
-test('parseShortcut should match ctrl key', () => {
-  const withCtrl = parseShortcut('ctrl+c');
-  const withoutCtrl = parseShortcut('alt+c');
+    expect(withAlt).toHaveProperty('altKey', true);
+    expect(withoutAlt).toHaveProperty('altKey', false);
+  });
 
-  expect(withCtrl).toHaveProperty('ctrlKey', true);
-  expect(withoutCtrl).toHaveProperty('ctrlKey', false);
-});
+  it('parseShortcut should match ctrl key', () => {
+    const withCtrl = parseShortcut('ctrl+c');
+    const withoutCtrl = parseShortcut('alt+c');
 
-test('parseShortcut should match meta key', () => {
-  const withMeta = parseShortcut('meta+c');
-  const withoutMeta = parseShortcut('ctrl+c');
+    expect(withCtrl).toHaveProperty('ctrlKey', true);
+    expect(withoutCtrl).toHaveProperty('ctrlKey', false);
+  });
 
-  expect(withMeta).toHaveProperty('metaKey', true);
-  expect(withoutMeta).toHaveProperty('metaKey', false);
-});
+  it('parseShortcut should match meta key', () => {
+    const withMeta = parseShortcut('meta+c');
+    const withoutMeta = parseShortcut('ctrl+c');
 
-test('parseShortcut should match shift key', () => {
-  const withShift = parseShortcut('shift+c');
-  const withoutShift = parseShortcut('ctrl+c');
+    expect(withMeta).toHaveProperty('metaKey', true);
+    expect(withoutMeta).toHaveProperty('metaKey', false);
+  });
 
-  expect(withShift).toHaveProperty('shiftKey', true);
-  expect(withoutShift).toHaveProperty('shiftKey', false);
-});
+  it('parseShortcut should match shift key', () => {
+    const withShift = parseShortcut('shift+c');
+    const withoutShift = parseShortcut('ctrl+c');
 
-test('parseShortcut should return an object whose attribute keys is equivalent to passed key', () => {
-  const shortcut = parseShortcut('shift+c');
+    expect(withShift).toHaveProperty('shiftKey', true);
+    expect(withoutShift).toHaveProperty('shiftKey', false);
+  });
 
-  expect(shortcut.keys).toContain('c');
-});
+  it('parseShortcut should return an object whose attribute keys is equivalent to passed key', () => {
+    const shortcut = parseShortcut('shift+c');
 
-test('parseShortcut should return an object whose attribute keys an empty array when no key is found', () => {
-  const shortcut = parseShortcut('shift+@');
+    expect(shortcut.keys).toContain('c');
+  });
 
-  expect(shortcut.keys).toHaveLength(0);
+  it('parseShortcut should return an object whose attribute keys an empty array when no key is found', () => {
+    const shortcut = parseShortcut('shift+@');
+
+    expect(shortcut.keys).toHaveLength(0);
+  });
 });

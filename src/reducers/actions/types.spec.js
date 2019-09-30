@@ -1,11 +1,12 @@
 import * as actionType from './types';
 
-it('The types file should have 13 actions', () => {
-  expect(Object.keys(actionType)).toHaveLength(13);
-});
+/* eslint jest/lowercase-name: off*/
 
+describe('Action', () => {
+  it('The types file should have 13 actions', () => {
+    expect(Object.keys(actionType)).toHaveLength(13);
+  });
 
-describe('The Action types', () => {
   it('LOAD should be defined', () => {
     expect(actionType.LOAD).toBe('LOAD');
   });

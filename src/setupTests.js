@@ -4,4 +4,4 @@ require('jest-prop-type-error');
 
 enzyme.configure({ adapter: new Adapter(), });
 
-Storage.prototype.setItem = jest.fn();
+jest.spyOn(Storage.prototype, 'setItem').mockImplementation();

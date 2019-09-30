@@ -16,17 +16,12 @@ describe('mapStateToProps', () => {
 });
 
 describe('mapDispatchToProps', () => {
-  let dispatch = null;
-
-  beforeEach(() => {
-    dispatch = jest.fn();
-  });
-
   it('should be a function', () => {
     expect(typeof mapDispatchToProps === 'function').toBe(true);
   });
 
   it('should return an object', () => {
+    const dispatch = jest.fn();
     const props = mapDispatchToProps(dispatch);
     expect(typeof props).toBe('object');
     expect(props).toHaveProperty('rollbackAction');
@@ -35,6 +30,7 @@ describe('mapDispatchToProps', () => {
   });
 
   it('property rollbackAction should be callable', () => {
+    const dispatch = jest.fn();
     const { rollbackAction, } = mapDispatchToProps(dispatch);
     expect(typeof rollbackAction === 'function').toBe(true);
 
@@ -44,6 +40,7 @@ describe('mapDispatchToProps', () => {
   });
 
   it('property restartAction should be callable', () => {
+    const dispatch = jest.fn();
     const { restartAction, } = mapDispatchToProps(dispatch);
     expect(typeof restartAction === 'function').toBe(true);
 
@@ -53,6 +50,7 @@ describe('mapDispatchToProps', () => {
   });
 
   it('property hardModeAction should be callable', () => {
+    const dispatch = jest.fn();
     const { hardModeAction, } = mapDispatchToProps(dispatch);
     expect(typeof hardModeAction === 'function').toBe(true);
 

@@ -26,6 +26,7 @@ const getActionFromMockCalls = action => mockCalls => mockCalls.reduce((acc, ite
 }, null);
 
 describe('moveTo', () => {
+  // eslint-disable-next-line jest/no-hooks
   beforeEach(() => {
     dispatch.mockReset();
   });
@@ -34,9 +35,9 @@ describe('moveTo', () => {
     expect(typeof moveTo).toBe('function');
   });
 
-  it('should dispatch PLAYER_LOSE when there is no zero and pairs at wall and rollback is zero', () => {
+  it('should dispatch PLAYER_LOSE when there is no zeros and pairs in wall and rollback is zero', () => {
     moveTo(dispatch)(initialState)('left')();
-    expect(dispatch.mock.calls[0][0]).not.toEqual(actions.playerLose());
+    expect(dispatch.mock.calls[0][0]).not.toStrictEqual(actions.playerLose());
 
     dispatch.mockReset();
     const state = mockState({
@@ -50,28 +51,28 @@ describe('moveTo', () => {
     });
 
     moveTo(dispatch)(state)('left')();
-    expect(dispatch.mock.calls[0][0]).toEqual(actions.playerLose());
+    expect(dispatch.mock.calls[0][0]).toStrictEqual(actions.playerLose());
   });
 
   it('should dispatch MOVE_ERROR when the direction chosen don\'t change the wall', () => {
     let state = mockState({ wall: [ 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ], });
     moveTo(dispatch)(state)('top')();
-    expect(dispatch.mock.calls[0][0]).toEqual(actions.moveError(true));
+    expect(dispatch.mock.calls[0][0]).toStrictEqual(actions.moveError(true));
 
     dispatch.mockReset();
     state = mockState({ wall: [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, ], });
     moveTo(dispatch)(state)('bottom')();
-    expect(dispatch.mock.calls[0][0]).toEqual(actions.moveError(true));
+    expect(dispatch.mock.calls[0][0]).toStrictEqual(actions.moveError(true));
 
     dispatch.mockReset();
     state = mockState({ wall: [ 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 2, ], });
     moveTo(dispatch)(state)('right')();
-    expect(dispatch.mock.calls[0][0]).toEqual(actions.moveError(true));
+    expect(dispatch.mock.calls[0][0]).toStrictEqual(actions.moveError(true));
 
     dispatch.mockReset();
     state = mockState({ wall: [ 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, ], });
     moveTo(dispatch)(state)('left')();
-    expect(dispatch.mock.calls[0][0]).toEqual(actions.moveError(true));
+    expect(dispatch.mock.calls[0][0]).toStrictEqual(actions.moveError(true));
   });
 
   it('should dispatch PLAYER_WON when the max block is found in wall', () => {
@@ -80,7 +81,7 @@ describe('moveTo', () => {
     });
     moveTo(dispatch)(state)('bottom')();
     const action = getActionFromMockCalls(actionType.PLAYER_WON)(dispatch.mock.calls);
-    expect(action).not.toEqual(actions.playerWon());
+    expect(action).not.toStrictEqual(actions.playerWon());
 
 
     const stateWon = mockState({
@@ -89,7 +90,7 @@ describe('moveTo', () => {
     });
     moveTo(dispatch)(stateWon)('bottom')();
     const actionPlayerWon = getActionFromMockCalls(actionType.PLAYER_WON)(dispatch.mock.calls);
-    expect(actionPlayerWon).toEqual(actions.playerWon());
+    expect(actionPlayerWon).toStrictEqual(actions.playerWon());
   });
 
   it('should dispatch MOVE_ERROR when the direction is not bottom, left, right and top', () => {
@@ -100,7 +101,7 @@ describe('moveTo', () => {
     moveTo(dispatch)(state)('x')();
     const action = getActionFromMockCalls(actionType.MOVE_ERROR)(dispatch.mock.calls);
 
-    expect(action).toEqual(actions.moveError(true));
+    expect(action).toStrictEqual(actions.moveError(true));
   });
 
   it('should not dispatch when the status is difrent of PLAYING', () => {

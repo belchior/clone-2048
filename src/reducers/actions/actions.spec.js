@@ -1,50 +1,53 @@
 import * as action from './actions';
 import * as actionTypes from './types';
 
-it('The actions file should export 11 actions', () => {
-  expect(Object.keys(action)).toHaveLength(11);
-});
 
-it('The action load should return an object type LOAD', () => {
-  expect(action.load()).toEqual({ type: actionTypes.LOAD, });
-});
+describe('Action', () => {
+  it('the action file should export 11 actions', () => {
+    expect(Object.keys(action)).toHaveLength(11);
+  });
 
-it('The action moveError should return an object type MOVE_ERROR', () => {
-  expect(action.moveError()).toEqual({ type: actionTypes.MOVE_ERROR, });
-});
+  it('load should return an object with attribute type equal to LOAD', () => {
+    expect(action.load()).toHaveProperty('type', actionTypes.LOAD);
+  });
 
-it('The action moviment should return an object type MOVIMENT', () => {
-  expect(action.moviment()).toEqual({ type: actionTypes.MOVIMENT, });
-});
+  it('moveError should return an object with attribute type equal to MOVE_ERROR', () => {
+    expect(action.moveError()).toHaveProperty('type', actionTypes.MOVE_ERROR);
+  });
 
-it('The action playerLose should return an object type PLAYER_LOSE', () => {
-  expect(action.playerLose()).toEqual({ type: actionTypes.PLAYER_LOSE, });
-});
+  it('moviment should return an object with attribute type equal to MOVIMENT', () => {
+    expect(action.moviment()).toHaveProperty('type', actionTypes.MOVIMENT);
+  });
 
-it('The action playerWon should return an object type PLAYER_WON', () => {
-  expect(action.playerWon()).toEqual({ type: actionTypes.PLAYER_WON, });
-});
+  it('playerLose should return an object with attribute type equal to PLAYER_LOSE', () => {
+    expect(action.playerLose()).toHaveProperty('type', actionTypes.PLAYER_LOSE);
+  });
 
-it('The action playing should return an object type PLAYING', () => {
-  expect(action.playing()).toEqual({ type: actionTypes.PLAYING, });
-});
+  it('playerWon should return an object with attribute type equal to PLAYER_WON', () => {
+    expect(action.playerWon()).toHaveProperty('type', actionTypes.PLAYER_WON);
+  });
 
-it('The action restart should return an object type RESTART', () => {
-  expect(action.restart()).toEqual({ type: actionTypes.RESTART, });
-});
+  it('playing should return an object with attribute type equal to PLAYING', () => {
+    expect(action.playing()).toHaveProperty('type', actionTypes.PLAYING);
+  });
 
-it('The action rollback should return an object type ROLLBACK', () => {
-  expect(action.rollback()).toEqual({ type: actionTypes.ROLLBACK, });
-});
+  it('restart should return an object with attribute type equal to RESTART', () => {
+    expect(action.restart()).toHaveProperty('type', actionTypes.RESTART);
+  });
 
-it('The action save should return an object type SAVE', () => {
-  expect(action.save()).toEqual({ type: actionTypes.SAVE, });
-});
+  it('rollback should return an object with attribute type equal to ROLLBACK', () => {
+    expect(action.rollback()).toHaveProperty('type', actionTypes.ROLLBACK);
+  });
 
-it('The action start should return an object type START', () => {
-  expect(action.start()).toEqual({ type: actionTypes.START, });
-});
+  it('save should return an object with attribute type equal to SAVE', () => {
+    expect(action.save()).toHaveProperty('type', actionTypes.SAVE);
+  });
 
-it('The action toggleHardmode should return an object type TOGGLE_HARDMODE', () => {
-  expect(action.toggleHardmode()).toEqual({ type: actionTypes.TOGGLE_HARDMODE, });
+  it('start should return an object with attribute type equal to START', () => {
+    expect(action.start()).toHaveProperty('type', actionTypes.START);
+  });
+
+  it('toggleHardmode should return an object with attribute type equal to TOGGLE_HARDMODE', () => {
+    expect(action.toggleHardmode()).toHaveProperty('type', actionTypes.TOGGLE_HARDMODE);
+  });
 });
