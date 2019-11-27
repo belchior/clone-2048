@@ -1,6 +1,8 @@
 import { loadState, saveState } from './localState';
 import { initialState } from './reducers';
 
+jest.clearAllMocks();
+
 describe('localState', () => {
   it('loadState function should be exported by localState file', () => {
     expect(typeof loadState).toBe('function');
