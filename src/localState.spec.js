@@ -1,7 +1,6 @@
 import { loadState, saveState } from './localState';
 import { initialState } from './reducers';
 
-jest.clearAllMocks();
 
 describe('localState', () => {
   it('loadState function should be exported by localState file', () => {
@@ -14,7 +13,7 @@ describe('localState', () => {
     const state = loadState();
 
     expect(state).toBeUndefined();
-    expect(localStorage.getItem).toHaveBeenCalledTimes(1);
+    expect(localStorage.getItem).toHaveBeenCalled();
   });
 
   it('loadState should load state from localStorage API', () => {
