@@ -28,7 +28,8 @@ describe('localState', () => {
   });
 
   it('saveState should save the state at localStorage', () => {
-    saveState();
-    expect(localStorage.setItem.mock.calls).toHaveLength(1);
+    const state = { bestScore: 0, hardMode: false };
+    saveState(state);
+    expect(localStorage.setItem).toHaveBeenCalledWith('state', '{"bestScore":0,"hardMode":false}');
   });
 });
