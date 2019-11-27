@@ -1,14 +1,14 @@
-import React, { Component, } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { parseShortcut, } from './parseShortcut';
+import { parseShortcut } from './parseShortcut';
 
 
 let userShortcuts = [];
 const setUserShortcuts = (shortcuts) => {
   userShortcuts = shortcuts.reduce((list, item) => {
     const parsedShortcut = parseShortcut(item.shortcut);
-    return parsedShortcut.keys.length > 0 ? list.concat({ ...item, ...parsedShortcut, }) : list;
+    return parsedShortcut.keys.length > 0 ? list.concat({ ...item, ...parsedShortcut }) : list;
   }, []);
 };
 
@@ -35,7 +35,7 @@ const setDOMEvent = (handler, selector) => {
    * is adding a tabIndex attribute to it.
    */
   if (
-    [ 'HTML', 'BODY', ].indexOf(target.nodeName) >= 0 &&
+    [ 'HTML', 'BODY' ].indexOf(target.nodeName) >= 0 &&
     !target.getAttribute('tabIndex')
   ) target.setAttribute('tabIndex', -1);
 
@@ -46,27 +46,27 @@ const setDOMEvent = (handler, selector) => {
 
 const setSyntheticEvent = (children, handler) => {
   if (!children) return;
-  const childList = Array.isArray(children) ? children : [ children, ];
+  const childList = Array.isArray(children) ? children : [ children ];
 
   return React.Children.map(childList, (child) => {
-    const props = { ...child.props, onKeyUp: handler, tabIndex: -1, };
+    const props = { ...child.props, onKeyUp: handler, tabIndex: -1 };
     return React.cloneElement(child, props, props.children);
   });
 };
 
 export class Keyboard extends Component {
   componentDidMount() {
-    const { targetSelector, } = this.props;
+    const { targetSelector } = this.props;
     if (targetSelector) setDOMEvent(keyupHandler, targetSelector);
   }
 
   componentDidUpdate() {
-    const { targetSelector, } = this.props;
+    const { targetSelector } = this.props;
     if (targetSelector) setDOMEvent(keyupHandler, targetSelector);
   }
 
   render() {
-    const { shortcuts, targetSelector, children, } = this.props;
+    const { shortcuts, targetSelector, children } = this.props;
     setUserShortcuts(shortcuts);
     if (!targetSelector) return setSyntheticEvent(children, keyupHandler);
     return children;
@@ -89,6 +89,6 @@ Keyboard.propTypes = {
 };
 
 Keyboard.defaultProps = {
-  children: null,
+  children: undefined,
   targetSelector: '',
 };

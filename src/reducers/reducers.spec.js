@@ -1,4 +1,4 @@
-import { initialState, reducer, } from './index';
+import { initialState, reducer } from './index';
 import * as actions from '../reducers/actions/actions';
 import * as actionTypes from '../reducers/actions/types';
 
@@ -44,7 +44,7 @@ describe('initialState', () => {
 describe('reducers', () => {
   it('load reducer should merge the sent state with loaded state', () => {
     localStorage.getItem.mockReset();
-    const state = { ...initialState, maxBlock: 1024, };
+    const state = { ...initialState, maxBlock: 1024 };
     const newState = reducer(state, actions.load());
 
     expect(localStorage.getItem.mock.calls).toHaveLength(1);
@@ -52,7 +52,7 @@ describe('reducers', () => {
   });
 
   it('moviment reducer should update the bestScore and add the current wall at the end of history', () => {
-    const state = { ...initialState, bestScore: 0, history: [], score: 256, };
+    const state = { ...initialState, bestScore: 0, history: [], score: 256 };
     const newState = reducer(state, actions.moviment(state));
 
     expect(newState.bestScore).toBe(state.score);
@@ -60,7 +60,7 @@ describe('reducers', () => {
   });
 
   it('moviment reducer should not update the bestScore when score is less than bestScore', () => {
-    const state = { ...initialState, bestScore: 512, score: 256, };
+    const state = { ...initialState, bestScore: 512, score: 256 };
     const newState = reducer(state, actions.moviment(state));
 
     expect(newState.bestScore).toBeGreaterThan(newState.score);
@@ -87,7 +87,7 @@ describe('reducers', () => {
   });
 
   it('restart reducer should keep the value of bestScore unchanged', () => {
-    const state = { ...initialState, bestScore: 128, };
+    const state = { ...initialState, bestScore: 128 };
     const value = 128;
     const newState = reducer(state, actions.restart());
 
@@ -95,19 +95,19 @@ describe('reducers', () => {
   });
 
   it('restart reducer should set the value of status to PLAYING', () => {
-    const state = { ...initialState, status: 'PLAYING', };
+    const state = { ...initialState, status: 'PLAYING' };
     const value = 'PLAYING';
     const newState = reducer(state, actions.restart());
 
     expect(newState).toHaveProperty('status', value);
   });
 
-  it('rollback reducer should decrement the rollback attribute 1 by 1, the minimum value should be 0 ', () => {
+  it('rollback reducer should decrement the rollback attribute 1 by 1, the minimum value should be 0', () => {
     let state = {
       ...initialState,
       history: [
-        [ 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ],
-        [ 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ],
+        [ 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
       ],
       rollback: 2,
     };
@@ -128,13 +128,13 @@ describe('reducers', () => {
   it('save reducer should save the state at localStorage', () => {
     localStorage.setItem.mockReset();
 
-    const state = { ...initialState, };
+    const state = { ...initialState };
     reducer(state, actions.save());
     expect(localStorage.setItem.mock.calls).toHaveLength(1);
   });
 
   it('start reducer should set the value of status to PLAYING', () => {
-    const state = { ...initialState, status: 'PLAYING', };
+    const state = { ...initialState, status: 'PLAYING' };
     const value = 'PLAYING';
     const newState = reducer(state, actions.start());
 
@@ -142,20 +142,20 @@ describe('reducers', () => {
   });
 
   it('toggleHardMode reducer should alternate the hardMode attribute between true and false', () => {
-    let state = { ...initialState, hardMode: false, };
+    let state = { ...initialState, hardMode: false };
     let newState = reducer(state, actions.toggleHardmode());
 
     expect(newState.hardMode).not.toBe(state.hardMode);
 
-    state = { ...initialState, hardMode: true, };
+    state = { ...initialState, hardMode: true };
     newState = reducer(state, actions.toggleHardmode());
 
     expect(newState.hardMode).not.toBe(state.hardMode);
   });
 
   it('reducer should return the same state when the action passed to match with the registered actions', () => {
-    const state = { ...initialState, maxBlock: 1024, moveError: true, };
-    const newState = reducer(state, { type: 'WRONG', });
+    const state = { ...initialState, maxBlock: 1024, moveError: true };
+    const newState = reducer(state, { type: 'WRONG' });
 
     expect(newState).toStrictEqual(state);
   });

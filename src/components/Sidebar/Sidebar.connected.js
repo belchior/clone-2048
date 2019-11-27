@@ -1,6 +1,6 @@
-import { connect, } from 'react-redux';
+import { connect } from 'react-redux';
 
-import { Sidebar, } from './Sidebar';
+import { Sidebar } from './Sidebar';
 
 export const mapStateToProps = (state) => {
   return {

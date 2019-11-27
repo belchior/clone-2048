@@ -1,7 +1,7 @@
-import { connect, } from 'react-redux';
+import { connect } from 'react-redux';
 
-import { Welcome, } from './Welcome';
-import { start as startAction, } from '../../reducers/actions/actions';
+import { Welcome } from './Welcome';
+import { start as startAction } from '../../reducers/actions/actions';
 
 export const mapStateToProps = state => ({
   hardMode: state.hardMode,

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './Score.css';
 
 export function Score(props) {
-  const { current = 0, best = 0, } = props;
+  const { current = 0, best = 0 } = props;
   return (
     <div className="Score">
       <span className="current_score" title="The current score">{current}</span>

@@ -1,18 +1,18 @@
-import React, { Component, } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Keyboard, } from '../keyboard/Keyboard';
-import { PLAYER_LOSE, PLAYER_WON, PLAYING, WELCOME, } from '../../reducers/actions/types';
-import { TouchEvent, } from '../TouchEvent/TouchEvent';
+import { Keyboard } from '../keyboard/Keyboard';
+import { PLAYER_LOSE, PLAYER_WON, PLAYING, WELCOME } from '../../reducers/actions/types';
+import { TouchEvent } from '../TouchEvent/TouchEvent';
 import Sidebar from '../Sidebar';
 import Wall from '../Wall';
 import Welcome from '../Welcome';
-import { Modal, } from '../Modal';
+import { Modal } from '../Modal';
 import './App.css';
 
 export class App extends Component {
   renderModal(title, button) {
-    const { bestScore, hardMode, score, welcomeWall, } = this.props;
+    const { bestScore, hardMode, score, welcomeWall } = this.props;
     const modalProps = {
       bestScore,
       button,
@@ -33,7 +33,7 @@ export class App extends Component {
   }
 
   renderModalLose() {
-    const { restartAction, } = this.props;
+    const { restartAction } = this.props;
     const button = {
       handleAction: restartAction,
       text: 'Try Again',
@@ -42,7 +42,7 @@ export class App extends Component {
   }
 
   renderModalWon() {
-    const { restartAction, } = this.props;
+    const { restartAction } = this.props;
     const button = {
       handleAction: restartAction,
       text: 'Try Again',
@@ -54,10 +54,10 @@ export class App extends Component {
     const { moveTo, restartAction, ...state } = this.props;
     const moveToDirection = moveTo(state);
     const shortcuts = [
-      { action: moveToDirection('bottom'), shortcut: 'arrow-down', },
-      { action: moveToDirection('left'), shortcut: 'arrow-left', },
-      { action: moveToDirection('right'), shortcut: 'arrow-right', },
-      { action: moveToDirection('top'), shortcut: 'arrow-up', },
+      { action: moveToDirection('bottom'), shortcut: 'arrow-down' },
+      { action: moveToDirection('left'), shortcut: 'arrow-left' },
+      { action: moveToDirection('right'), shortcut: 'arrow-right' },
+      { action: moveToDirection('top'), shortcut: 'arrow-up' },
     ];
 
     return (
@@ -90,7 +90,7 @@ export class App extends Component {
   }
 
   render() {
-    const { status, } = this.props;
+    const { status } = this.props;
     switch (status) {
       case WELCOME: return this.renderWelcome();
       case PLAYING: return this.renderWall();

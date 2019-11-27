@@ -1,8 +1,8 @@
 import React from 'react';
-import { shallow, } from 'enzyme';
+import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import { Controllers, } from './Controllers';
+import { Controllers } from './Controllers';
 
 const setup = (props = {}) => {
   const requiredProps = {
@@ -50,7 +50,7 @@ describe('Controllers', () => {
   });
 
   it('should render Controllers with buttons enabled without crashing', () => {
-    const props = { status: 'PLAYING', };
+    const props = { status: 'PLAYING' };
     const wrapper = setup(props);
     expect(toJson(wrapper.find('button'))).toMatchInlineSnapshot(`
       Array [

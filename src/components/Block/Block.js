@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './Block.css';
 
-export function Block({ value, }) {
+export function Block({ value }) {
   return <div className={`Block block-${value}`}>{value}</div>;
 }
 

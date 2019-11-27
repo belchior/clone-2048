@@ -1,5 +1,5 @@
-import { loadState, saveState, } from '../localState';
-import { last, pipe, reverse, tail, raffle, } from '../helpers/list';
+import { loadState, saveState } from '../localState';
+import { last, pipe, reverse, tail, raffle } from '../helpers/list';
 import {
   LOAD,
   MOVE_ERROR,
@@ -25,7 +25,7 @@ export const initialState = {
   score: 0,
   status: PLAYING,
   wall: [],
-  welcomeWall: [ 2, 4, 8, 16, 4096, 0, 0, 32, 2048, 0, 0, 64, 1024, 512, 256, 128, ],
+  welcomeWall: [ 2, 4, 8, 16, 4096, 0, 0, 32, 2048, 0, 0, 64, 1024, 512, 256, 128 ],
 };
 
 const initialize = () => ({
@@ -49,7 +49,7 @@ const addHistory = state => (newState) => {
   const lastWall = last(state.history);
   return {
     ...newState,
-    history: lastWall ? [ lastWall, state.wall, ] : [ state.wall, ],
+    history: lastWall ? [ lastWall, state.wall ] : [ state.wall ],
   };
 };
 
@@ -111,6 +111,7 @@ const toggleHardMode = state => ({
   hardMode: !state.hardMode,
 });
 
+// eslint-disable-next-line default-param-last
 export const reducer = (state = initialize(), action) => {
   switch (action.type) {
     case LOAD: return load(state);

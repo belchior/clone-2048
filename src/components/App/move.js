@@ -1,4 +1,4 @@
-import { PLAYER_LOSE, PLAYING, } from '../../reducers/actions/types';
+import { PLAYER_LOSE, PLAYING } from '../../reducers/actions/types';
 import {
   moveError as actionMoveError,
   moviment as actionMoviment,
@@ -31,7 +31,7 @@ export const moveTo = dispatch => state => direction => () => {
 
   if (playerLose(state)) return dispatch(actionPlayerLose());
 
-  const newState = { ...state, };
+  const newState = { ...state };
   newState.wall = moveToDirection(direction)(state.wall);
 
   if (equals(state.wall)(newState.wall)) return moveError(dispatch);
@@ -141,7 +141,7 @@ const moveToTop = (wall) => {
  * pairsFromDirection :: (String a, Number b, Array c) => a -> [b] -> [c]
  */
 const pairsFromDirection = direction => (list) => {
-  const matrix = contains(direction)([ 'top', 'bottom', ])
+  const matrix = contains(direction)([ 'top', 'bottom' ])
     ? pipe(toSquareMatrix, transpose)(list)
     : toSquareMatrix(list);
 

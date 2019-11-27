@@ -1,8 +1,8 @@
-import React, { Component, } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import './Sidebar.css';
-import { Score, } from '../Score';
+import { Score } from '../Score';
 import Controllers from '../Controllers';
 import hamburgerMenu from '../../static/images/icon-hamburger-menu.svg';
 import logo from '../../static/images/clone-2048.svg';
@@ -25,8 +25,8 @@ export class Sidebar extends Component {
   }
 
   render() {
-    const { bestScore, score, } = this.props;
-    const { menuFullVisibility, } = this.state;
+    const { bestScore, score } = this.props;
+    const { menuFullVisibility } = this.state;
 
     const className = `menu_full ${menuFullVisibility ? 'visible' : ''}`;
 

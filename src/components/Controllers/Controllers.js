@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { WELCOME, } from '../../reducers/actions/types';
-import { ButtonToggle, } from '../ButtonToggle';
+import { WELCOME } from '../../reducers/actions/types';
+import { ButtonToggle } from '../ButtonToggle';
 import './Controllers.css';
 
 export function Controllers(props) {

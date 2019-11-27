@@ -1,4 +1,4 @@
-import { parseShortcut, } from './parseShortcut';
+import { parseShortcut } from './parseShortcut';
 
 
 describe('parseShortcut', () => {
@@ -7,8 +7,9 @@ describe('parseShortcut', () => {
   });
 
   it('parseShortcut should throw an Error when type of param is different from string', () => {
-    expect(() => parseShortcut(undefined)).toThrow();
+    // eslint-disable-next-line no-null/no-null
     expect(() => parseShortcut(null)).toThrow();
+    expect(() => parseShortcut(undefined)).toThrow();
     expect(() => parseShortcut(123)).toThrow();
     expect(() => parseShortcut({})).toThrow();
   });

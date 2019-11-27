@@ -7,14 +7,14 @@ describe('list', () => {
 
   it('contains should return the boolean true when the item is found into the list', () => {
     const item = 51;
-    const list = [ 2, 51, 1, ];
+    const list = [ 2, 51, 1 ];
 
     expect(L.contains(item)(list)).toBe(true);
   });
 
   it('contains should return the boolean false when the item is not found into the list', () => {
     const item = 42;
-    const list = [ 2, 51, 1, ];
+    const list = [ 2, 51, 1 ];
 
     expect(L.contains(item)(list)).toBe(false);
   });
@@ -25,7 +25,7 @@ describe('list', () => {
   });
 
   it('countOf should return the number of value inside the list', () => {
-    const list = [ 10, 20, 30, 40, ];
+    const list = [ 10, 20, 30, 40 ];
     expect(L.countOf(30)(list)).toBe(1);
     expect(L.countOf(31)(list)).toBe(0);
   });
@@ -36,22 +36,22 @@ describe('list', () => {
   });
 
   it('equals should return Boolean true when the lists has the same items', () => {
-    const listA = [ 1, 2, 3, ];
-    const listB = [ 1, 2, 3, ];
+    const listA = [ 1, 2, 3 ];
+    const listB = [ 1, 2, 3 ];
 
     expect(L.equals(listA)(listB)).toBe(true);
   });
 
   it('equals should return Boolean false when the lists don\'t has the same items', () => {
-    const listA = [ 1, 2, 3, ];
-    const listB = [ 4, 5, 6, ];
+    const listA = [ 1, 2, 3 ];
+    const listB = [ 4, 5, 6 ];
 
     expect(L.equals(listA)(listB)).toBe(false);
   });
 
   it('equals should return Boolean false when the lists have diferent length', () => {
-    const listA = [ 1, 2, ];
-    const listB = [ 4, 5, 6, 7, ];
+    const listA = [ 1, 2 ];
+    const listB = [ 4, 5, 6, 7 ];
 
     expect(L.equals(listA)(listB)).toBe(false);
   });
@@ -62,11 +62,11 @@ describe('list', () => {
   });
 
   it('flatten function should flatten one level deep the passed list', () => {
-    const oneLevelDeep = [ [ 1, 2, ], [ 3, 4, ], ];
-    const twoLevelDeep = [ [ [ 1, ], ], [ [ 2, 3, ], ], 4, ];
+    const oneLevelDeep = [ [ 1, 2 ], [ 3, 4 ] ];
+    const twoLevelDeep = [ [ [ 1 ] ], [ [ 2, 3 ] ], 4 ];
 
-    expect(L.flatten(oneLevelDeep)).toStrictEqual([ 1, 2, 3, 4, ]);
-    expect(L.flatten(twoLevelDeep)).toStrictEqual([ [ 1, ], [ 2, 3, ], 4, ]);
+    expect(L.flatten(oneLevelDeep)).toStrictEqual([ 1, 2, 3, 4 ]);
+    expect(L.flatten(twoLevelDeep)).toStrictEqual([ [ 1 ], [ 2, 3 ], 4 ]);
   });
 
 
@@ -80,7 +80,7 @@ describe('list', () => {
   });
 
   it('head function should return the first item of a list', () => {
-    const list = [ 4, 3, 2, 1, ];
+    const list = [ 4, 3, 2, 1 ];
     expect(L.head(list)).toBe(4);
   });
 
@@ -91,7 +91,7 @@ describe('list', () => {
 
   it('isEmpty function should return Boolean true when passed an empty list, false otherwise', () => {
     const emptyList = [];
-    const list = [ 1, 2, 3, ];
+    const list = [ 1, 2, 3 ];
 
     expect(L.isEmpty(emptyList)).toBe(true);
     expect(L.isEmpty(list)).toBe(false);
@@ -112,7 +112,7 @@ describe('list', () => {
   it('indexesOf function should return an empty list when the list does not contains the specified value', () => {
     const value = 23;
     const emptyList = [];
-    const list = [ 1, 2, 3, 4, ];
+    const list = [ 1, 2, 3, 4 ];
 
     expect(L.indexesOf(value)(list)).toStrictEqual(emptyList);
   });
@@ -152,7 +152,7 @@ describe('list', () => {
   });
 
   it('raffle function should return a list with one number raffled', () => {
-    const list = [ 0, 0, 0, 0, ];
+    const list = [ 0, 0, 0, 0 ];
     const raffled = L.raffle(list).filter(num => num > 0);
     expect(raffled).toHaveLength(1);
   });
@@ -176,15 +176,15 @@ describe('list', () => {
   });
 
   it('sumEquals function should return the same list when there is no equal sibilings', () => {
-    expect(L.sumEquals([ 1, ])).toStrictEqual([ 1, ]);
-    expect(L.sumEquals([ 1, 2, 3, 4, ])).toStrictEqual([ 1, 2, 3, 4, ]);
+    expect(L.sumEquals([ 1 ])).toStrictEqual([ 1 ]);
+    expect(L.sumEquals([ 1, 2, 3, 4 ])).toStrictEqual([ 1, 2, 3, 4 ]);
   });
 
   it('sumEquals function should sum the sibilings that are equals fron left to right', () => {
-    expect(L.sumEquals([ 1, 1, 1, 1, ])).toStrictEqual([ 2, 2, ]);
-    expect(L.sumEquals([ 1, 1, 1, 2, ])).toStrictEqual([ 2, 1, 2, ]);
-    expect(L.sumEquals([ 1, 1, 2, 2, ])).toStrictEqual([ 2, 4, ]);
-    expect(L.sumEquals([ 1, 2, 2, 2, ])).toStrictEqual([ 1, 4, 2, ]);
+    expect(L.sumEquals([ 1, 1, 1, 1 ])).toStrictEqual([ 2, 2 ]);
+    expect(L.sumEquals([ 1, 1, 1, 2 ])).toStrictEqual([ 2, 1, 2 ]);
+    expect(L.sumEquals([ 1, 1, 2, 2 ])).toStrictEqual([ 2, 4 ]);
+    expect(L.sumEquals([ 1, 2, 2, 2 ])).toStrictEqual([ 1, 4, 2 ]);
   });
 
 
@@ -193,15 +193,15 @@ describe('list', () => {
   });
 
   it('sumEqualsRight function should return the same list when there is no equal sibilings', () => {
-    expect(L.sumEquals([ 1, ])).toStrictEqual([ 1, ]);
-    expect(L.sumEquals([ 1, 2, 3, 4, ])).toStrictEqual([ 1, 2, 3, 4, ]);
+    expect(L.sumEquals([ 1 ])).toStrictEqual([ 1 ]);
+    expect(L.sumEquals([ 1, 2, 3, 4 ])).toStrictEqual([ 1, 2, 3, 4 ]);
   });
 
   it('sumEqualsRight function should sum the sibilings that are equals fron right to left', () => {
-    expect(L.sumEqualsRight([ 1, 1, 1, 1, ])).toStrictEqual([ 2, 2, ]);
-    expect(L.sumEqualsRight([ 1, 1, 1, 2, ])).toStrictEqual([ 1, 2, 2, ]);
-    expect(L.sumEqualsRight([ 1, 1, 2, 2, ])).toStrictEqual([ 2, 4, ]);
-    expect(L.sumEqualsRight([ 1, 2, 2, 2, ])).toStrictEqual([ 1, 2, 4, ]);
+    expect(L.sumEqualsRight([ 1, 1, 1, 1 ])).toStrictEqual([ 2, 2 ]);
+    expect(L.sumEqualsRight([ 1, 1, 1, 2 ])).toStrictEqual([ 1, 2, 2 ]);
+    expect(L.sumEqualsRight([ 1, 1, 2, 2 ])).toStrictEqual([ 2, 4 ]);
+    expect(L.sumEqualsRight([ 1, 2, 2, 2 ])).toStrictEqual([ 1, 2, 4 ]);
   });
 
 

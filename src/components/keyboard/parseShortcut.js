@@ -1,4 +1,4 @@
-import { keyMap, } from './keyMap';
+import { keyMap } from './keyMap';
 
 export function parseShortcut(shortcut) {
   if (typeof shortcut !== 'string') {

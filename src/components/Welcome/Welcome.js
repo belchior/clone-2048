@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Wall, } from '../Wall';
+import { Wall } from '../Wall';
 import './Welcome.css';
 
 export function Welcome(props) {
-  const { button, hardMode, wall, } = props;
+  const { button, hardMode, wall } = props;
   return (
     <div className="Welcome">
       <Wall hardMode={hardMode} wall={wall} />

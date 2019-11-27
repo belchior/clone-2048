@@ -1,9 +1,10 @@
-import React, { Component, } from 'react';
-import { shallow, } from 'enzyme';
+import React, { Component } from 'react';
+import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import { Keyboard, } from './Keyboard';
+import { Keyboard } from './Keyboard';
 
+// eslint-disable-next-line default-param-last
 const setup = (props = {}, children) => {
   const requiredProps = {
     shortcuts: {
@@ -28,7 +29,7 @@ describe('Keyboard', () => {
 
   it('should render without crashing', () => {
     const props = {
-      shortcuts: [ { action: () => {}, shortcut: 'ctrl+d', }, ],
+      shortcuts: [ { action: () => {}, shortcut: 'ctrl+d' } ],
     };
     const children = <div className="test">test</div>;
     const wrapper = setup(props, children);

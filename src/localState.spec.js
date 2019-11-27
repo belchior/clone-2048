@@ -1,5 +1,5 @@
-import { loadState, saveState, } from './localState';
-import { initialState, } from './reducers';
+import { loadState, saveState } from './localState';
+import { initialState } from './reducers';
 
 describe('localState', () => {
   it('loadState function should be exported by localState file', () => {
@@ -7,6 +7,7 @@ describe('localState', () => {
   });
 
   it('loadState function should return undefined when there is no state storage', () => {
+    // eslint-disable-next-line no-null/no-null
     jest.spyOn(Storage.prototype, 'getItem').mockReturnValueOnce(null);
     const state = loadState();
 

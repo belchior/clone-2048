@@ -1,9 +1,8 @@
 
 import PropTypes from 'prop-types';
 
-
-let start = null;
-let end = null;
+// eslint-disable-next-line
+let start, end;
 const tolerance = 30;
 
 const getCordinates = touchEvent => ({

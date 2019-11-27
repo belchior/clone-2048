@@ -1,4 +1,4 @@
-import { mapStateToProps, mapDispatchToProps, } from './index';
+import { mapStateToProps, mapDispatchToProps } from './index';
 
 
 describe('mapStateToProps', () => {
@@ -7,19 +7,19 @@ describe('mapStateToProps', () => {
   });
 
   it('should return an Object', () => {
-    const state = { bestScore: 0, score: 0, };
+    const state = { bestScore: 0, score: 0 };
     const props = mapStateToProps(state);
     expect(typeof props === 'object').toBe(true);
   });
 
   it('should return an object that contains the score key', () => {
-    const state = { bestScore: 0, score: 0, };
+    const state = { bestScore: 0, score: 0 };
     const props = mapStateToProps(state);
     expect(typeof props.score === 'number').toBe(true);
   });
 
   it('should return an object that contains the bestScore key', () => {
-    const state = { bestScore: 0, score: 0, };
+    const state = { bestScore: 0, score: 0 };
     const props = mapStateToProps(state);
     expect(typeof props.bestScore === 'number').toBe(true);
   });

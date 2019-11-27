@@ -1,8 +1,8 @@
 import React from 'react';
-import { shallow, } from 'enzyme';
+import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import { Block, } from './Block';
+import { Block } from './Block';
 
 const setup = (props = {}) => {
   const requiredProps = {
@@ -14,7 +14,7 @@ const setup = (props = {}) => {
 
 describe('Block', () => {
   it('should render Block without crashing', () => {
-    const wrapper = setup({ value: 0, });
+    const wrapper = setup({ value: 0 });
     expect(toJson(wrapper)).toMatchInlineSnapshot(`
       <div
         className="Block block-0"
@@ -25,7 +25,7 @@ describe('Block', () => {
   });
 
   it('should render Block with the value 64', () => {
-    const wrapper = setup({ value: 65, });
+    const wrapper = setup({ value: 65 });
     expect(toJson(wrapper)).toMatchInlineSnapshot(`
       <div
         className="Block block-65"

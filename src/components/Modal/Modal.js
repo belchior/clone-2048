@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import clone2048 from '../../static/images/clone-2048.svg';
-import { Score, } from '../Score';
-import { Wall, } from '../Wall';
+import { Score } from '../Score';
+import { Wall } from '../Wall';
 import './Modal.css';
 
 export function Modal(props) {
-  const { bestScore, button, hardMode, score, title, wall, } = props;
+  const { bestScore, button, hardMode, score, title, wall } = props;
   return (
     <section className="Modal">
       <Wall hardMode={hardMode} wall={wall} />

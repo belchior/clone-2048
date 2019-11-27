@@ -1,5 +1,5 @@
-import { mapStateToProps, } from './index';
-import { initialState, } from '../../reducers';
+import { mapStateToProps } from './index';
+import { initialState } from '../../reducers';
 
 describe('App.connected', () => {
   it('mapStateToProps should be a function', () => {

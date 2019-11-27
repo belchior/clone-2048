@@ -79,7 +79,7 @@ export const max = list => Math.max(...list);
  * padEnd :: (Number a) => a -> b -> [b] -> [b]
  */
 export const padEnd = length => value => (list) => {
-  const arr = [ ...list, ];
+  const arr = [ ...list ];
   for (let index = arr.length; index < length; index += 1) arr.push(value);
   return arr;
 };
@@ -89,7 +89,7 @@ export const padEnd = length => value => (list) => {
  * padStart :: (Number a) => a -> b -> [b] -> [b]
  */
 export const padStart = length => value => (list) => {
-  const arr = [ ...list, ];
+  const arr = [ ...list ];
   for (let index = arr.length; index < length; index += 1) arr.unshift(value);
   return arr;
 };
@@ -102,7 +102,7 @@ export function pairs(list) {
   if (list.length < 2) return [];
   const first = head(list);
   const second = head(tail(list));
-  if (first === second) return [ [ first, second, ], ...pairs(tail(tail(list))), ];
+  if (first === second) return [ [ first, second ], ...pairs(tail(tail(list))) ];
   return pairs(tail(list));
 }
 
@@ -120,7 +120,7 @@ export const raffle = (list) => {
   const indexes = indexesOf(0)(list);
   if (!indexes.length) return list;
   const position = indexes[random(indexes.length)];
-  const arr = [ ...list, ];
+  const arr = [ ...list ];
   arr[position] = random(8) >= 6 ? 4 : 2;
   return arr;
 };
@@ -155,8 +155,8 @@ export function sumEquals(list) {
   const first = head(list);
   const second = head(tail(list));
   return first === second
-    ? [ first + second, ...sumEquals(tail(tail(list))), ]
-    : [ first, ...sumEquals(tail(list)), ];
+    ? [ first + second, ...sumEquals(tail(tail(list))) ]
+    : [ first, ...sumEquals(tail(list)) ];
 }
 
 
@@ -181,7 +181,7 @@ export function toSquareMatrix(list) {
   return list.reduce(
     (newList, _, index) => {
       return index % 4 === 0
-        ? [ ...newList, list.slice(index, index + 4), ]
+        ? [ ...newList, list.slice(index, index + 4) ]
         : newList;
     },
     []

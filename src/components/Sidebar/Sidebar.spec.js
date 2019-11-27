@@ -1,7 +1,7 @@
 import React from 'react';
-import { shallow, } from 'enzyme';
+import { shallow } from 'enzyme';
 
-import { Sidebar, } from './Sidebar';
+import { Sidebar } from './Sidebar';
 
 const setup = (props = {}) => {
   const requiredProps = {
@@ -44,7 +44,7 @@ describe('Sidebar', () => {
     wrapper.find('.btn-menu').simulate('click');
     expect(wrapper.find('.menu_full.visible')).toHaveLength(1);
 
-    wrapper.find('.menu_full-container').simulate('click', { stopPropagation: () => undefined, });
+    wrapper.find('.menu_full-container').simulate('click', { stopPropagation: () => undefined });
     expect(wrapper.find('.menu_full.visible')).toHaveLength(1);
   });
 });
