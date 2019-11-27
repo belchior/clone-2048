@@ -1,21 +1,28 @@
 {
   "files": {
-    "main.css": "/clone-2048/static/css/main.38ccd11f.chunk.css",
-    "main.js": "/clone-2048/static/js/main.dfd4f487.chunk.js",
-    "main.js.map": "/clone-2048/static/js/main.dfd4f487.chunk.js.map",
-    "runtime~main.js": "/clone-2048/static/js/runtime~main.16608bad.js",
-    "runtime~main.js.map": "/clone-2048/static/js/runtime~main.16608bad.js.map",
+    "main.css": "/clone-2048/static/css/main.c0da3733.chunk.css",
+    "main.js": "/clone-2048/static/js/main.485381af.chunk.js",
+    "main.js.map": "/clone-2048/static/js/main.485381af.chunk.js.map",
+    "runtime-main.js": "/clone-2048/static/js/runtime-main.ceffa73f.js",
+    "runtime-main.js.map": "/clone-2048/static/js/runtime-main.ceffa73f.js.map",
     "static/css/2.0971e70a.chunk.css": "/clone-2048/static/css/2.0971e70a.chunk.css",
-    "static/js/2.4cb499f0.chunk.js": "/clone-2048/static/js/2.4cb499f0.chunk.js",
-    "static/js/2.4cb499f0.chunk.js.map": "/clone-2048/static/js/2.4cb499f0.chunk.js.map",
+    "static/js/2.87e65b09.chunk.js": "/clone-2048/static/js/2.87e65b09.chunk.js",
+    "static/js/2.87e65b09.chunk.js.map": "/clone-2048/static/js/2.87e65b09.chunk.js.map",
     "index.html": "/clone-2048/index.html",
-    "precache-manifest.69f706a8af3d66f8a37c8827f09ac3b9.js": "/clone-2048/precache-manifest.69f706a8af3d66f8a37c8827f09ac3b9.js",
+    "precache-manifest.d4aa3fba6569d287f78c9a4dd3f43c4c.js": "/clone-2048/precache-manifest.d4aa3fba6569d287f78c9a4dd3f43c4c.js",
     "service-worker.js": "/clone-2048/service-worker.js",
     "static/css/2.0971e70a.chunk.css.map": "/clone-2048/static/css/2.0971e70a.chunk.css.map",
-    "static/css/main.38ccd11f.chunk.css.map": "/clone-2048/static/css/main.38ccd11f.chunk.css.map",
+    "static/css/main.c0da3733.chunk.css.map": "/clone-2048/static/css/main.c0da3733.chunk.css.map",
     "static/media/App.css": "/clone-2048/static/media/MontserratAlternates-Regular.b8d1a091.ttf",
     "static/media/clone-2048.svg": "/clone-2048/static/media/clone-2048.67712dff.svg",
     "static/media/icon-github.svg": "/clone-2048/static/media/icon-github.79531950.svg",
     "static/media/icon-hamburger-menu.svg": "/clone-2048/static/media/icon-hamburger-menu.cd8e0b5c.svg"
-  }
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ceffa73f.js",
+    "static/css/2.0971e70a.chunk.css",
+    "static/js/2.87e65b09.chunk.js",
+    "static/css/main.c0da3733.chunk.css",
+    "static/js/main.485381af.chunk.js"
+  ]
 }

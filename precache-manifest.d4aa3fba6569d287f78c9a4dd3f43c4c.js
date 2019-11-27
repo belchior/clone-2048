@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ffe87a90c4041c2848d7a28c8c55a48c",
+    "revision": "30bedbacd6d558ad094efa2de4ec7f51",
     "url": "/clone-2048/index.html"
   },
   {
-    "revision": "f7db3f339cf8d5bf5d07",
+    "revision": "bf0ee2a6235833195ec9",
     "url": "/clone-2048/static/css/2.0971e70a.chunk.css"
   },
   {
-    "revision": "3bff7338a42cde29fc72",
-    "url": "/clone-2048/static/css/main.38ccd11f.chunk.css"
+    "revision": "0a47fcf4aa3475ac667f",
+    "url": "/clone-2048/static/css/main.c0da3733.chunk.css"
   },
   {
-    "revision": "f7db3f339cf8d5bf5d07",
-    "url": "/clone-2048/static/js/2.4cb499f0.chunk.js"
+    "revision": "bf0ee2a6235833195ec9",
+    "url": "/clone-2048/static/js/2.87e65b09.chunk.js"
   },
   {
-    "revision": "3bff7338a42cde29fc72",
-    "url": "/clone-2048/static/js/main.dfd4f487.chunk.js"
+    "revision": "0a47fcf4aa3475ac667f",
+    "url": "/clone-2048/static/js/main.485381af.chunk.js"
   },
   {
-    "revision": "52b379ff1c9a2aaf03e3",
-    "url": "/clone-2048/static/js/runtime~main.16608bad.js"
+    "revision": "67ff7779c40c03fe5b11",
+    "url": "/clone-2048/static/js/runtime-main.ceffa73f.js"
   },
   {
     "revision": "b8d1a0910468085af6c807892245f525",
