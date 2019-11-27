@@ -13,7 +13,25 @@
 
 demo: [https://belchior.github.io/clone-2048](https://belchior.github.io/clone-2048)
 
-# License
-MIT
+## Development
+Install dependencies
+```shell
+npm ci
+```
+
+Start project in dev mode
+```shell
+npm start
+```
+
+Unit tests
+```shell
+npm test
+```
+
+You can run the command below to get more available scripts
+```shell
+npm run
+```
 
 <p align="center">Made with 💜 and ⚛️</p>
