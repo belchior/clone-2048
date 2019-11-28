@@ -1,3 +1,5 @@
+![](https://github.com/belchior/clone-2048/workflows/deploy/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/belchior/clone-2048/badge.svg?branch=master)](https://coveralls.io/github/belchior/clone-2048?branch=master)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 # Clone 2048
