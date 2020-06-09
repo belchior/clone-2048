@@ -1,0 +1,15 @@
+{
+  "short_name": "Clone 2048",
+  "name": "Clone of game 2048 made by Belchior Oliveira",
+  "icons": [
+    {
+      "src": "./favicon.png",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#eeeeee",
+  "background_color": "#eeeeee"
+}
